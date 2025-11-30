@@ -39,6 +39,10 @@ const insuranceCategories = {
       { name: "Trade Credit", href: "/insurance/business/trade-credit" },
       { name: "Medical Malpractice", href: "/insurance/business/medical-malpractice" },
       { name: "Event Insurance", href: "/insurance/business/event" },
+      { name: "Fidelity Guarantee", href: "/insurance/business/fidelity-guarantee" },
+      { name: "Money Insurance Policy", href: "/insurance/business/money-insurance-policy" },
+      { name: "Group Life Personal Accident – GLPA", href: "/insurance/business/group-life-personal-accident" },
+      
     ],
   },
   travel: {
