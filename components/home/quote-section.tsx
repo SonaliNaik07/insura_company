@@ -1,33 +1,64 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
+import Image from "next/image";
 
 export function QuoteSection() {
   return (
-    <section className="py-20 bg-secondary">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Get Insurance in <span className="text-accent">30 MIN</span>
-            </h2>
-            <p className="text-gray-300 text-lg mb-8">
-              Quick, hassle-free insurance quotes. Our streamlined process gets you covered fast without the paperwork
-              headache.
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+          
+          {/* IMAGE LEFT */}
+          <div className="relative w-full">
+            <div className="w-full h-auto overflow-hidden rounded-xl shadow-lg">
+              <Image
+                src="/family.webp" // replace with your real image
+                alt="Family Happy Insurance"
+                width={600}
+                height={500}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+
+          {/* TEXT RIGHT */}
+          <div className="text-left">
+            {/* Small Blue Top Title */}
+            <p className="text-primary font-semibold text-sm md:text-base mb-3">
+              Get Insurance in 30 MIN
             </p>
+
+            {/* Main Big Bold Heading - EXACT TEXT */}
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#00204A] leading-tight mb-6">
+              Why trust iNSURA.ae<br />
+              Powered by Pioneer For<br />
+              Your Insurance Needs
+            </h2>
+
+            {/* Paragraph Exactly Styled */}
+            <p className="text-gray-600 text-[15.5px] leading-relaxed mb-8">
+              Choosing iNSURA.ae <span className="font-semibold">Powered by PIONEER INSURANCE</span> means
+              choosing a partner dedicated to your peace of mind and security. With a track record of helping
+              over 1000+ customers, we understand the importance of personalized insurance solutions.
+              Whether it’s life, health, car, travel, or business insurance, we strive to exceed your
+              expectations. Our team of caring experts works tirelessly to ensure you receive not just coverage,
+              but support and understanding tailored to your unique circumstances. Trust iNSURA.ae
+              Powered by PIONEER INSURANCE to protect what matters most to you, because your security and
+              satisfaction are our top priorities.
+            </p>
+
+            {/* CTA BUTTON */}
             <Link
               href="/quote"
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-3 bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:bg-primary/90 transition-all"
             >
-              Get Quote
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              Get Quote →
             </Link>
           </div>
-          <div className="relative">
-            <img src="/business-people-discussing-insurance-documents-in-.jpg" alt="Get Quote" className="rounded-xl shadow-2xl" />
-          </div>
+
         </div>
       </div>
     </section>
-  )
+  );
 }

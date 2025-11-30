@@ -1,49 +1,69 @@
-import { Award, Handshake, ThumbsUp } from "lucide-react"
-
-const features = [
-  {
-    icon: Award,
-    title: "Superior Service",
-    description:
-      "Experience excellence with our dedicated team of insurance professionals who are committed to providing personalized solutions.",
-  },
-  {
-    icon: Handshake,
-    title: "Reputable Partners",
-    description:
-      "We work with the most trusted insurance providers in the UAE to bring you reliable coverage and peace of mind.",
-  },
-  {
-    icon: ThumbsUp,
-    title: "100% Satisfaction",
-    description:
-      "Your satisfaction is our priority. We go above and beyond to ensure you're completely happy with our services.",
-  },
-]
-
 export function WhyChooseUs() {
+  const features = [
+    {
+      iconUrl: "/icons/SuperiorService.png",
+      title: "Superior Service",
+      description:
+        "At iNSURA.ae Powered by PIONEER INSURANCE, we’re committed to making your insurance journey as smooth as possible with our superior, personalized service."
+    },
+    {
+      iconUrl: "/icons/ReputablePartners.png",
+      title: "Reputable Partners",
+      description:
+        "With iNSURA.ae Powered by PIONEER INSURANCE, you’re supported by a network of trusted partners, ensuring your insurance is both reliable and top-quality."
+    },
+    {
+      iconUrl: "/icons/Satisfaction.png",
+      title: "100% Satisfaction",
+      description:
+        "Your happiness is our top priority—we’re dedicated to making sure you’re completely satisfied with your insurance plan."
+    }
+  ];
+
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Choose Us?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Choosing iNSURA means choosing a partner dedicated to your peace of mind and security.
-          </p>
+          <p className="text-sky-600 font-semibold">Why Choose Us?</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+            We’re Committed to Delivering the Best
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature) => (
-            <div key={feature.title} className="text-center">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-6">
-                <feature.icon className="w-10 h-10 text-primary" />
+
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="group relative bg-white p-10 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:-translate-y-2"
+            >
+
+              {/* Updated Blue Curved Corner Badge */}
+              <div className="absolute top-0 right-0 w-[100px] h-[100px] bg-[#0BA4E0] 
+                rounded-bl-[120px] overflow-hidden flex justify-center items-center shadow-lg">
+                <span className="text-white text-[20px] font-extrabold">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+
+              <div className="w-14 h-14 mb-8 [perspective:1000px]">
+                <div className="relative w-full h-full transition-transform duration-500 group-hover:[transform:rotateY(180deg)] [transform-style:preserve-3d]">
+                  
+                  <img src={feature.iconUrl} alt="front" className="absolute inset-0 w-full h-full [backface-visibility:hidden]" />
+                  <img src={feature.iconUrl} alt="back" className="absolute inset-0 w-full h-full rotate-y-180 [backface-visibility:hidden]" />
+
+                </div>
+              </div>
+
+              <h3 className="text-xl font-bold mb-3 text-gray-900">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+
             </div>
           ))}
+
         </div>
       </div>
     </section>
-  )
+  );
 }
