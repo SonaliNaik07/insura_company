@@ -1,93 +1,17 @@
-# ===============================
-# Dependencies
-# ===============================
-node_modules/
-.pnp/
-.pnp.js
-
-
-# ===============================
-# Next.js build output
-# ===============================
+<<<<<<< Updated upstream
 .next/
-out/
-build/
-turbo/
-
-
-# ===============================
-# TypeScript
-# ===============================
-*.tsbuildinfo
-
-
-# ===============================
-# Environment variables (SECRET)
-# ===============================
-.env
-.env.*
-!.env.example
-
-
-# ===============================
-# Media & Large Assets
-# ===============================
-*.mp4
-*.mov
-*.avi
-*.mkv
-*.webm
-*.zip
-*.rar
-
-
-# ===============================
-# Public assets (local-only)
-# ===============================
-public/*.mp4
-public/*.mov
-
-
-# ===============================
-# UI overrides / local components
-# ===============================
-components/ui/page-hero.tsx
-
-
-# ===============================
-# Logs
-# ===============================
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# ===============================
-# Editor / OS junk
-# ===============================
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-Thumbs.db
-
-
-# ===============================
-# Git noise
-# ===============================
-*.log
-
-
-# ===============================
-# Test & Coverage
-# ===============================
-coverage/
-
-
-# ===============================
-# Misc
-# ===============================
-.cache/
-.eslintcache
+node_modules/
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+node_modules
+.next/
+=======
+.next/
+node_modules/
+>>>>>>> cc38d77c1c280e65a9b0b459fef78191891a0ac4
+=======
+.next/
+node_modules/
+>>>>>>> cc38d77c1c280e65a9b0b459fef78191891a0ac4
+>>>>>>> Stashed changes
