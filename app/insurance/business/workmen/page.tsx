@@ -216,7 +216,8 @@ export default function WorkmenCompensationPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* LEFT COLUMN */}
-            <div className="lg:col-span-2 space-y-16">
+          <div className="lg:col-span-2 space-y-12 text-justify">
+
               {/* FORM SECTION */}
               <section className="space-y-6">
                 <h3 className="text-3xl md:text-4xl font-semibold text-[#003566]">

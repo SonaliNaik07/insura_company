@@ -220,7 +220,8 @@ const scrollToTop = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* LEFT COLUMN */}
-            <div className="lg:col-span-2 space-y-12">
+            <div className="lg:col-span-2 space-y-12 text-justify">
+
               {/* FORM */}
               <section className="bg-white p-8  shadow-md ">
                 <form className="space-y-8" onSubmit={handleSubmit} noValidate>

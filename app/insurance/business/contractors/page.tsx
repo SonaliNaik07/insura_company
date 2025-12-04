@@ -144,7 +144,7 @@ export default function WorkmenCompensationPage() {
 
       {/* WHITE SECTION */}
       <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           {/* PAGE HEADING UNDER HERO */}
           <h2 className="text-3xl md:text-5xl font-extrabold text-[#073158] mb-4">
             Contractors All Risks by Insura.ae
@@ -156,7 +156,8 @@ export default function WorkmenCompensationPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* LEFT COLUMN */}
-            <div className="lg:col-span-2 space-y-16">
+            <div className="lg:col-span-2 space-y-12 text-justify">
+
               {/* BREAKING DOWN POLICY HEADING */}
               <h2 className="text-3xl md:text-4xl font-semibold text-[#003566] mb-4">
                 Protect Your Projects Now!
