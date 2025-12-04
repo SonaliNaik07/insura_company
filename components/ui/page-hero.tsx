@@ -1,30 +1,45 @@
 interface PageHeroProps {
-  breadcrumb: string
-  title: string
-  description?: string
+  breadcrumb: string;
+  title: string;
+  description?: string;
+  image?: string; // optional image for different pages
 }
 
-export function PageHero({ breadcrumb, title, description }: PageHeroProps) {
+export function PageHero({ breadcrumb, title, description, image }: PageHeroProps) {
+  const heroImage = image ?? "/business.png"; // default image if none passed
+
   return (
-    <section className="relative bg-secondary overflow-hidden">
-      {/* Background Image */}
+    <section className="relative overflow-hidden">
+      {/* BACKGROUND (image + blue gradient) */}
       <div className="absolute inset-0">
-        <img src="/happy-family-father-mother-daughter-smiling-togeth.jpg" alt="Hero Background" className="w-full h-full object-cover opacity-50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/90 to-transparent" />
+        {/* Image on the RIGHT, slightly visible */}
+        <div
+          className="absolute inset-0 bg-cover bg-right opacity-70"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+
+        {/* Blue gradient from left to right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#022B69] via-[#0a4a99cc] to-transparent" />
       </div>
 
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-xl">
-          <div className="flex items-center gap-2 text-white/80 mb-4">
-            <span>insura.ae</span>
-            <span className="w-2 h-2 bg-primary rounded-full" />
-            <span>{breadcrumb}</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">{title}</h1>
-          {description && <p className="text-white/80 text-lg">{description}</p>}
+      {/* CONTENT */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="flex items-center gap-2 text-white mb-4 text-sm">
+          <span>insura.ae</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+          <span>{breadcrumb}</span>
         </div>
+
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+          {title}
+        </h1>
+
+        {description && (
+          <p className="text-base md:text-lg text-white/80 max-w-2xl">
+            {description}
+          </p>
+        )}
       </div>
     </section>
-  )
+  );
 }

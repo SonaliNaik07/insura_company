@@ -1,77 +1,54 @@
 "use client";
 
-import {
-  useState,
-  type ReactNode,
-  type ChangeEvent,
-  type FormEvent,
-} from "react";
+import { useState, type ReactNode, type FormEvent } from "react";
 import { PageHero } from "@/components/ui/page-hero";
 import { Sidebar } from "@/components/content/sidebar";
 import { Home, Bookmark } from "lucide-react";
 
-type FAQItem = {
-  question: string;
-  answer: ReactNode;
-};
-
 const coverageCards = [
   {
-    title: "Liability Insurance",
+    title: "Liability Insurance ",
     description:
       "Liability Insurance is for businesses in the UAE. It protects your business against claims of injury or damage caused to third parties. This can include claims resulting from accidents, product defects, or professional errors or omissions.",
   },
   {
-    title: "Workers Compensation Insurance",
+    title: "Work Compensation Insurance",
     description:
       "This insurance is mandatory in the UAE and covers medical expenses, disability payments, and lost wages for employees who are injured or fall ill while on the job. This type of insurance provides peace of mind for both employers and employees.",
   },
   {
-    title: "Property Insurance",
+    title: "Property insurance",
     description:
       "Property insurance protects businesses from financial losses arising from damage or loss of equipment, inventory, or property due to events such as fire, theft or natural disasters.",
   },
   {
-    title: "Marine Insurance",
+    title: "Marine Insurance ",
     description:
       "Marine insurance covers the physical loss or damage of ships, cargo, terminals, and any transport by which the property is transferred, acquired, or held between the points of origin and the final destination.",
   },
   {
-    title: "Professional Indemnity",
+    title: "Professional indemnity",
     description:
-      "Professional indemnity insurance will protect businesses from claims made against them by third parties for mistakes, omissions, errors, or financial loss.",
+      "Professional indemnity insurance will protect businesses from claims made against them by third parties for mistakes, omissions, errors, or financial loss",
   },
   {
     title: "Public Liability",
     description:
-      "This insurance will indemnify against all sums which the insured shall become legally liable as an occupier of the premises due to accidents causing damage and/or bodily injury (Fatal or Non-Fatal) to Third Parties arising out of their business.",
+      "This insurance will indemnify against all sums which the insured shall become legally liable as an occupier of the premises due to accidents causing damage and/or bodily injury (Fatal or Non-Fatal) to Third Parties arising out of their Business.",
   },
 ];
 
-type FormData = {
-  companyName: string;
-  contactPerson: string;
-  mobile: string;
-  email: string;
-  category: string;
+type FormErrors = {
+  company?: string;
+  person?: string;
+  mobile?: string;
+  email?: string;
 };
 
-type FormErrors = Partial<Record<keyof FormData, string>>;
-
 export default function WorkmenCompensationPage() {
-  // form state
-  const [formData, setFormData] = useState<FormData>({
-    companyName: "",
-    contactPerson: "",
-    mobile: "",
-    email: "",
-    category: "",
-  });
-
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [whyOpen, setWhyOpen] = useState<boolean[]>([true, false, false, false]);
   const [errors, setErrors] = useState<FormErrors>({});
-
-  // multi-open accordion for Why Choose iNSURA
-  const [whyOpen, setWhyOpen] = useState<boolean[]>([true, false, false]);
 
   const toggleWhy = (index: number) => {
     setWhyOpen((prev) =>
@@ -79,50 +56,32 @@ export default function WorkmenCompensationPage() {
     );
   };
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
+  const scrollToHero = () => {
+    const el = document.getElementById("glpa-hero");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const formData = new FormData(e.currentTarget);
+    const company = (formData.get("company") as string | null)?.trim() || "";
+    const person = (formData.get("person") as string | null)?.trim() || "";
+    const mobile = (formData.get("mobile") as string | null)?.trim() || "";
+    const email = (formData.get("email") as string | null)?.trim() || "";
+
     const newErrors: FormErrors = {};
+    
+    if (!person) newErrors.person = "This field is required. Please input your name.";
+    if (!mobile) newErrors.mobile = "This field is required. Please input a phone number.";
+    if (!email) newErrors.email = "This field is required. Please input a valid email.";
 
-    // company name optional (no star), others required
-    if (!formData.contactPerson.trim()) {
-      newErrors.contactPerson = "This field is required. Please input your name.";
-    }
-    if (!formData.mobile.trim()) {
-      newErrors.mobile = "This field is required. Please input a mobile number.";
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = "This field is required. Please input a valid email.";
-    }
+    setErrors(newErrors);
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
+    if (Object.keys(newErrors).length === 0) {
+      // add actual submit logic later
+      alert("Form submitted successfully!");
     }
-
-    console.log("GLPA / Business Insurance form submitted:", formData);
-  };
-
-  // scroll hero for Buy Now buttons
-  const scrollToHero = () => {
-    const el = document.getElementById("glpa-hero");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -149,57 +108,51 @@ export default function WorkmenCompensationPage() {
             <div className="lg:col-span-2 space-y-16">
               {/* IMAGE + FORM SECTION */}
               <section className="space-y-6">
+                {/* Big image above form */}
                 <div className="w-full">
                   <img
-                    src="/group.webp"
+                    src="/group.webp" // change to your GLPA image
                     alt="Business Insurance in UAE"
                     className="w-full rounded-lg object-cover"
                   />
                 </div>
 
-                <form
-                  className="space-y-8"
-                  onSubmit={handleSubmit}
-                  noValidate
-                >
+                {/* FORM */}
+                <form className="space-y-8" onSubmit={handleSubmit}>
                   {/* ROW 1 */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Company Name (optional) */}
+                    {/* Company Name */}
                     <div>
-                      <label className="block text-sm text-[#797575] font-semibold mb-2">
-                        Company name
+                      <label className="block text-sm font-semibold mb-2">
+                        Company name <span className="text-red-500">*</span>
                       </label>
                       <input
+                        name="company"
                         type="text"
-                        name="companyName"
-                        value={formData.companyName}
-                        onChange={handleInputChange}
                         placeholder="Enter company name..."
-                        className="w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400 "
+                        className="w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400 outline-none"
                       />
+                      {errors.company && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors.company}
+                        </p>
+                      )}
                     </div>
 
                     {/* Concern Person */}
                     <div>
-                      <label className="block text-sm text-[#797575] font-semibold mb-2">
-                        Concern Person name{" "}
-                        <span className="text-red-500">*</span>
+                      <label className="block text-sm font-semibold mb-2">
+                        Concern Person name <span className="text-red-500">*</span>
                       </label>
                       <input
+                        name="person"
                         type="text"
-                        name="contactPerson"
-                        value={formData.contactPerson}
-                        onChange={handleInputChange}
                         placeholder="Concern person name..."
-                        className={`w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400  ${
-                          errors.contactPerson
-                            ? "border-red-500"
-                            : "border-transparent"
-                        }`}
+                        className="w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400 outline-none"
                       />
-                      {errors.contactPerson && (
-                        <p className="mt-1 text-sm text-red-500">
-                          {errors.contactPerson}
+                      {errors.person && (
+                        <p className="text-red-500 text-sm mt-1">
+                          {errors.person}
                         </p>
                       )}
                     </div>
@@ -209,23 +162,17 @@ export default function WorkmenCompensationPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Mobile Number */}
                     <div>
-                      <label className="block text-sm text-[#797575] font-semibold mb-2">
+                      <label className="block text-sm font-semibold mb-2">
                         Mobile Number <span className="text-red-500">*</span>
                       </label>
                       <input
-                        type="text"
                         name="mobile"
-                        value={formData.mobile}
-                        onChange={handleInputChange}
+                        type="text"
                         placeholder="enter mobile number..."
-                        className={`w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400  ${
-                          errors.mobile
-                            ? "border-red-500"
-                            : "border-transparent"
-                        }`}
+                        className="w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400 outline-none"
                       />
                       {errors.mobile && (
-                        <p className="mt-1 text-sm text-red-500">
+                        <p className="text-red-500 text-sm mt-1">
                           {errors.mobile}
                         </p>
                       )}
@@ -233,23 +180,17 @@ export default function WorkmenCompensationPage() {
 
                     {/* Email */}
                     <div>
-                      <label className="block text-sm  text-[#797575] font-semibold mb-2">
+                      <label className="block text-sm font-semibold mb-2">
                         Email Address <span className="text-red-500">*</span>
                       </label>
                       <input
-                        type="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
+                        type="email"
                         placeholder="enter email id..."
-                        className={`w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400  ${
-                          errors.email
-                            ? "border-red-500"
-                            : "border-transparent"
-                        }`}
+                        className="w-full p-3 rounded-lg bg-[#eef6ff] text-[#003566] placeholder:text-gray-400 outline-none"
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-500">
+                        <p className="text-red-500 text-sm mt-1">
                           {errors.email}
                         </p>
                       )}
@@ -258,16 +199,10 @@ export default function WorkmenCompensationPage() {
 
                   {/* Business Category Dropdown */}
                   <div>
-                    <label className="block text-sm text-[#797575] font-semibold mb-2">
+                    <label className="block text-sm font-semibold mb-2">
                       Business Category
                     </label>
-                    <select
-                      name="category"
-                      value={formData.category}
-                      onChange={handleInputChange}
-                      className="w-full p-3 rounded-lg bg-[#23b5ff] text-white outline-none"
-                    >
-                      <option value="">Select category</option>
+                    <select className="w-full p-3 rounded-lg bg-[#23b5ff] text-white outline-none">
                       <option>Property all risks</option>
                       <option>Group Life / GLPA</option>
                       <option>Workers Compensation</option>
@@ -284,9 +219,9 @@ export default function WorkmenCompensationPage() {
                 </form>
               </section>
 
-              {/* FLIP CARDS – Buy Insurance That Fits Your Business */}
-              <section className="mt-10 space-y-4">
-                <h2 className="text-2xl md:text-3xl font-extrabold text-[#003566]">
+              {/* FLIP CARDS */}
+              <section>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-[#003566] mb-4">
                   Buy Insurance That Fits Your Business....
                 </h2>
 
@@ -295,17 +230,17 @@ export default function WorkmenCompensationPage() {
                     <div key={index} className="group [perspective:1200px]">
                       <div
                         className="relative h-72 w-full transition-transform duration-700
-                        [transform-style:preserve-3d]
-                        group-hover:[transform:rotateY(180deg)]"
+                                   [transform-style:preserve-3d]
+                                   group-hover:[transform:rotateY(180deg)]"
                       >
                         {/* FRONT */}
                         <div
                           className="absolute inset-0 flex flex-col items-center justify-center
-                          rounded-xl bg-[#003566] text-white
-                          [backface-visibility:hidden]"
+                                     rounded-xl bg-[#003566] text-white
+                                     [backface-visibility:hidden]"
                         >
-                          <Home className="w-8 h-8 mb-3 text-yellow-300" />
-                          <p className="text-base md:text-lg font-semibold text-center px-4">
+                          <Home className="w-10 h-10 mb-4 text-yellow-300" />
+                          <p className="text-lg md:text-xl font-semibold text-center">
                             {card.title}
                           </p>
                         </div>
@@ -313,11 +248,11 @@ export default function WorkmenCompensationPage() {
                         {/* BACK */}
                         <div
                           className="absolute inset-0 flex flex-col items-center justify-center gap-4
-                          rounded-xl bg-white text-[#656060] border
-                          [backface-visibility:hidden]
-                          [transform:rotateY(180deg)]"
+                                     rounded-xl bg-white text-[#656060] border
+                                     [backface-visibility:hidden]
+                                     [transform:rotateY(180deg)]"
                         >
-                          <p className="text-center text-sm md:text-base font-medium px-4">
+                          <p className="text-center text-base md:text-lg font-medium px-4">
                             {card.description}
                           </p>
 
@@ -325,17 +260,17 @@ export default function WorkmenCompensationPage() {
                             type="button"
                             onClick={scrollToHero}
                             className="flex items-center gap-2 px-4 py-2 rounded-md
-                              bg-white text-[#191c61] font-semibold text-xs md:text-sm
-                              border border-[#191c61]
-                              transition-all duration-300
-                              hover:bg-[#191c61] hover:text-white"
+                                       bg-white text-[#191c61] font-semibold text-sm
+                                       border border-[#191c61]
+                                       transition-all duration-300
+                                       hover:bg-[#191c61] hover:text-white"
                           >
                             <span>Buy Now</span>
                             <span
                               className="h-4 w-4 flex items-center justify-center rounded-[3px]
-                                bg-[#191c61] text-white
-                                transition-all duration-300
-                                hover:bg-white hover:text-[#191c61]"
+                                         bg-[#191c61] text-white
+                                         transition-all duration-300
+                                         hover:bg-white hover:text-[#191c61]"
                             >
                               <Bookmark className="h-3 w-3" strokeWidth={3} />
                             </span>
@@ -350,7 +285,7 @@ export default function WorkmenCompensationPage() {
               {/* WHY BUSINESS INSURANCE MANDATORY + FOCUS SECTION */}
               <section className="space-y-6 mt-10">
                 <div className="space-y-4">
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#003566]">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-[#003566]">
                     Why Business Insurance Mandatory in Dubai?
                   </h2>
                   <p className="text-muted-foreground leading-relaxed">
@@ -372,7 +307,7 @@ export default function WorkmenCompensationPage() {
                 </div>
 
                 <div className="space-y-3">
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#003566]">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-[#003566]">
                     Focus on Your Business with Peace of Mind
                   </h2>
 
@@ -416,19 +351,21 @@ export default function WorkmenCompensationPage() {
 
                 {/* RIGHT ACCORDION */}
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-extrabold text-[#003566] mb-4">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-[#003566] mb-4">
                     Why Choose iNSURA?
                   </h2>
-
+                  <h2>
+                    We believe in going above and beyond to ensure your vehicle is not only safeguarded on the road but also well-maintained.
+                  </h2>
                   <div className="space-y-4">
-                    {/* 1 – Comprehensive Coverage Options */}
+                    {/* 1 – Budget Friendly Coverage */}
                     <div className="border-b border-gray-200 pb-4">
                       <button
                         onClick={() => toggleWhy(0)}
                         className="w-full flex items-center justify-between text-left"
                       >
-                        <span className="font-semibold text-[#696b6c]">
-                          Comprehensive Coverage Options
+                        <span className="font-semibold text-[#4b4b4b]">
+                          Budget Friendly Coverage
                         </span>
                         <span className="text-lg text-[#003566]">
                           {whyOpen[0] ? "▲" : "▼"}
@@ -437,21 +374,19 @@ export default function WorkmenCompensationPage() {
 
                       {whyOpen[0] && (
                         <div className="mt-3 text-muted-foreground leading-relaxed">
-                          Insura.ae offers a wide range of coverage options
-                          tailored to meet the specific needs of various
-                          businesses and industries.
+                          iNSURA Identify the best vehicle insurance in uae by considering your specific needs and budget and customize insurance plans to align with your requirements.
                         </div>
                       )}
                     </div>
 
-                    {/* 2 – Competitive Pricing */}
+                    {/* 2 – 10,000+ Satisfied Customers */}
                     <div className="border-b border-gray-200 pb-4">
                       <button
                         onClick={() => toggleWhy(1)}
                         className="w-full flex items-center justify-between text-left"
                       >
-                        <span className="font-semibold text-[#696b6c]">
-                          Competitive Pricing
+                        <span className="font-semibold text-[#4b4b4b]">
+                          10,000+ Satistfied Customers
                         </span>
                         <span className="text-lg text-[#003566]">
                           {whyOpen[1] ? "▲" : "▼"}
@@ -460,21 +395,19 @@ export default function WorkmenCompensationPage() {
 
                       {whyOpen[1] && (
                         <div className="mt-3 text-muted-foreground leading-relaxed">
-                          We understand that budgeting is crucial for planning.
-                          Insura.ae provides competitively priced policies that
-                          offer extensive coverage without breaking the bank.
+                          With over 10,000+ satisfied customers, iNSURA.ae is a reliable name in the insurance sector.
                         </div>
                       )}
                     </div>
 
-                    {/* 3 – Hassle-Free Claims Process */}
+                    {/* 3 – Comprehensive Coverage */}
                     <div className="border-b border-gray-200 pb-4">
                       <button
                         onClick={() => toggleWhy(2)}
                         className="w-full flex items-center justify-between text-left"
                       >
-                        <span className="font-semibold text-[#696b6c]">
-                          Hassle-Free Claims Process
+                        <span className="font-semibold text-[#4b4b4b]">
+                          Comprehensive Coverage
                         </span>
                         <span className="text-lg text-[#003566]">
                           {whyOpen[2] ? "▲" : "▼"}
@@ -483,48 +416,46 @@ export default function WorkmenCompensationPage() {
 
                       {whyOpen[2] && (
                         <div className="mt-3 text-muted-foreground leading-relaxed">
-                          In the unfortunate event that you need to make a
-                          claim, Insura.ae ensures a smooth and efficient claims
-                          journey with dedicated support.
+                          We go beyond standard coverage, offering a comprehensive package that includes car maintenance and car wash services.
                         </div>
                       )}
                     </div>
                   </div>
 
                   <p className="text-muted-foreground mt-4">
-                    Protect your business with Insura.ae and enjoy peace of mind
-                    knowing that your operations, employees, and liabilities are
-                    in safe hands.
+                    Protect your special occasions with Insura.ae and enjoy
+                    peace of mind knowing that your event is in safe hands.
                   </p>
 
                   <button
-                    className="px-6 py-2 bg-[#003566] text-[#ffd34d] font-semibold rounded-md shadow mt-4"
                     onClick={scrollToHero}
+                    className="px-6 py-2 bg-[#003566] text-[#ffd34d] font-semibold rounded-md shadow mt-4"
                   >
                     Buy Now
                   </button>
                 </div>
               </section>
 
-              {/* LEGAL / OPERATIONAL SECTION */}
+              {/* LEGAL, OPERATIONAL, EMPLOYEE PROTECTION */}
               <section className="mt-16 space-y-10">
+                {/* Top heading + paragraph */}
                 <div className="space-y-4">
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-[#003566]">
+                  <h2 className="text-3xl md:text-4xl font-semibold text-[#003566]">
                     Legal, Operational, and Employee Protection in UAE
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Business insurance in the UAE safeguards businesses against
-                    risks like property damage and liability claims. It&apos;s
-                    often legally required in Dubai, ensuring compliance,
-                    employee protection, operational resilience, and customer
-                    trust, with extra coverage through employer&apos;s
-                    liability insurance.
+                  <p className="text-[#4b4b4b] leading-relaxed">
+                    Business insurance in the UAE safeguards businesses against risks like
+                    property damage and liability claims. It&apos;s legally required in
+                    Dubai, ensuring compliance, employee protection, operational
+                    resilience, and customer trust, with extra coverage through
+                    employer&apos;s liability insurance.
                   </p>
                 </div>
 
+                {/* Image banner */}
                 <div className="w-full">
                   <img
-                    src="/event.webp"
+                    src="/event.webp" // change to your actual image path
                     alt="Protect Your Business with 360° Protection"
                     className="w-full rounded-lg object-cover"
                   />

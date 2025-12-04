@@ -5,6 +5,8 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
+import FloatingSocial from "@/components/FloatingSocial";
+
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -43,6 +45,7 @@ export default function RootLayout({
       <body className={`font-sans antialiased`}>
         <Navbar />
         {children}
+            <FloatingSocial />
         <Footer />
         <Analytics />
       </body>
