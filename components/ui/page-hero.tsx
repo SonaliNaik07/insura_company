@@ -9,8 +9,23 @@ export function PageHero({ breadcrumb, title, description, image }: PageHeroProp
   const heroImage = image ?? "/business.png"; // default image if none passed
 
   return (
+<<<<<<< Updated upstream
     <section className="relative overflow-hidden">
       {/* BACKGROUND (image + blue gradient) */}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <section className="relative bg-primary overflow-hidden">
+      {/* Background Image */}
+=======
+    <section className="relative overflow-hidden">
+      {/* BACKGROUND (image + blue gradient) */}
+>>>>>>> cc38d77c1c280e65a9b0b459fef78191891a0ac4
+=======
+    <section className="relative overflow-hidden">
+      {/* BACKGROUND (image + blue gradient) */}
+>>>>>>> cc38d77c1c280e65a9b0b459fef78191891a0ac4
+>>>>>>> Stashed changes
       <div className="absolute inset-0">
         {/* Image on the RIGHT, slightly visible */}
         <div
