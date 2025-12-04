@@ -166,7 +166,7 @@ const Slide = ({ slide, isActive }: SlideProps) => {
                 className="inline-flex items-center gap-2 bg-white text-sky-600 px-6 py-3 rounded-lg font-medium shadow-lg group"
               >
                 Buy Now
-                <ExternalLinkIcon className="w-4 h-4 text-sky-600 group-hover:translate-x-1 transition-transform" />
+                <ExternalLinkIcon className="w-6 h-6 text-sky-600 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
           </div>
@@ -174,15 +174,17 @@ const Slide = ({ slide, isActive }: SlideProps) => {
       </div>
 
       {/* Extra image only for slide 4 */}
-      {slide.id === 4 && (
-        <img
-          src={slide.assetImage}
-          alt="car"
-          className={`hidden lg:block absolute bottom-0 right-0 w-[50%] transition-all duration-700 ${
-            isActive ? "opacity-100 scale-100" : "opacity-0 scale-90"
-          }`}
-        />
-      )}
+{/* Extra image only for slide 4 */}
+{slide.id === 4 && (
+  <img
+    src={slide.assetImage}
+    alt="car"
+    className={`hidden lg:block absolute -bottom-10 right-[4%] w-[65%] z-20 drop-shadow-xl transition-all duration-700 ${
+      isActive ? "opacity-100 scale-100 translate-y-0" : "opacity-0 scale-95 translate-y-6"
+    }`}
+  />
+)}
+
     </div>
   );
 };

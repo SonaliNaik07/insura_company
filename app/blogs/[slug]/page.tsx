@@ -1,14 +1,14 @@
-"use client"; // This directive tells Next.js to render this component on the client, allowing the use of hooks like useEffect and useState.
-
+"use client"; // Client component to use hooks like useEffect and useState.
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-
-// ⬇️ GLOBAL BLOG SIDEBAR (your blue one with social icons & recent posts)
 import BlogSidebar from "@/components/global/BlogSidebar";
 
 // --- Theme Colors ---
 const BRAND_BLUE = "bg-[#0047b3]";
 const CONSISTENT_IMAGE_COLOR = "3b82f6"; // Medium Blue
+const POST_TITLE = "15 Fun Things To Do in Dubai on the UAE National Holiday";
+const HERO_IMAGE = "/1.jpg"; // TODO: set your hero image path or URL here
 
 // --- Type Definitions ---
 interface FaqItem {
@@ -51,7 +51,7 @@ const faqData: FaqItem[] = [
 ];
 
 // -----------------------------------------------------------------------------
-// --- TABLE OF CONTENTS ---
+// TABLE OF CONTENTS
 // -----------------------------------------------------------------------------
 export const TableOfContents: React.FC = () => {
   const contents = [
@@ -73,27 +73,59 @@ export const TableOfContents: React.FC = () => {
           children: [
             { id: "1", title: "1. Global Village", url: "#1_Global_Village" },
             { id: "2", title: "2. Al Qudra Cycle Track", url: "#2_Al_Qudra_Cycle_Track" },
-            { id: "3", title: "3. Flag Garden at Kite Beach", url: "#3_Flag_Garden_at_Kite_Beach" },
-            { id: "4", title: "4. Sheikh Zayed Grand Mosque", url: "#4_Sheikh_Zayed_Grand_Mosque" },
+            {
+              id: "3",
+              title: "3. Flag Garden at Kite Beach",
+              url: "#3_Flag_Garden_at_Kite_Beach",
+            },
+            {
+              id: "4",
+              title: "4. Sheikh Zayed Grand Mosque",
+              url: "#4_Sheikh_Zayed_Grand_Mosque",
+            },
             { id: "6", title: "6. Camping", url: "#6_Camping" },
             { id: "7", title: "7. Kayaking in Hatta", url: "#7_Kayaking_in_Hatta" },
-            { 
-              id: "8", 
-              title: "8. Road trips around the Emirates", 
+            {
+              id: "8",
+              title: "8. Road trips around the Emirates",
               url: "#8_Road_trips_around_the_Emirates",
               children: [
-                { id: "8a", title: "Popular Directions for a Quick Drive", url: "#Popular_Directions_for_a_Quick_Drive" },
-                { id: "8b", title: "Best Spots to Explore", url: "#Best_Spots_to_Explore" },
-                { id: "8c", title: "Practical Tips for a Smooth Road Trip", url: "#Practical_Tips_for_a_Smooth_Road_Trip" },
-              ]
+                {
+                  id: "8a",
+                  title: "Popular Directions for a Quick Drive",
+                  url: "#Popular_Directions_for_a_Quick_Drive",
+                },
+                {
+                  id: "8b",
+                  title: "Best Spots to Explore",
+                  url: "#Best_Spots_to_Explore",
+                },
+                {
+                  id: "8c",
+                  title: "Practical Tips for a Smooth Road Trip",
+                  url: "#Practical_Tips_for_a_Smooth_Road_Trip",
+                },
+              ],
             },
             { id: "9", title: "9. Hiking trails", url: "#9_Hiking_trails" },
-            { id: "10", title: "10. Winter Garden at Habtoor Palace", url: "#10_Winter_Garden_at_Habtoor_Palace" },
+            {
+              id: "10",
+              title: "10. Winter Garden at Habtoor Palace",
+              url: "#10_Winter_Garden_at_Habtoor_Palace",
+            },
             { id: "11", title: "11. Desert Safari", url: "#11_Desert_Safari" },
-            { id: "12", title: "12. A calm morning at the beach", url: "#12_A_calm_morning_at_the_beach" },
+            {
+              id: "12",
+              title: "12. A calm morning at the beach",
+              url: "#12_A_calm_morning_at_the_beach",
+            },
             { id: "13", title: "13. Market hopping", url: "#13_Market_hopping" },
             { id: "14", title: "14. Staycation", url: "#14_Staycation" },
-            { id: "15", title: "15. Military shows and parades", url: "#15_Military_shows_and_parades" },
+            {
+              id: "15",
+              title: "15. Military shows and parades",
+              url: "#15_Military_shows_and_parades",
+            },
           ],
         },
         {
@@ -101,7 +133,11 @@ export const TableOfContents: React.FC = () => {
           title: "Conclusion",
           url: "#Conclusion",
           children: [
-            { id: "faq", title: "Frequently Asked Questions", url: "#Frequently_Asked_Questions" },
+            {
+              id: "faq",
+              title: "Frequently Asked Questions",
+              url: "#Frequently_Asked_Questions",
+            },
           ],
         },
       ],
@@ -164,7 +200,7 @@ export const TableOfContents: React.FC = () => {
 };
 
 // -----------------------------------------------------------------------------
-// --- FAQ ACCORDION ---
+// FAQ ACCORDION
 // -----------------------------------------------------------------------------
 export const FaqAccordion: React.FC = () => {
   const [openId, setOpenId] = useState<number | null>(null);
@@ -175,7 +211,9 @@ export const FaqAccordion: React.FC = () => {
 
   return (
     <div id="Frequently_Asked_Questions" className="mt-12">
-      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+        Frequently Asked Questions
+      </h2>
 
       <div className="space-y-0 rounded-lg overflow-hidden">
         {faqData.map((item) => (
@@ -183,8 +221,7 @@ export const FaqAccordion: React.FC = () => {
             {/* QUESTION BLOCK */}
             <button
               onClick={() => toggleAccordion(item.id)}
-              className={`w-full text-left flex justify-between items-center py-4 px-5 
-              bg-[#003980] transition duration-300`}
+              className="w-full text-left flex justify-between items-center py-4 px-5 bg-[#003980] transition duration-300"
             >
               <span className="flex items-center gap-3 text-yellow-300 font-semibold text-base md:text-lg">
                 <span className="text-xl font-bold">
@@ -216,11 +253,10 @@ export const FaqAccordion: React.FC = () => {
 };
 
 // -----------------------------------------------------------------------------
-// --- MAIN CONTENT WITH ALL SECTIONS ---
+// MAIN CONTENT WITH ALL SECTIONS
 // -----------------------------------------------------------------------------
 export const MainContent: React.FC = () => {
   return (
-    
     <div className="flex-1 bg-white p-6 md:p-8 rounded-xl shadow-lg">
       {/* Main Title */}
       <h1
@@ -231,18 +267,16 @@ export const MainContent: React.FC = () => {
       </h1>
 
       {/* Main Image Block 1 */}
-      <div className="w-full h-80 bg-gray-200 rounded-lg overflow-hidden mb-8 relative shadow-lg">
+<div className="w-full h-auto mb-8 overflow-hidden">
         <img
-          src={`https://placehold.co/1200x320/${CONSISTENT_IMAGE_COLOR}/ffffff?text=Dubai+Skyline+with+Fireworks`}
+          src="/articles/fun5.webp"
           alt="Dubai Skyline with National Day Fireworks"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex items-end justify-center pb-4">
-          <div className="bg-white/90 p-3 rounded-lg shadow-lg text-lg font-bold text-gray-900 border-2 border-emerald-500">
-            15 Fun Things To Do in Dubai on the UAE National Holiday
-          </div>
-        </div>
       </div>
+
+      {/* Table of Contents */}
+      <TableOfContents />
 
       {/* Intro Text */}
       <p className="text-gray-700 leading-relaxed mb-6">
@@ -270,17 +304,12 @@ export const MainContent: React.FC = () => {
         History Behind the UAE National Day Celebration
       </h2>
 
-      <div className="w-full h-80 bg-gray-200 rounded-lg overflow-hidden mb-8 relative shadow-lg">
+<div className="w-full h-auto mb-8 overflow-hidden">
         <img
-          src={`https://placehold.co/1200x320/${CONSISTENT_IMAGE_COLOR}/ffffff?text=Family+in+Desert`}
+          src="/articles/fun1.webp"
           alt="Family enjoying National Day in the desert"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 flex items-end justify-center pb-4">
-          <div className="bg-white/90 p-3 rounded-lg shadow-lg text-lg font-bold text-gray-900 border-2 border-emerald-500">
-            History Behind the UAE National Day Celebration
-          </div>
-        </div>
       </div>
 
       <p className="text-gray-700 leading-relaxed mb-4">
@@ -307,12 +336,19 @@ export const MainContent: React.FC = () => {
         Things to Do in Dubai on the UAE National Holiday
       </h2>
 
+<div className="w-full h-auto mb-8 overflow-hidden">
+        <img
+          src="/articles/fun2.webp"
+          alt="Family enjoying National Day in the desert"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       <p className="text-gray-700 leading-relaxed mb-8">
         Here are clear, easy picks for the long weekend, real suggestions you can use right away. Each mini-guide shows what to expect, a quick tip, and a short real-life note so you don't waste time deciding. These are the top things to do in Dubai that locals pick when they want a simple, fun day out.
       </p>
 
-      {/* Table of Contents */}
-      <TableOfContents />
+
 
       {/* 1. Global Village */}
       <h3 id="1_Global_Village" className="text-xl font-bold text-gray-800 mt-12 mb-4">
@@ -321,50 +357,74 @@ export const MainContent: React.FC = () => {
       <p className="text-gray-700 leading-relaxed mb-4">
         Global Village packs food, live shows and family rides in one evening. Arrive late afternoon, plan one or two country pavilions, and save dinner for a street-food stall you can't resist.
       </p>
-      <p className="text-sm font-medium text-emerald-700 bg-emerald-50 p-3 rounded-lg mb-8">
+      <p className="text-sm rounded-lg mb-8">
         <strong>Tip:</strong> Buy tickets online and aim for early evening to beat the worst queues.
       </p>
+{/* 2. Al Qudra Cycle Track */}
+<h2
+  id="2_Al_Qudra_Cycle_Track"
+  className="text-2xl font-extrabold text-[#06396B] mt-12 mb-4"
+>
+  2. Al Qudra Cycle Track
+</h2>
 
-      {/* 2. Al Qudra Cycle Track */}
-      <h3 id="2_Al_Qudra_Cycle_Track" className="text-xl font-bold text-gray-800 mt-12 mb-4">
-        2. Al Qudra Cycle Track
-      </h3>
-      <p className="text-gray-700 leading-relaxed mb-4">
-        Al Qudra is one of those early-morning spots where the desert feels open, calm, and almost untouched. When you start your ride at dawn, the air stays cool, and the quiet stretch of road makes the whole experience feel lighter. The paved track runs long enough for both beginners and regular cyclists, which is why many families pick it for a quick holiday activity.
-      </p>
-      <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <h4 className="font-semibold text-gray-800 mb-2">What to expect</h4>
-          <ul className="list-disc ml-4 space-y-1 text-sm text-gray-700">
-            <li>Smooth, well-marked cycling paths with no traffic</li>
-            <li>Quiet surroundings ideal for short or long rides</li>
-            <li>A safe area where even kids can cycle comfortably</li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="font-semibold text-gray-800 mb-2">Before you go</h4>
-          <ul className="list-disc ml-4 space-y-1 text-sm text-gray-700">
-            <li>Carry water, basic snacks, and a small repair kit</li>
-            <li>Keep your phone charged; signals may drop in a few sections</li>
-            <li>Stretch lightly before starting so your legs don't tighten up</li>
-          </ul>
-        </div>
-      </div>
-      <p className="text-sm text-emerald-700 mb-2">
-        <strong>Health check reminder:</strong> A quick medical checkup helps you avoid strain during long rides. Many{" "}
-        <a
-          href="https://insura.ae/health-insurance/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-semibold underline hover:text-emerald-800"
-        >
-          health insurance in Dubai UAE
-        </a>{" "}
-        plans offer free checkups before travelling or doing high-energy activities.
-      </p>
-      <p className="text-sm font-medium text-emerald-700 bg-emerald-50 p-3 rounded-lg">
-        <strong>Extra tip:</strong> Start as early as possible. The sunrise here is worth seeing.
-      </p>
+<p className="text-sm md:text-base text-gray-700 leading-relaxed mb-6">
+  Al Qudra is one of those early-morning spots where the desert feels open,
+  calm, and almost untouched. When you start your ride at dawn, the air stays
+  cool, and the quiet stretch of road makes the whole experience feel lighter.
+  The paved track runs long enough for both beginners and regular cyclists,
+  which is why many families pick it for a quick holiday activity.
+</p>
+
+<h3 className="font-semibold text-[#06396B] mb-2">What to expect</h3>
+<ul className="list-disc pl-5 space-y-2 text-sm md:text-base text-gray-800 leading-relaxed mb-6">
+  <li>Smooth, well-marked cycling paths with no traffic</li>
+  <li>Quiet surroundings ideal for short or long rides</li>
+  <li>A safe area where even kids can cycle comfortably</li>
+</ul>
+
+<h3 className="font-semibold text-[#06396B] mb-2">Before you go</h3>
+<ul className="list-disc pl-5 space-y-2 text-sm md:text-base text-gray-800 leading-relaxed mb-6">
+  <li>Carry water, basic snacks, and a small repair kit if needed</li>
+  <li>Keep your phone charged; signals may drop in a few sections</li>
+  <li>Stretch lightly before starting so your legs don't tighten up mid-track</li>
+</ul>
+
+
+
+{/* Health Check Reminder */}
+<h3 className="font-semibold text-base text-[#0A2342] mb-2">
+  Health check reminder
+</h3>
+
+<ul className="list-disc pl-5 space-y-2 text-sm text-gray-800 mb-6 leading-relaxed">
+  <li>
+    A quick medical checkup helps you avoid strain during long rides. Many{" "}
+    <a
+      href="https://insura.ae/health-insurance/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-semibold text-[#0052FF] hover:underline"
+    >
+      health insurance in Dubai UAE
+    </a>{" "}
+    plans offer free checkups before travelling or doing high-energy
+    activities, so make sure you use that benefit if available.
+  </li>
+</ul>
+
+{/* Extra Tip */}
+<h3 className="font-semibold text-base text-[#0A2342] mb-2">
+  Extra tip
+</h3>
+
+<ul className="list-disc pl-5 space-y-2 text-sm text-gray-800 leading-relaxed">
+  <li>
+    Start as early as possible. The sunrise here is worth seeing, and the
+    path stays easier to ride before the sun turns the desert warm.
+  </li>
+</ul>
+
 
       {/* 3. Flag Garden at Kite Beach */}
       <h3 id="3_Flag_Garden_at_Kite_Beach" className="text-xl font-bold text-gray-800 mt-12 mb-4">
@@ -402,20 +462,30 @@ export const MainContent: React.FC = () => {
       <h3 id="8_Road_trips_around_the_Emirates" className="text-xl font-bold text-gray-800 mt-12 mb-4">
         8. Road trips around the Emirates
       </h3>
+
+      
+<div className="w-full h-auto mb-8 overflow-hidden">
+        <img
+          src="/articles/f3.webp"
+          alt="Family enjoying National Day in the desert"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
       <p className="text-gray-700 leading-relaxed mb-6">
-        A short road trip is one of the easiest things to do in Dubai when you want a break from routine. The Emirates offer clean highways, steady routes, and views that shift from beaches to mountains within an hour.
-      </p>
+A short road trip is one of the easiest things to do in Dubai when you want a break from routine. The Emirates offer clean highways, steady routes, and views that shift from beaches to mountains within an hour. You can plan a simple day drive or stretch it into an overnight stay without much effort. Here’s a clear guide that helps you prepare and move with ease.      </p>
 
       <h4 id="Popular_Directions_for_a_Quick_Drive" className="text-lg font-semibold text-gray-800 mb-3 mt-8">
         Popular Directions for a Quick Drive
       </h4>
+      <p>These routes help you understand how fast you can reach Dubai from major cities:</p>
       <ul className="list-disc ml-6 space-y-1 text-gray-700 mb-8 text-sm">
-        <li>Abu Dhabi to Dubai: around eighty-two minutes across 139 kilometers.</li>
-        <li>Sharjah to Dubai: about twenty-six minutes, ideal for daily travel.</li>
-        <li>Ras Al Khaimah to Dubai: roughly seventy-five minutes over 114 kilometers.</li>
-        <li>Muscat to Dubai: about four-and-a-half hours with scenic open roads.</li>
-        <li>Ajman to Dubai: around forty-three minutes, common for office commuters.</li>
-        <li>Fujairah to Dubai: around seventy-five minutes across 121 kilometres with mountain views.</li>
+        <li><strong>Abu Dhabi to Dubai:</strong> around eighty-two minutes across 139 kilometers.</li>
+        <li><strong>Sharjah to Dubai:</strong> about twenty-six minutes, ideal for daily travel.</li>
+        <li><strong>Ras Al Khaimah to Dubai:</strong> roughly seventy-five minutes over 114 kilometers.</li>
+        <li><strong>Muscat to Dubai:</strong> about four-and-a-half hours with scenic open roads.</li>
+        <li><strong>Ajman to Dubai:</strong> around forty-three minutes, common for office commuters.</li>
+        <li><strong>Fujairah to Dubai:</strong> around seventy-five minutes across 121 kilometres with mountain views.</li>
       </ul>
 
       <h4 id="Best_Spots_to_Explore" className="text-lg font-semibold text-gray-800 mb-3 mt-8">
@@ -442,7 +512,7 @@ export const MainContent: React.FC = () => {
             href="https://insura.ae/car-insurance/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold underline hover:text-emerald-800"
+className="font-semibold text-[#0052FF] hover:underline hover:text-[#003DCC] transition"
           >
             car insurance in Dubai UAE
           </a>{" "}
@@ -459,19 +529,50 @@ export const MainContent: React.FC = () => {
         Choose short, marked routes in Hatta or Ras Al Khaimah for a safe, energising hike. Wear proper shoes, start early, and take water. Even a one-hour walk clears the head and gives a real sense of achievement.
       </p>
       <h4 className="font-semibold text-gray-800 mb-2 mt-6">Best hiking spots</h4>
-      <ul className="list-disc ml-6 space-y-1 text-gray-700 mb-4 text-sm">
-        <li><strong>Hatta Wadi Hub – Hatta:</strong> Short, marked trails for beginners and families.</li>
-        <li><strong>Jebel Jais's Lower Trails – Ras Al Khaimah:</strong> Ideal for moderate walkers.</li>
-        <li><strong>Wadi Shawka Dam Trails – Ras Al Khaimah:</strong> Great for sunrise hikes.</li>
-        <li><strong>Mleiha Fossil Rock Trails – Sharjah:</strong> Mix of soft sand and rocky patches.</li>
-      </ul>
+<ul className="list-disc pl-5 space-y-6 text-gray-800 text-sm leading-relaxed">
+  
+  <li>
+    <span className="font-semibold text-[#002B5A]">Hatta Wadi Hub – Hatta</span>
+    <p className="mt-2">
+      Short, marked trails for beginners and families. You get clean paths, clear signboards,
+      and stunning mountain angles without steep climbs.
+    </p>
+  </li>
+
+  <li>
+    <span className="font-semibold text-[#002B5A]">Jebel Jais’s Lower Trails – Ras Al Khaimah</span>
+    <p className="mt-2">
+      These trails are ideal for moderate walkers. You get well-maintained routes, cool winds,
+      and viewpoints that look perfect during winter mornings.
+    </p>
+  </li>
+
+  <li>
+    <span className="font-semibold text-[#002B5A]">Wadi Shawka Dam Trails – Ras Al Khaimah</span>
+    <p className="mt-2">
+      A popular choice because the terrain stays balanced. Great for sunrise hikes and quick weekend resets.
+    </p>
+  </li>
+
+  <li>
+    <span className="font-semibold text-[#002B5A]">Mleiha Fossil Rock Trails – Sharjah</span>
+    <p className="mt-2">
+      Offers a mix of soft sand and rocky patches. The views around Fossil Rock make the walk worth it.
+    </p>
+  </li>
+
+</ul>
+
+      <h3 className="font-semibold text-base text-[#0A2342] mb-2 mt-4">
+Essential tips
+      </h3>
       <ul className="list-disc ml-6 space-y-1 text-gray-700 mb-8 text-sm">
         <li>A quick full-body medical checkup with your{" "}
           <a
             href="https://insura.ae/individual-medical-insurance/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold underline hover:text-emerald-800"
+className="font-semibold text-[#0052FF] hover:underline hover:text-[#003DCC] transition"
           >
             individual medical insurance in Dubai UAE
           </a> before hiking is a must.</li>
@@ -485,61 +586,66 @@ export const MainContent: React.FC = () => {
         10. Winter Garden at Habtoor Palace
       </h3>
       <p className="text-gray-700 leading-relaxed mb-8">
-        This festive market combines food stalls, lights, and strolls in a compact, comfortable venue. It's ideal if you prefer warm, decorated spaces over open-air crowds.
-      </p>
+This festive market combines food stalls, lights, and strolls in a compact, comfortable venue. It’s ideal if you prefer warm, decorated spaces over open-air crowds, a tidy option among things to do in Dubai for families wanting a stress-free evening.      </p>
 
       <h3 id="11_Desert_Safari" className="text-xl font-bold text-gray-800 mt-12 mb-4">
         11. Desert Safari
       </h3>
       <p className="text-gray-700 leading-relaxed mb-8">
-        Pick a reputable operator for dune drives, short camel rides and an evening show. If you travel with children, choose gentler packages and tell the operator ahead.
-      </p>
+      Pick a reputable operator for dune drives, short camel rides and an evening show. If you travel with children, choose gentler packages and tell the operator ahead so they can advise on safety. Tip: book in advance to lock preferred time slots.      </p>
 
       <h3 id="12_A_calm_morning_at_the_beach" className="text-xl font-bold text-gray-800 mt-12 mb-4">
         12. A calm morning at the beach
       </h3>
       <p className="text-gray-700 leading-relaxed mb-8">
-        Sunrises at JBR or Kite Beach provide quiet sand, cool air, and calm water for toddlers. Pack a light breakfast and a sunshade.
+      Sunrises at JBR or Kite Beach provide quiet sand, cool air, and calm water for toddlers. Pack a light breakfast and a sunshade; it’s the easiest, most relaxing entry on your list of things to do in Dubai.
+
       </p>
 
       <h3 id="13_Market_hopping" className="text-xl font-bold text-gray-800 mt-12 mb-4">
         13. Market hopping
       </h3>
+
+<div className="w-full h-auto mb-8 overflow-hidden">
+        <img
+          src="/articles/f4.webp"
+          alt="Family enjoying National Day in the desert"
+          className="w-full object-cover"
+        />
+      </div>
+
       <p className="text-gray-700 leading-relaxed mb-8">
-        Visit Al Fahidi Markets, local pop-ups or seasonal bazaars for crafts, treats, and small gifts. Keep cash for quick buys and small vendors.
+Visit Al Fahidi Markets, local pop-ups or seasonal bazaars for crafts, treats, and small gifts. Keep cash for quick buys and small vendors. The markets are great for a low-pressure day of shopping and tasting local flavours.
+
       </p>
 
       <h3 id="14_Staycation" className="text-xl font-bold text-gray-800 mt-12 mb-4">
         14. Staycation
       </h3>
       <p className="text-gray-700 leading-relaxed mb-6">
-        Book a nearby hotel with family packages, kids' pools or brunch deals. A well-chosen staycation gives hotel comforts and a fresh living-room-free perspective. If you have relatives or friends visiting, this is also the point where{" "}
-        <a
+        Book a nearby hotel with family packages, kids’ pools or brunch deals. A well-chosen staycation gives hotel comforts and a fresh living-room-free perspective, perfect when you want to feel away without long drives or planning. If you have relatives or friends visiting, this is also the point where        <a
           href="https://insura.ae/inbound-travel-insurance/"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-emerald-600 hover:underline"
+          className="font-semibold text-[#0052FF] hover:underline hover:text-[#003DCC] transition"
         >
           inbound travel insurance in Dubai UAE
         </a>{" "}
-        becomes helpful.
-      </p>
+        becomes helpful, as it keeps their trip stress-free while you enjoy your break.      </p>
 
       <h3 id="15_Military_shows_and_parades" className="text-xl font-bold text-gray-800 mt-12 mb-4">
         15. Military shows and parades
       </h3>
       <p className="text-gray-700 leading-relaxed mb-12">
-        Official parades and shows offer a direct patriotic experience. Please refer to the local municipality's announcements for the timings, and plan to arrive early. These events are one of the most memorable{" "}
-        <a
+          Official parades and shows offer a direct patriotic experience. Please refer to the local municipality’s announcements for the timings, and plan to arrive early to ensure you secure a seat. These events are one of the most memorable        <a
           href="https://insura.ae/best-things-to-buy-in-dubai/"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-emerald-600 hover:underline"
+            className="font-semibold text-[#0052FF] hover:underline hover:text-[#003DCC] transition"
         >
           things to do in Dubai
         </a>{" "}
-        if you want a genuine National Day atmosphere.
-      </p>
+          if you want a genuine National Day atmosphere.      </p>
 
       {/* Conclusion */}
       <h2 id="Conclusion" className="text-2xl md:text-3xl font-bold text-gray-800 mt-12 mb-6">
@@ -573,29 +679,26 @@ export const MainContent: React.FC = () => {
     </div>
   );
 };
-
-// Main App Component / Page
-export default function App() {
-  // Load Font Awesome and the Inter font by injecting link tags into the head.
+// -----------------------------------------------------------------------------
+// MAIN PAGE (HERO + CONTENT + SIDEBAR)
+// -----------------------------------------------------------------------------
+export default function Page() {
+  // Inter + Font Awesome loader (from your App component)
   useEffect(() => {
-    // 1. Load Font Awesome CSS for social icons (still safe to keep)
     const faLink = document.createElement("link");
     faLink.href =
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css";
     faLink.rel = "stylesheet";
     document.head.appendChild(faLink);
 
-    // 2. Load Inter Font Link
     const fontLink = document.createElement("link");
     fontLink.href =
       "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap";
     fontLink.rel = "stylesheet";
     document.head.appendChild(fontLink);
 
-    // Apply font-family to the body to ensure all Tailwind 'font-sans' classes use 'Inter'
     document.body.style.fontFamily = "'Inter', sans-serif";
 
-    // Cleanup function to remove the injected elements on component unmount
     return () => {
       if (document.head.contains(faLink)) document.head.removeChild(faLink);
       if (document.head.contains(fontLink)) document.head.removeChild(fontLink);
@@ -604,25 +707,70 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 font-sans p-4 sm:p-8">
-      
-      {/* Minimal Wrapper to showcase the main article content and sidebar */}
-      <div className="max-w-7xl mx-auto py-10">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8 p-4 bg-white rounded-lg shadow-md">
-          Article Components Showcase (Standalone View)
-        </h1>
-        <div className="flex flex-col lg:flex-row gap-10">
-          {/* Main article should take more width */}
-          <div className="w-full lg:w-[70%]">
-            <MainContent />
-          </div>
+    <div className="min-h-screen bg-gray-50 font-sans">
+      {/* HERO SECTION (from first file) */}
+{/* BLOG HERO */}
+<section className="relative min-h-[50vh] lg:min-h-[55vh] flex items-center overflow-hidden">
 
-          {/* Sidebar should take less width */}
-          <div className="w-full lg:w-[30%]">
-            <BlogSidebar />
-          </div>
-        </div>
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={HERO_IMAGE || "/blog-hero-fallback.jpg"}
+      alt="Blog Hero Image"
+      className="w-full h-full object-cover"
+    />
+    {/* Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#002B5A] via-[#002B5A]/95 to-transparent" />
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-0">
+    {/* Breadcrumb */}
+    <nav className="flex items-center gap-2 text-white/85 text-sm mb-5 flex-wrap">
+
+      <Link href="/" className="hover:text-white transition">insura.ae</Link>
+      <span className="w-1.5 h-1.5 bg-white rounded-full" />
+
+      <Link href="/blogs" className="hover:text-white transition">Blogs</Link>
+      <span className="w-1.5 h-1.5 bg-white rounded-full" />
+
+      <span className="text-white">{POST_TITLE}</span>
+
+    </nav>
+
+    {/* Title */}
+    <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl">
+      {POST_TITLE}
+    </h1>
+  </div>
+</section>
+
+
+      {/* CONTENT + SIDEBAR */}
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 px-6 lg:px-0 py-12">
+        {/* MAIN CONTENT */}
+        <article className="w-full lg:w-[70%]">
+          <MainContent />
+        </article>
+
+        {/* SIDEBAR */}
+        <aside className="w-full lg:w-[30%]">
+          <BlogSidebar />
+        </aside>
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

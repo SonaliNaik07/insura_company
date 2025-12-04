@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
@@ -7,25 +7,25 @@ import TravelLeadForm from "@/components/global/TravelLeadForm";
 // ---------- DATA ----------
 const MULTI_FEATURES = [
   {
-    icon: "/icons/compliance.svg",
+    icon: "/home.svg",
     title: "Legal Compliance",
     details:
       "It ensures compliance with regulations, avoiding legal complications and penalties.",
   },
   {
-    icon: "/icons/cancellation.svg",
+    icon: "/home.svg",
     title: "Trip Cancellation and Interruption",
     details:
       "Protects your financial investment in the trip by reimbursing non-refundable expenses in case of trip cancellation or interruption due to covered reasons.",
   },
   {
-    icon: "/icons/liability.svg",
+    icon: "/home.svg",
     title: "Legal and Personal Liability Coverage",
     details:
       "By mitigating financial risks, it enhances your business's ability to weather disruptions.",
   },
   {
-    icon: "/icons/luggage.svg",
+    icon: "/home.svg",
     title: "Lost or Stolen Belongings",
     details:
       "Displaying a commitment to business protection enhances trust among customers and partners, signalling proactive risk management.",
@@ -39,6 +39,14 @@ const MULTI_BENEFITS = [
   "Quick Claim Handle",
   "Save Your Money",
   "Quality Health Insurance & Care",
+];
+
+const FAMILY_BENEFITS = [
+  "Comprehensive coverage for family members",
+  "Emergency medical assistance worldwide",
+  "Protection against trip cancellations",
+  "Coverage for lost or stolen belongings",
+  "24/7 support during travel",
 ];
 
 // ---------- CARD UI ----------
@@ -78,31 +86,44 @@ export default function AnnualMultiTripInsurancePage() {
       {/* Floating action buttons */}
       <FloatingActions />
 
-      {/* HERO */}
-      <section className="bg-[#022647] text-white">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-12 items-center gap-12">
-          <div className="lg:col-span-7 space-y-4">
-            <p className="text-xs opacity-80">
-              insura.ae • Annual Multi Trip
-            </p>
+{/* HERO BANNER */}
+<section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
 
-            <h1 className="text-4xl lg:text-5xl font-bold">Annual Multi Trip</h1>
+  {/* Background Image + Gradient */}
+  <div className="absolute inset-0">
+    <img
+      src="/images/multi-trip-hero.jpg"
+      alt="Traveler with suitcase"
+      className="w-full h-full object-cover object-right"
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
+  </div>
 
-            <p className="text-sm max-w-lg leading-relaxed">
-              Need any type of policies over the world? Contact us without
-              hesitation. Our expert support team will help you.
-            </p>
-          </div>
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
 
-          <div className="lg:col-span-5">
-            <img
-              src="/images/multi-trip-hero.jpg"
-              alt="Traveler with suitcase"
-              className="rounded-lg shadow-lg w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+    {/* Breadcrumb */}
+    <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
+      <Link href="/" className="hover:text-white">insura.ae</Link>
+      <span className="w-1.5 h-1.5 bg-white rounded-full" />
+      <span className="hover:text-white">Annual Multi Trip</span>
+    </div>
+
+    {/* Heading + Description */}
+    <div className="max-w-2xl text-white">
+      <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
+        Annual Multi Trip
+      </h1>
+
+      <p className="text-lg text-white/90 leading-relaxed">
+        Need any type of policies over the world? Contact us without hesitation.
+        Our expert support team will help you.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
       {/* IMAGE BELOW HERO */}
       <section className="bg-white py-12">
@@ -171,7 +192,7 @@ export default function AnnualMultiTripInsurancePage() {
 
       {/* SECTION — What is Travel Insurance */}
       <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:w-8/12 space-y-5">
+        <div className="max-w-7xl mx-auto px-2 space-y-5">
           <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
             What is Travel Insurance?
           </h2>
@@ -199,27 +220,66 @@ export default function AnnualMultiTripInsurancePage() {
         </div>
       </section>
 
-      {/* SECTION — Benefits */}
-      <section className="py-12 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:w-8/12 space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-            Benefits of Annual Multi Trip Insurance
+      {/* TEXT + IMAGE + LIST */}
+      <section className="py-14 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-6 space-y-10">
+          <h2 className="text-3xl font-bold text-[#06396B]">
+            Why is Business Insurance Important?
           </h2>
-          <ul className="space-y-3 text-sm md:text-base text-gray-800">
-            {MULTI_BENEFITS.map((benefit, i) => (
-              <li key={i}>✔ {benefit}</li>
-            ))}
-          </ul>
+
+          <div className="grid lg:grid-cols-2 gap-10 lg:w-8/12">
+            <div className="space-y-2">
+              <h3 className="font-semibold">1. Cost-Effective Solutions</h3>
+              <p className="text-gray-700 leading-relaxed">
+                We believe that comprehensive protection should be affordable.
+                Explore the world with peace of mind, knowing that your travel
+                insurance in Dubai will not break the bank.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold">2. Tailored for Global Ventures</h3>
+              <p className="text-gray-700 leading-relaxed">
+                From the bustling streets of New York to the serene landscapes
+                of New Zealand, our travel insurance UAE is designed to
+                accompany you on your international escapades, offering coverage
+                that spans the globe.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 lg:w-8/12 items-center">
+            <div className="lg:col-span-5">
+              <img
+                src="/Travel_Insurance.webp"
+                className="rounded-xl shadow-md"
+                alt="Illustration"
+              />
+            </div>
+
+            <div className="lg:col-span-7 space-y-3">
+              <p className="text-gray-700 leading-relaxed">
+                Our technicians believe in the value that give you high level of
+                coaching techniques for your better life.
+              </p>
+
+              <ul className="space-y-2 font-medium text-gray-800">
+                {FAMILY_BENEFITS.map((b, i) => (
+                  <li key={i}>✔ {b}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* SECTION — Learn More */}
+      {/* LEARN MORE */}
       <section className="py-14 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 text-center space-y-2">
-          <p className="text-lg md:text-xl font-semibold text-[#06396B]">
+        <div className="max-w-7xl mx-auto px-6 space-y-2">
+          <p className="text-lg font-semibold text-[#06396B]">
             Learn more about
           </p>
-          <p className="text-xl md:text-2xl font-bold text-[#06396B]">
+          <p className="text-2xl font-bold text-[#06396B]">
             How to Save Big on Travel Insurance in the UAE.
           </p>
         </div>

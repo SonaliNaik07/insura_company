@@ -8,25 +8,25 @@ import TravelLeadForm from "@/components/global/TravelLeadForm";
 // ---------- DATA ----------
 const SENIOR_FEATURES = [
   {
-    icon: "/icons/medical.svg",
+    icon: "/home.svg",
     title: "Emergency Medical Expenses",
     details:
       "Your health is our priority. Our coverage includes hospital bills, transportation for care, and treatment, ensuring peace of mind while abroad.",
   },
   {
-    icon: "/icons/belongings.svg",
+    icon: "/home.svg",
     title: "Loss of Personal Belongings",
     details:
       "Losing your passport or luggage can be distressing. With Insura, you're protected against theft or loss, helping you recover or replace essential items effortlessly.",
   },
   {
-    icon: "/icons/accident.svg",
+    icon: "/home.svg",
     title: "Personal Accident Cover",
     details:
       "Accidents can happen anywhere. Our plan offers financial support for treatment, easing the burden of unexpected expenses during recovery.",
   },
   {
-    icon: "/icons/covid.svg",
+    icon: "/home.svg",
     title: "COVID-19 Coverage",
     details:
       "Your safety matters. We provide COVID-19 coverage for necessary medical assistance while travelling.",
@@ -184,14 +184,23 @@ export default function SeniorCitizenInsurancePage() {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="lg:w-8/12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B] mb-4">
+            <h2 className="text-3xl md:text-xs mb-4">
               How Senior Citizen Travel Insurance Can Make a Difference
             </h2>
             <p className="text-sm md:text-base text-gray-700">
-              With senior citizen travel insurance in UAE, you can embark on your
+              With <span className= "text-sm md:text-base text-gray-700 font-semibold leading-relaxed">senior citizen travel insurance in UAE,</span>you can embark on your
               adventures knowing that you are fully protected against life’s
               unexpected twists and turns.
             </p>
+
+            <p className="text-sm md:text-base text-gray-700 font-semibold leading-relaxed">
+            Choose Insura for your journey as it has everything you need. 
+           </p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B] mt-6 mb-4">
+                Why is Business Insurance Important?
+            </h2>
+
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10">
               {SENIOR_FEATURES.map((feature, i) => (
                 <SeniorFeatureCard key={i} {...feature} />

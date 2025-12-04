@@ -17,7 +17,7 @@ type InsuranceType = {
 const insuranceTypes: InsuranceType[] = [
   {
     image: "/car-insurance.jpg",
-    iconSrc: "/icons/e.svg",
+    iconSrc: "/icons/car-insurance.webp",
     title: "Car Insurance",
     caption: "Car Insurance with Ton's of Benefits !!!",
     description:
@@ -26,7 +26,7 @@ const insuranceTypes: InsuranceType[] = [
   },
   {
     image: "/health-insurance.jpg",
-    iconSrc: "/icons/f.svg",
+    iconSrc: "/icons/health-insurance.webp",
     title: "Health Insurance",
     caption: "Health Insurance at Affordable Prices with Additional Perks !!!",
     description:
@@ -36,7 +36,7 @@ const insuranceTypes: InsuranceType[] = [
   },
   {
     image: "/business-insurance.jpg",
-    iconSrc: "/icons/h.svg",
+    iconSrc: "/icons/business.webp",
     title: "Business Insurance",
     caption: "Most Affordable Business Insurance in the UAE !!!",
     description:
@@ -45,7 +45,7 @@ const insuranceTypes: InsuranceType[] = [
   },
   {
     image: "/life-insurance.jpg",
-    iconSrc: "/icons/family-icon.svg",
+    iconSrc: "/icons/life.webp",
     title: "Life Insurance",
     caption: "Life Insurance with 1 Million AED Coverage !!!",
     description:
@@ -54,7 +54,7 @@ const insuranceTypes: InsuranceType[] = [
   },
   {
     image: "/travel-insurance.jpg",
-    iconSrc: "/icons/icon-travel.svg",
+    iconSrc: "/icons/travel.webp",
     title: "Travel Insurance",
     caption: "Travel Worry free with Travel Insurance !!!",
     description:

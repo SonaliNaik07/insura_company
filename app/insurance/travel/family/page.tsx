@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
@@ -8,7 +8,7 @@ import TravelLeadForm from "@/components/global/TravelLeadForm";
 
 const FAMILY_FEATURES = [
   {
-    icon: "/icons/compliance.svg",
+    icon: "/home.svg",
     title: "Legal Compliance",
     short:
       "It ensures compliance with regulations, avoiding legal complications and penalties.",
@@ -16,7 +16,7 @@ const FAMILY_FEATURES = [
       "It ensures compliance with regulations, avoiding legal complications and penalties, so your family trip can stay focused on enjoyment instead of paperwork.",
   },
   {
-    icon: "/icons/cancellation.svg",
+    icon: "/home.svg",
     title: "Trip Cancellation and Interruption",
     short:
       "Protects your financial investment in the trip by reimbursing non‑refundable expenses.",
@@ -24,7 +24,7 @@ const FAMILY_FEATURES = [
       "Protects your financial investment in the trip by reimbursing non‑refundable expenses in case of trip cancellation or interruption due to covered reasons.",
   },
   {
-    icon: "/icons/liability.svg",
+    icon: "/home.svg",
     title: "Legal and Personal Liability Coverage",
     short:
       "Covers legal and personal liability arising from accidents during your journey.",
@@ -32,7 +32,7 @@ const FAMILY_FEATURES = [
       "By mitigating financial and legal risks, it enhances your ability to handle unforeseen incidents while travelling with your family.",
   },
   {
-    icon: "/icons/luggage.svg",
+    icon: "/home.svg",
     title: "Lost or Stolen Belongings",
     short:
       "Provides cover for loss or theft of baggage and personal belongings on your trip.",
@@ -100,33 +100,44 @@ export default function FamilyTravelInsurancePage() {
       {/* Floating action buttons */}
       <FloatingActions />
 
-      {/* HERO */}
-      <section className="bg-[#022647] text-white">
-        <div className="max-w-7xl mx-auto px-6 py-12 grid lg:grid-cols-12 items-center gap-12">
-          <div className="lg:col-span-7 space-y-4">
-            <p className="text-xs opacity-80">
-              insura.ae • Family Travel Insurance
-            </p>
+{/* HERO BANNER */}
+<section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
 
-            <h1 className="text-4xl lg:text-5xl font-bold">
-              Family Travel Insurance
-            </h1>
+  {/* Background Image + Gradient */}
+  <div className="absolute inset-0">
+    <img
+      src="/images/family-hero.jpg"
+      alt="Family Hero"
+      className="w-full h-full object-cover object-right"
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
+  </div>
 
-            <p className="text-sm max-w-lg leading-relaxed">
-              Need any type of policies over the world you can contact us
-              without any hesitation. Our expert support team with help you.
-            </p>
-          </div>
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
 
-          <div className="lg:col-span-5">
-            <img
-              src="/images/family-hero.jpg"
-              alt="Family Hero"
-              className="rounded-lg shadow-lg w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+    {/* Breadcrumb */}
+    <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
+      <Link href="/" className="hover:text-white">insura.ae</Link>
+      <span className="w-1.5 h-1.5 bg-white rounded-full" />
+      <span className="hover:text-white">Family Travel Insurance</span>
+    </div>
+
+    {/* Heading + Description */}
+    <div className="max-w-2xl text-white">
+      <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
+        Family Travel Insurance
+      </h1>
+
+      <p className="text-lg text-white/90 leading-relaxed">
+        Need any type of policies over the world you can contact us without any hesitation. 
+        Our expert support team will help you.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
       {/* IMAGE BELOW HERO */}
       <section className="bg-white py-12">

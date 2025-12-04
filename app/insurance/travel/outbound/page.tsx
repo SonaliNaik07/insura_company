@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
@@ -8,25 +8,25 @@ import TravelFAQ from "@/components/global/TravelFAQ";
 // ---------- DATA ----------
 const OUTBOUND_FEATURES = [
   {
-    icon: "/icons/liability.svg",
+    icon: "/home.svg",
     title: "Personal Liability",
     details:
       "Accidents can occur, especially in a group. With Insura, personal liability coverage protects your family against unforeseen claims, safeguarding your finances and peace of mind.",
   },
   {
-    icon: "/icons/repatriation.svg",
+    icon: "/home.svg",
     title: "Repatriation of Family Members",
     details:
       "In case of an emergency, Insura facilitates the swift repatriation of family members, ensuring your loved ones are by your side when it matters most.",
   },
   {
-    icon: "/icons/dental.svg",
+    icon: "/home.svg",
     title: "Emergency Dental Care",
     details:
       "Toothaches can strike anytime! Insura covers emergency dental care, ensuring your family can seek treatment without the added stress of hefty bills while travelling.",
   },
   {
-    icon: "/icons/luggage.svg",
+    icon: "/home.svg",
     title: "Lost Luggage",
     details:
       "Losing luggage can derail a family trip. With Insura, you receive prompt compensation, helping you replace essentials quickly so your adventures can continue.",
@@ -70,36 +70,45 @@ export default function OutboundTravelInsurancePage() {
       {/* Floating action buttons */}
       <FloatingActions />
 
-      {/* HERO */}
-      <section className="bg-[#022647] text-white">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="lg:w-8/12 grid lg:grid-cols-12 items-center gap-12">
-            <div className="lg:col-span-7 space-y-4">
-              <p className="text-xs opacity-80">
-                insura.ae • Outbound Travel Insurance
-              </p>
+{/* HERO BANNER */}
+<section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
 
-              <h1 className="text-4xl lg:text-5xl font-bold">
-                Outbound Travel Insurance
-              </h1>
+  {/* Background Image + Gradient */}
+  <div className="absolute inset-0">
+    <img
+      src="/images/outbound-hero.jpg"
+      alt="Traveler with mask and bag"
+      className="w-full h-full object-cover object-right"
+    />
+    <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
+  </div>
 
-              <p className="text-sm max-w-lg leading-relaxed">
-                Travel opens doors to unforgettable experiences, but unplanned
-                events can flip vacations upside down. With Insura’s Outbound
-                Travel Insurance, peace of mind travels with you.
-              </p>
-            </div>
+  {/* Content */}
+  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
+    
+    {/* Breadcrumb */}
+    <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
+      <Link href="/" className="hover:text-white">insura.ae</Link>
+      <span className="w-1.5 h-1.5 bg-white rounded-full" />
+      <span className="hover:text-white">Outbound Travel Insurance</span>
+    </div>
 
-            <div className="lg:col-span-5">
-              <img
-                src="/images/outbound-hero.jpg"
-                alt="Traveler with mask and bag"
-                className="rounded-lg shadow-lg w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+    {/* Heading + Description */}
+    <div className="max-w-2xl text-white">
+      <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
+        Outbound Travel Insurance
+      </h1>
+
+      <p className="text-lg text-white/90 leading-relaxed">
+        Travel opens doors to unforgettable experiences, but unplanned
+        events can flip vacations upside down. With Insura’s Outbound
+        Travel Insurance, peace of mind travels with you.
+      </p>
+    </div>
+
+  </div>
+</section>
+
 
       {/* FORM + SIDEBAR (kept EXACTLY as before) */}
       <section className="py-16 bg-white">
@@ -137,13 +146,20 @@ export default function OutboundTravelInsurancePage() {
       <section className="py-12 bg-white -mt-40">
         <div className="max-w-7xl mx-auto px-6">
           <div className="lg:w-8/12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B] mb-4">
+  
+              <h2 className="text-3xl md:text-4xl font-bold text-[#06396B] mb-4 -mt-20">
+Outbound Insurance for your safe Journey!            </h2>
+            <p className="text-sm md:text-base text-gray-700">
+When UAE citizens or residents travel from their place of residence in the UAE to any other country outside, this plan provides emergency medical care, emergency medical evacuation, repatriation, and security evacuation. The plan maximum and age are the basis for rates. COVID-19 EXPENSES are paid for and handled similarly to medical expenses. For those who have already departed on their trip, not available.
+            </p>
+
+            <p className="text-sm md:text-base text-gray-700">
+Travel insurance is a must these days since a pandemic like the coronavirus can financially ruin your trip, protecting your business or leisure travels in case of an unforeseen event. Purchasing travel insurance to cover all of these scenarios is a good decision. You can trust on iNSURA.ae powered by Pioneer to safeguard you with the best international insurers so you may travel worry-free. It is necessary to obtain outbound coverage prior to leaving the UAE.            </p>  
+  
+  
+            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B] mb-4 mt-10">
               How Outbound Travel Insurance Will Save Your Family Adventure
             </h2>
-            <p className="text-sm md:text-base text-gray-700">
-              Wondering how iNSURA.ae Powered by Pioneer Outbound Travel Insurance
-              can protect your journey? Let’s break it down:
-            </p>
             <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10">
               {OUTBOUND_FEATURES.map((feature, i) => (
                 <OutboundFeatureCard key={i} {...feature} />
@@ -225,6 +241,74 @@ export default function OutboundTravelInsurancePage() {
           </div>
         </div>
       </section>
+
+
+{/* ⭐ Section — Benefits of Outbound Insurance */}
+<section className="py-12 bg-white">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="lg:w-7/12 space-y-6 text-left">
+      
+      <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
+        Benefits of Outbound Insurance -
+      </h2>
+
+      <ul className="space-y-6 text-gray-700 text-sm md:text-base leading-relaxed">
+
+        {/* Entire Travel Safety */}
+        <li>
+          <p className="font-semibold text-[#06396B]">
+            Entire Travel Safety :-
+          </p>
+          <p>
+            Outbound insurance provides coverage for numerous travel risks like trip
+            cancellations, delays, or interruptions, ensuring that unforeseen events
+            won’t financially strain travelers.
+          </p>
+        </li>
+
+        {/* Medical Emergencies */}
+        <li>
+          <p className="font-semibold text-[#06396B]">
+            Coverage for Medical Emergencies :-
+          </p>
+          <p>
+            It protects tourists from exorbitant medical expenses outside of the United
+            Arab Emirates by offering critical medical coverage for situations overseas,
+            including hospital stays, treatments, and emergency evacuations.
+          </p>
+        </li>
+
+        {/* Baggage Loss */}
+        <li>
+          <p className="font-semibold text-[#06396B]">
+            Protection Against Baggage Loss and Theft :-
+          </p>
+          <p>
+            This insurance provides comfort if priceless objects are missing while
+            traveling by guarding against the loss or theft of luggage and personal
+            belongings.
+          </p>
+        </li>
+
+        {/* Legal Support */}
+        <li>
+          <p className="font-semibold text-[#06396B]">
+            Legal Support International :-
+          </p>
+          <p>
+            It offers support with litigation, compensation claims, and legal actions
+            conducted abroad in cases when tourists may encounter legal difficulties.
+          </p>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
 
       {/* ⭐ Section — FAQ Title */}
       <section className="py-8 bg-white">

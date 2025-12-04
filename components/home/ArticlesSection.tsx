@@ -84,7 +84,7 @@ export default function ArticlesSection() {
 
         {/* Hide background decorations on small screens (prevents overlap) */}
         <Image
-          src="/subscription/pattern-left.png"
+          src="/icons/testimonial_right_img.png"
           width={240}
           height={240}
           alt="pattern-left"
@@ -92,7 +92,7 @@ export default function ArticlesSection() {
         />
 
         <Image
-          src="/subscription/pattern-right.png"
+          src="/icons/star.png"
           width={270}
           height={220}
           alt="pattern-right"
@@ -100,7 +100,7 @@ export default function ArticlesSection() {
         />
 
         <Image
-          src="/noodles-arrow.png"
+          src="/icons/noodles-arrow.png"
           width={40}
           height={40}
           alt="curve"
