@@ -1,12 +1,5 @@
 "use client"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Plus, Minus } from "lucide-react"
 import { useState } from "react"
 
 interface FAQItem {
@@ -15,60 +8,47 @@ interface FAQItem {
 }
 
 interface FAQProps {
+  title?: string
   items: FAQItem[]
 }
 
-export function FAQ({ items }: FAQProps) {
-const [openItem, setOpenItem] = useState<string | undefined>(undefined)
+export function FAQ({ title = "Frequently Asked Questions", items }: FAQProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 lg:px-0">
-        {/* Title */}
-        <div className="text-center mb-10">
-          <h2 className="text-primary font-semibold">Your Answer</h2>
-          <h3 className="text-3xl md:text-4xl font-bold mt-2">
-            Frequently asked questions & <br /> searching answer.
-          </h3>
-        </div>
+    <section className="py-2 bg-background">
 
-        {/* Shared Accordion */}
-        <Accordion
-          type="single"
-          collapsible
-          value={openItem}
-          onValueChange={setOpenItem}
-        >
-          <div className="grid md:grid-cols-2 gap-6">
-            {items.map((item, index) => {
-              const value = `item-${index}`
-              const isOpen = openItem === value
+      <div className="space-y-1 max-w-4xl mx-auto px-4">
+        {items.map((faq, index) => {
+          const isOpen = openIndex === index
 
-              return (
-                <AccordionItem
-                  key={value}
-                  value={value}
-                  className="bg-[#F4F8FC] rounded-lg border border-[#e2e8f0]"
-                >
-                  <AccordionTrigger className="px-6 py-5 text-left font-semibold text-[#0A2342]">
-                    <div className="flex justify-between w-full items-center">
-                      {item.question}
-                      {isOpen ? (
-                        <Minus className="w-5 h-5 text-primary" />
-                      ) : (
-                        <Plus className="w-5 h-5 text-primary" />
-                      )}
-                    </div>
-                  </AccordionTrigger>
+          return (
+            <div key={faq.question}>
+              {/* Question */}
+              <button
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="w-full flex items-center justify-between px-4 py-3 bg-[#02182d] text-white font-semibold text-xl md:text-xl"
+              >
+                <span className="flex items-center gap-3">
+                  <span className="text-lg">
+                    {isOpen ? "−" : "+"}
+                  </span>
+                  <span>{faq.question}</span>
+                </span>
+              </button>
 
-                  <AccordionContent className="px-6 pb-5 text-[#3A4750] leading-relaxed">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              )
-            })}
-          </div>
-        </Accordion>
+              {/* Answer */}
+              {isOpen && (
+                <div className="bg-white text-muted-foreground px-6 py-4 border border-t-0 border-[#003566]">
+                  <div className="text-xl md:text-xl leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </div>
+              )}
+            </div>
+          )
+        })}
       </div>
     </section>
   )

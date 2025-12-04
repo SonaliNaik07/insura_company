@@ -89,6 +89,14 @@ export function Navbar() {
     setExpandedCategory(expandedCategory === category ? null : category)
   }
 
+  const categoryRoutes: Record<string, string> = {
+  motor: "/insurance/motor",
+  health: "/insurance/health",
+  business: "/insurance/business",
+  travel: "/insurance/travel",
+}
+
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,19 +142,42 @@ export function Navbar() {
                 <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border min-w-[300px] py-2">
                   {Object.entries(insuranceCategories).map(([key, category]) => (
                     <div key={key}>
-                      <button
-                        onClick={() => toggleCategory(key)}
-                        className={`w-full flex items-center justify-between px-6 py-3 hover:bg-gray-50 ${
-                          expandedCategory === key ? "text-primary" : "text-foreground"
-                        }`}
-                      >
-                        <span className="font-medium">{category.title}</span>
-                        {expandedCategory === key ? (
-                          <Minus className="w-4 h-4 text-primary" />
-                        ) : (
-                          <Plus className="w-4 h-4" />
-                        )}
-                      </button>
+                      <div className="flex items-center justify-between px-6 py-3 hover:bg-gray-50">
+
+  {/* ✅ ONLY Motor is clickable */}
+  {key === "motor" ? (
+    <Link
+      href="/insurance/motor"
+      className="font-medium text-foreground hover:text-primary"
+      onClick={() => {
+        setInsuranceOpen(false)
+        setExpandedCategory(null)
+      }}
+    >
+      {category.title}
+    </Link>
+  ) : (
+    <span className="font-medium text-foreground cursor-default">
+      {category.title}
+    </span>
+  )}
+
+  {/* Expand button */}
+  <button
+    onClick={(e) => {
+      e.stopPropagation()
+      toggleCategory(key)
+    }}
+  >
+    {expandedCategory === key ? (
+      <Minus className="w-4 h-4 text-primary" />
+    ) : (
+      <Plus className="w-4 h-4" />
+    )}
+  </button>
+
+</div>
+
                       {expandedCategory === key && (
                         <div className="absolute left-full top-0 ml-1 bg-white rounded-lg shadow-xl border min-w-[280px] py-2">
                           {category.items.map((item) => (

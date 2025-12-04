@@ -20,31 +20,34 @@ import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
 import TravelFAQ from "@/components/global/TravelFAQ";
 
-// ---------- DATA ----------
+// ---------------------------------------------------------------------
+// TRAVEL PRODUCTS (using images instead of lucide icons)
+// ---------------------------------------------------------------------
+
 const travelProducts = [
   {
-    icon: Globe,
+    image: "/home.svg",
     title: "Medical Emergencies",
     description:
       "Cover unexpected medical expenses including hospital admission, surgeries, and emergency evacuations while traveling.",
     href: "/insurance/travel/medical-emergency",
   },
   {
-    icon: Calendar,
+    image: "/home.svg",
     title: "Trip Cancellation",
     description:
       "Protect prepaid bookings with reimbursement if your trip gets canceled or interrupted for valid circumstances.",
     href: "/insurance/travel/trip-cancellation",
   },
   {
-    icon: Users2,
+    image: "/home.svg",
     title: "Lost or Delayed Baggage",
     description:
       "Get compensated for essentials if your belongings get lost, delayed, or damaged during your trip.",
     href: "/insurance/travel/lost-baggage",
   },
   {
-    icon: PlaneLanding,
+    image: "/home.svg",
     title: "Travel Interruption",
     description:
       "Avoid financial burden if you must cut your trip short due to illness, emergency, or disasters.",
@@ -53,25 +56,30 @@ const travelProducts = [
 ];
 
 type TravelProductCardProps = {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  image: string;
   title: string;
   description: string;
   href: string;
 };
 
-// ---------- CARD UI ----------
 function TravelProductCard({
-  icon: Icon,
+  image,
   title,
   description,
   href,
 }: TravelProductCardProps) {
   return (
     <div className="group [perspective:1000px]">
-      <div className="relative w-full h-72 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+      <div className="relative w-full h-64 sm:h-72 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front */}
         <div className="absolute inset-0 bg-[#06396B] rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [backface-visibility:hidden]">
-          <Icon className="w-10 h-10 text-white" />
+          <Image
+            src={image}
+            alt={title}
+            width={60}
+            height={60}
+            className="w-14 h-14 object-contain"
+          />
           <h3 className="text-white font-semibold text-base">{title}</h3>
         </div>
 
@@ -92,7 +100,10 @@ function TravelProductCard({
   );
 }
 
-// ---------- WHY iNSURA ACCORDION ----------
+// ---------------------------------------------------------------------
+// WHY iNSURA ACCORDION
+// ---------------------------------------------------------------------
+
 const whyItems = [
   {
     title: "Relief for Delays",
@@ -148,10 +159,14 @@ function WhyInsuraAccordion() {
   );
 }
 
-// ---------- MAIN PAGE ----------
+// ---------------------------------------------------------------------
+// MAIN PAGE
+// ---------------------------------------------------------------------
+
 export default function TravelInsurancePage() {
   return (
-    <main className="bg-white text-gray-900">
+    <main className="bg-white text-gray-900 relative">
+      {/* FloatingActions MUST have z-index: 50 or higher to be on top */}
       <FloatingActions />
 
       {/* HERO */}
@@ -176,7 +191,7 @@ export default function TravelInsurancePage() {
           </div>
 
           {/* Heading + Description */}
-          <div className="max-w-xl md:max-w-2xl text-white space-y-5">
+          <div className="max-w-xl md:max-w-2xl text-white space-y-5 px-2 sm:px-0">
             <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
               Travel Insurance
             </h1>
@@ -189,320 +204,328 @@ export default function TravelInsurancePage() {
         </div>
       </section>
 
-      {/* FORM + SIDEBAR (grid 8 / 4) */}
+      {/* ================================================
+          MAIN GRID: LEFT (ALL CONTENT) + RIGHT (SIDEBAR)
+         ================================================ */}
       <section id="travel-form" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10 lg:gap-12">
-          {/* LEFT: FORM */}
-          <div className="lg:col-span-8 order-2 lg:order-1">
-            <TravelLeadForm />
-          </div>
-
-          {/* RIGHT: SIDEBAR */}
-{/* RIGHT: SIDEBAR */}
-<aside className="lg:col-span-4 order-1 lg:order-2 space-y-8">
-  <ServiceSidebar active="Travel Insurance" />
-
-  {/* Contact CTA Image - STICKY ONLY ON LARGE SCREENS */}
-  <div className="lg:sticky lg:top-28">
-    <div className="rounded-xl overflow-hidden shadow-lg relative">
-      <img
-        src="/1.jpg"
-        alt="Make your dream life get professional help"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute bottom-4 left-4 right-4 text-white space-y-2">
-        <p className="text-lg font-semibold leading-snug">
-          Make your dream life get professional help
-        </p>
-        <div className="text-xs uppercase tracking-wide">
-          Contact Us
-        </div>
-        <div className="text-sm font-semibold">+971 4 357 4547</div>
-      </div>
-    </div>
-  </div>
-
-  {/* Reasons to choose iNSURA.ae powered by PIONEER */}
-  <div className="space-y-6">
-    <div className="bg-[#06396B] text-white px-6 py-4 rounded-lg">
-      <h3 className="text-lg font-semibold">
-        Reason&apos;s to choose iNSURA.ae powered by PIONEER?
-      </h3>
-    </div>
-
-    <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 text-center text-gray-800">
-      <div className="flex flex-col items-center gap-3">
-        <Building className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-        <p className="text-xs font-medium">
-          Collab with 100+ <br />
-          Insurance Companies
-        </p>
-      </div>
-      <div className="flex flex-col items-center gap-3">
-        <UserCheck className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-        <p className="text-xs font-medium">
-          Trusted by 1,00,000+ <br />
-          policyholders
-        </p>
-      </div>
-      <div className="flex flex-col items-center gap-3">
-        <Clock className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-        <p className="text-xs font-medium">
-          24x7 Insurance <br />
-          Support
-        </p>
-      </div>
-      <div className="flex flex-col items-center gap-3">
-        <Hand className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-        <p className="text-xs font-medium">
-          Hassle Free <br />
-          Process
-        </p>
-      </div>
-    </div>
-  </div>
-</aside>
-
-        </div>
-      </section>
-
-      {/* EVERYTHING BELOW = SINGLE COLUMN CONTENT */}
-      <div className="max-w-7xl mx-auto px-6 space-y-16 pb-16">
-        {/* INTRO COPY */}
-        <section className="lg:w-7/12 space-y-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-            From sunrise flights to starry nights, Insura Travel Insurance in
-            UAE shields you every mile.
-          </h2>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            Do you prefer spending money on experiences rather than material
-            things, but worry about the unexpected?{" "}
-            <strong>Travel insurance in Dubai &amp; UAE</strong> can provide a
-            safety net for the unexpected, whether you’re exploring Dubai, the
-            UAE or beyond.
-          </p>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            Whether it’s a missed flight, lost luggage or a sudden illness, our
-            comprehensive coverage ensures that your adventures go smoothly. You
-            can explore new destinations with peace of mind, knowing that Insura
-            Travel Insurance in Dubai &amp; UAE has got you covered every step
-            of the way.
-          </p>
-        </section>
-
-        {/* WHY TRAVEL INSURANCE (4 flip cards) */}
-        <section className="lg:w-7/12 space-y-6">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-            Travel Insurance Coverage Benefits
-          </h2>
-
-          <div className="grid sm:grid-cols-2 gap-8 md:gap-10 mt-4">
-            {travelProducts.map((item) => (
-              <TravelProductCard key={item.title} {...item} />
-            ))}
-          </div>
-        </section>
-
-        {/* INSURA.ae Powered by Pioneer Travel Insurance Plans */}
-        <section className="lg:w-7/12 space-y-6">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-            INSURA.ae Powered by Pioneer Travel Insurance Plans
-          </h2>
-
-          {/* 1. Single Trip */}
-          <div>
-            <h3 className="font-bold text-[#06396B] text-lg mb-2">
-              1. Single Trip Travel Insurance
-            </h3>
-            <ul className="space-y-2 text-sm md:text-base text-gray-700 leading-relaxed list-disc list-inside">
-              <li>
-                <strong>Comprehensive Coverage:</strong> Protect yourself from
-                trip cancellations, medical emergencies, lost baggage and more.
-              </li>
-              <li>
-                <strong>Flexible Options:</strong> Choose the coverage that
-                matches your travel itinerary and activities.
-              </li>
-              <li>
-                <strong>Peace of Mind:</strong> Travel with confidence, knowing
-                you are covered for unexpected events.
-              </li>
-            </ul>
-          </div>
-
-          {/* 2. Annual Multi Trip */}
-          <div>
-            <h3 className="font-bold text-[#06396B] text-lg mb-2">
-              2. Annual Multi-Trip Travel Insurance
-            </h3>
-            <ul className="space-y-2 text-sm md:text-base text-gray-700 leading-relaxed list-disc list-inside">
-              <li>
-                <strong>Unlimited Trips:</strong> Ideal for frequent travellers,
-                with coverage for multiple trips throughout the year.
-              </li>
-              <li>
-                <strong>Convenience:</strong> One policy for all your travels,
-                eliminating the need to buy insurance for each trip.
-              </li>
-              <li>
-                <strong>Consistent Protection:</strong> Enjoy the same level of
-                coverage on every trip, with no gaps in protection.
-              </li>
-            </ul>
-          </div>
-
-          {/* 3. Family Travel */}
-          <div>
-            <h3 className="font-bold text-[#06396B] text-lg mb-2">
-              3. Family Travel Insurance
-            </h3>
-            <ul className="space-y-2 text-sm md:text-base text-gray-700 leading-relaxed list-disc list-inside">
-              <li>
-                <strong>Comprehensive Family Coverage:</strong> Protect your
-                entire family with one policy covering medical emergencies, trip
-                interruptions and more.
-              </li>
-              <li>
-                <strong>Kid-Friendly Benefits:</strong> Special protection for
-                children, ensuring they receive the care they need.
-              </li>
-              <li>
-                <strong>Affordable Rates:</strong> Great value with
-                family-friendly pricing and discounts.
-              </li>
-            </ul>
-          </div>
-
-          {/* Why Choose Insura for Travel Insurance? */}
-          <div className="pt-2 space-y-3">
-            <h3 className="text-xl font-bold text-[#06396B]">
-              Why Choose Insura for Travel Insurance?
-            </h3>
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              <strong>24/7 Global Support:</strong> Our dedicated team is
-              available around the clock, including weekends, to assist you no
-              matter where you are in the world.
-            </p>
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              <strong>Affordable Coverage:</strong> We provide cost-effective
-              travel insurance plans to suit every budget.
-            </p>
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              <strong>Expert Assistance:</strong> Our experienced team offers
-              personalised guidance to help you choose the right plan.
-            </p>
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              <strong>Simple Process:</strong> Enjoy a streamlined application
-              and claim process, making it easy to get covered and receive
-              assistance.
-            </p>
-          </div>
-        </section>
-
-        {/* ⭐ Why Choose iNSURA.ae Section */}
-        <section className="py-10 bg-white">
-          <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
-            {/* LEFT IMAGE */}
-            <div className="lg:col-span-5 rounded-xl overflow-hidden shadow-lg">
-              <img
-                src="/images/outbound-family.jpg"
-                alt="Family traveler"
-                className="w-full h-full object-cover"
-              />
+<div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-6 lg:gap-8">
+          {/* LEFT: FORM + ALL CONTENT SECTIONS (INDEPENDENT) */}
+          <div className="col-span-12 lg:col-span-8 space-y-16 pb-16 order-2 lg:order-1">
+            {/* LEFT: FORM (unchanged) */}
+            <div>
+              <TravelLeadForm />
             </div>
 
-            {/* RIGHT DETAILS (accordion-style) */}
-            <div className="lg:col-span-7 space-y-6">
-              {/* Blue Header Box */}
-              <div className="bg-[#E9F4FF] border border-gray-200 shadow-md rounded-lg px-6 py-4">
-                <h3 className="text-2xl font-extrabold text-[#06396B]">
-                  Why Choose iNSURA.ae?
+            {/* EVERYTHING BELOW = SINGLE COLUMN CONTENT (moved inside left col) */}
+
+            {/* INTRO COPY */}
+            <section className="lg:w-12/12 space-y-4">
+              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
+                From sunrise flights to starry nights, Insura Travel Insurance
+                in UAE shields you every mile.
+              </h2>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                Do you prefer spending money on experiences rather than material
+                things, but worry about the unexpected?{" "}
+                <strong>Travel insurance in Dubai &amp; UAE</strong> can provide
+                a safety net for the unexpected, whether you’re exploring Dubai,
+                the UAE or beyond.
+              </p>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                Whether it’s a missed flight, lost luggage or a sudden illness,
+                our comprehensive coverage ensures that your adventures go
+                smoothly. You can explore new destinations with peace of mind,
+                knowing that Insura Travel Insurance in Dubai &amp; UAE has got
+                you covered every step of the way.
+              </p>
+            </section>
+
+            {/* WHY TRAVEL INSURANCE (4 flip cards) */}
+              <section className="space-y-6">
+                <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
+                Travel Insurance Coverage Benefits
+              </h2>
+
+              <div className="grid sm:grid-cols-2 gap-8 md:gap-10 mt-4">
+                {travelProducts.map((item) => (
+                  <TravelProductCard key={item.title} {...item} />
+                ))}
+              </div>
+            </section>
+
+            {/* INSURA.ae Powered by Pioneer Travel Insurance Plans */}
+            <section className="space-y-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
+                INSURA.ae Powered by Pioneer Travel Insurance Plans
+              </h2>
+
+              {/* 1. Single Trip */}
+              <div>
+                <h3 className="font-bold text-[#06396B] text-lg mb-2">
+                  1. Single Trip Travel Insurance
                 </h3>
-                <span className="text-xs font-semibold text-[#06396B] uppercase tracking-wide">
-                  Powered by Pioneer
-                </span>
+                <ul className="space-y-2 text-sm md:text-base text-gray-700 leading-relaxed list-disc list-inside">
+                  <li>
+                    <strong>Comprehensive Coverage:</strong> Protect yourself
+                    from trip cancellations, medical emergencies, lost baggage
+                    and more.
+                  </li>
+                  <li>
+                    <strong>Flexible Options:</strong> Choose the coverage that
+                    matches your travel itinerary and activities.
+                  </li>
+                  <li>
+                    <strong>Peace of Mind:</strong> Travel with confidence,
+                    knowing you are covered for unexpected events.
+                  </li>
+                </ul>
               </div>
 
-              <WhyInsuraAccordion />
-            </div>
+              {/* 2. Annual Multi Trip */}
+              <div>
+                <h3 className="font-bold text-[#06396B] text-lg mb-2">
+                  2. Annual Multi-Trip Travel Insurance
+                </h3>
+                <ul className="space-y-2 text-sm md:text-base text-gray-700 leading-relaxed list-disc list-inside">
+                  <li>
+                    <strong>Unlimited Trips:</strong> Ideal for frequent
+                    travellers, with coverage for multiple trips throughout the
+                    year.
+                  </li>
+                  <li>
+                    <strong>Convenience:</strong> One policy for all your
+                    travels, eliminating the need to buy insurance for each
+                    trip.
+                  </li>
+                  <li>
+                    <strong>Consistent Protection:</strong> Enjoy the same level
+                    of coverage on every trip, with no gaps in protection.
+                  </li>
+                </ul>
+              </div>
+
+              {/* 3. Family Travel */}
+              <div>
+                <h3 className="font-bold text-[#06396B] text-lg mb-2">
+                  3. Family Travel Insurance
+                </h3>
+                <ul className="space-y-2 text-sm md:text-base text-gray-700 leading-relaxed list-disc list-inside">
+                  <li>
+                    <strong>Comprehensive Family Coverage:</strong> Protect your
+                    entire family with one policy covering medical emergencies,
+                    trip interruptions and more.
+                  </li>
+                  <li>
+                    <strong>Kid-Friendly Benefits:</strong> Special protection
+                    for children, ensuring they receive the care they need.
+                  </li>
+                  <li>
+                    <strong>Affordable Rates:</strong> Great value with
+                    family-friendly pricing and discounts.
+                  </li>
+                </ul>
+              </div>
+
+              {/* Why Choose Insura for Travel Insurance? */}
+              <div className="pt-2 space-y-3">
+                <h3 className="text-xl font-bold text-[#06396B]">
+                  Why Choose Insura for Travel Insurance?
+                </h3>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  <strong>24/7 Global Support:</strong> Our dedicated team is
+                  available around the clock, including weekends, to assist you
+                  no matter where you are in the world.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  <strong>Affordable Coverage:</strong> We provide
+                  cost-effective travel insurance plans to suit every budget.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  <strong>Expert Assistance:</strong> Our experienced team
+                  offers personalised guidance to help you choose the right
+                  plan.
+                </p>
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  <strong>Simple Process:</strong> Enjoy a streamlined
+                  application and claim process, making it easy to get covered
+                  and receive assistance.
+                </p>
+              </div>
+            </section>
+
+            {/* ⭐ Why Choose iNSURA.ae Section */}
+            <section className="py-10 bg-white">
+              <div className=" space-y-8">
+                <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
+                  {/* LEFT IMAGE */}
+                  <div className="lg:col-span-5 rounded-xl overflow-hidden shadow-lg">
+                    <img
+                      src="/images/outbound-family.jpg"
+                      alt="Family traveler"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* RIGHT DETAILS (accordion-style) */}
+                  <div className="lg:col-span-7 space-y-6">
+                    {/* Blue Header Box */}
+                    <div className="bg-[#E9F4FF] border border-gray-200 shadow-md rounded-lg px-6 py-4">
+                      <h3 className="text-2xl font-extrabold text-[#06396B]">
+                        Why Choose iNSURA.ae?
+                      </h3>
+                      <span className="text-xs font-semibold text-[#06396B] uppercase tracking-wide">
+                        Powered by Pioneer
+                      </span>
+                    </div>
+
+                    <WhyInsuraAccordion />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Benefits of Outbound Insurance – */}
+          <section className="space-y-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
+                Benefits of Outbound Insurance –
+              </h2>
+
+              <ul className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
+                <li>
+                  <p className="font-semibold text-[#06396B]">
+                    • Entire Travel Safety :-
+                  </p>
+                  <p>
+                    Outbound insurance provides coverage for numerous travel
+                    risks like trip cancellations, delays or interruptions,
+                    ensuring that unforeseen events won’t financially strain
+                    travellers.
+                  </p>
+                </li>
+                <li>
+                  <p className="font-semibold text-[#06396B]">
+                    • Coverage for Medical Emergencies :-
+                  </p>
+                  <p>
+                    It protects tourists from exorbitant medical expenses
+                    outside of the United Arab Emirates by offering critical
+                    medical coverage for situations overseas, including hospital
+                    stays, treatments and emergency evacuations.
+                  </p>
+                </li>
+                <li>
+                  <p className="font-semibold text-[#06396B]">
+                    • Protection Against Baggage Loss and Theft :-
+                  </p>
+                  <p>
+                    This insurance provides comfort if priceless objects are
+                    missing while travelling by guarding against the loss or
+                    theft of luggage and personal belongings.
+                  </p>
+                </li>
+                <li>
+                  <p className="font-semibold text-[#06396B]">
+                    • Legal Support International :-
+                  </p>
+                  <p>
+                    It offers support with litigation, compensation claims and
+                    legal actions conducted abroad in cases when tourists may
+                    encounter legal difficulties.
+                  </p>
+                </li>
+              </ul>
+            </section>
+
+            {/* Start Your Journey Today */}
+          <section className="space-y-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
+                Start Your Journey Today!
+              </h2>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                So why are you still waiting? Protect your travels with Insura’s
+                reliable Travel Insurance in Dubai and UAE.
+              </p>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                Contact us for a free consultation and let our experts match you
+                with the ideal coverage for your next adventure. With Insura,
+                you’ll travel confidently, knowing you’re in safe hands.
+              </p>
+            </section>
+
+            {/* FAQ */}
+          <section className="space-y-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B] mb-5">
+                Travel Insurance FAQ
+              </h2>
+              <TravelFAQ />
+            </section>
           </div>
-        </section>
 
-        {/* Benefits of Outbound Insurance – */}
-        <section className="lg:w-7/12 space-y-6">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-            Benefits of Outbound Insurance –
-          </h2>
+          {/* RIGHT: SIDEBAR (independent, sticky) */}
+          <aside className="col-span-12 lg:col-span-4 order-1 lg:order-2 space-y-8">
+                  {/* STICKY SIDEBAR ONLY */}
+            <div>
+              <ServiceSidebar active="Travel Insurance" />
+            </div>
 
-          <ul className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
-            <li>
-              <p className="font-semibold text-[#06396B]">
-                • Entire Travel Safety :-
-              </p>
-              <p>
-                Outbound insurance provides coverage for numerous travel risks
-                like trip cancellations, delays or interruptions, ensuring that
-                unforeseen events won’t financially strain travellers.
-              </p>
-            </li>
-            <li>
-              <p className="font-semibold text-[#06396B]">
-                • Coverage for Medical Emergencies :-
-              </p>
-              <p>
-                It protects tourists from exorbitant medical expenses outside of
-                the United Arab Emirates by offering critical medical coverage
-                for situations overseas, including hospital stays, treatments
-                and emergency evacuations.
-              </p>
-            </li>
-            <li>
-              <p className="font-semibold text-[#06396B]">
-                • Protection Against Baggage Loss and Theft :-
-              </p>
-              <p>
-                This insurance provides comfort if priceless objects are missing
-                while travelling by guarding against the loss or theft of
-                luggage and personal belongings.
-              </p>
-            </li>
-            <li>
-              <p className="font-semibold text-[#06396B]">
-                • Legal Support International :-
-              </p>
-              <p>
-                It offers support with litigation, compensation claims and legal
-                actions conducted abroad in cases when tourists may encounter
-                legal difficulties.
-              </p>
-            </li>
-          </ul>
-        </section>
+            {/* NOT STICKY — CONTACT CTA BANNER */}
+            <div className="rounded-xl overflow-hidden shadow-lg relative">
+              <img
+                src="/1.jpg"
+                alt="Make your dream life get professional help"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-4 left-4 right-4 text-white space-y-2">
+                <p className="text-lg font-semibold leading-snug">
+                  Make your dream life get professional help
+                </p>
+                <div className="text-xs uppercase tracking-wide">Contact Us</div>
+                <div className="text-sm font-semibold">+971 4 357 4547</div>
+              </div>
+            </div>
 
-        {/* Start Your Journey Today */}
-        <section className="lg:w-7/12 space-y-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-            Start Your Journey Today!
-          </h2>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            So why are you still waiting? Protect your travels with Insura’s
-            reliable Travel Insurance in Dubai and UAE.
-          </p>
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            Contact us for a free consultation and let our experts match you
-            with the ideal coverage for your next adventure. With Insura,
-            you’ll travel confidently, knowing you’re in safe hands.
-          </p>
-        </section>
+            {/* NOT STICKY — Reasons Section */}
+            <div className="space-y-6">
+              <div className="bg-[#06396B] text-white px-6 py-4 rounded-lg">
+                <h3 className="text-lg font-semibold">
+                  Reason&apos;s to choose iNSURA.ae powered by PIONEER?
+                </h3>
+              </div>
 
-        {/* FAQ */}
-        <section className="lg:w-7/12 pb-4">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#06396B] mb-5">
-            Travel Insurance FAQ
-          </h2>
-          <TravelFAQ />
-        </section>
-      </div>
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 text-center text-gray-800">
+                <div className="flex flex-col items-center gap-3">
+                  <Building className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
+                  <p className="text-xs font-medium">
+                    Collab with 100+ <br />
+                    Insurance Companies
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  <UserCheck className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
+                  <p className="text-xs font-medium">
+                    Trusted by 1,00,000+ <br />
+                    policyholders
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  <Clock className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
+                  <p className="text-xs font-medium">
+                    24x7 Insurance <br />
+                    Support
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-3">
+                  <Hand className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
+                  <p className="text-xs font-medium">
+                    Hassle Free <br />
+                    Process
+                  </p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
     </main>
   );
 }

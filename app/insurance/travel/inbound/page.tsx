@@ -12,12 +12,14 @@ const INBOUND_FEATURES = [
     icon: "/home.svg",
     title: "Medical Expenses & Hospitalization Abroad",
     details:
-"What if you fall ill or face a medical emergency far from home? With Insura’s coverage, unexpected hospital bills are handled, allowing you to focus on recovery, not expenses.",  },
+      "What if you fall ill or face a medical emergency far from home? With Insura’s coverage, unexpected hospital bills are handled, allowing you to focus on recovery, not expenses.",
+  },
   {
     icon: "/home.svg",
     title: "Trip Cancellation Protection",
     details:
-"Flights can get cancelled, but your trip doesn’t have to be a financial loss. Insura ensures that cancellations don’t ruin your adventure by covering unexpected costs.",  },
+      "Flights can get cancelled, but your trip doesn’t have to be a financial loss. Insura ensures that cancellations don’t ruin your adventure by covering unexpected costs.",
+  },
   {
     icon: "/home.svg",
     title: "Personal Accident Coverage",
@@ -54,7 +56,7 @@ type InboundFeatureCardProps = {
 function InboundFeatureCard({ icon, title, details }: InboundFeatureCardProps) {
   return (
     <div className="group [perspective:1000px]">
-      {/* only change: h-64 -> h-80 */}
+      {/* only change: h-64 -> h-80 (kept as you had) */}
       <div className="relative w-full h-80 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front Face */}
         <div className="absolute inset-0 bg-[#06396B] rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [backface-visibility:hidden]">
@@ -75,7 +77,6 @@ function InboundFeatureCard({ icon, title, details }: InboundFeatureCardProps) {
   );
 }
 
-
 // ---------- MAIN PAGE ----------
 export default function InboundTravelInsurancePage() {
   return (
@@ -83,54 +84,205 @@ export default function InboundTravelInsurancePage() {
       {/* Floating action buttons */}
       <FloatingActions />
 
-{/* HERO BANNER */}
-<section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
-  
-  {/* Background Image + Gradient */}
-  <div className="absolute inset-0">
-    <img
-      src="/bg-Image3.jpg"
-      alt="Family enjoying safe travel"
-      className="w-full h-full object-cover object-right"
-    />
-    <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
-  </div>
+      {/* HERO BANNER */}
+      <section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+        {/* Background Image + Gradient */}
+        <div className="absolute inset-0">
+          <img
+            src="/bg-Image3.jpg"
+            alt="Family enjoying safe travel"
+            className="w-full h-full object-cover object-right"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
+        </div>
 
-  {/* Content */}
-  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
-    
-    {/* Breadcrumb */}
-    <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
-      <Link href="/" className="hover:text-white">insura.ae</Link>
-      <span className="w-1.5 h-1.5 bg-white rounded-full" />
-      <span className="hover:text-white">Inbound Travel Insurance</span>
-    </div>
-
-    {/* Heading + Description */}
-    <div className="max-w-2xl text-white">
-      <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
-        Inbound Travel Insurance
-      </h1>
-
-      <p className="text-lg text-white/90 leading-relaxed">
-        So, you’ve finally booked that solo trip to a far-off destination,
-        but what about those unpredictable bumps that could turn your
-        dream getaway into a stressful saga?
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-      {/* FORM + SIDEBAR */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-8">
-            <TravelLeadForm />
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
+            <Link href="/" className="hover:text-white">
+              insura.ae
+            </Link>
+            <span className="w-1.5 h-1.5 bg-white rounded-full" />
+            <span className="hover:text-white">Inbound Travel Insurance</span>
           </div>
-          <div className="lg:col-span-4 space-y-6">
-            <div className="lg:top-28 h-fit">
+
+          {/* Heading + Description */}
+          <div className="max-w-2xl text-white">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
+              Inbound Travel Insurance
+            </h1>
+
+            <p className="text-lg text-white/90 leading-relaxed">
+              So, you’ve finally booked that solo trip to a far-off destination,
+              but what about those unpredictable bumps that could turn your
+              dream getaway into a stressful saga?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================
+          MAIN GRID: LEFT (ALL CONTENT) + RIGHT (SIDEBAR)
+         ================================================ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-6 lg:gap-8">
+          {/* LEFT: FORM + ALL CONTENT SECTIONS (INDEPENDENT) */}
+        <div className="col-span-12 lg:col-span-8 space-y-16 pb-16 order-1 lg:order-1">
+            {/* FORM */}
+            <section>
+              <TravelLeadForm />
+            </section>
+
+            {/* ⭐ Section — Feature Grid (Left Only) */}
+            <section className="pb-10 bg-white">
+              <div className=" space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
+                  Why Inbound Travel Insurance?
+                </h2>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  What if securing Insura’s Inbound Travel Insurance is the only
+                  thing between you and your ideal journey? Ready to discover
+                  how to safeguard every moment? Keep reading – your solutions
+                  are here!
+                </p>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  Exploring the world alone is exhilarating, but without proper
+                  protection, trip cancellations, luggage delays, or sudden
+                  medical emergencies can turn your dream journey into a
+                  nightmare. Imagine being miles away from home, managing these
+                  problems all on your own. That’s where iNSURA’s powered by
+                  Pioneer Inbound Travel Insurance steps in.
+                </p>
+
+                <p className="text-sm md:text-base font-semibold italic text-gray-600 leading-relaxed">
+                  It’s more than just a policy; it’s your invisible shield,
+                  safeguarding your every move.
+                </p>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  Why stress over what could go wrong when you can travel with
+                  the peace of mind that comes from knowing you’re covered?
+                  Insura ensures that when the unexpected happens, you’re not
+                  alone. Instead, you can focus on the thrill of discovery, free
+                  from worry. Ready to turn those travel hiccups into distant
+                  memories? Trust iNSURA powered by Pioneer to keep your journey
+                  safe and seamless, so you can chase experiences, not problems!
+                </p>
+
+                <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
+                  How Inbound Travel Insurance Saves Your Journey
+                </h2>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  Wondering how iNSURA.ae powered by Pioneer Inbound Travel
+                  Insurance can turn potential travel disasters into mere
+                  hiccups? Let’s break it down:
+                </p>
+
+                {/* increased gap because cards are bigger */}
+                <div className="grid sm:grid-cols-2 gap-10 mt-6">
+                  {INBOUND_FEATURES.map((feature, i) => (
+                    <InboundFeatureCard key={i} {...feature} />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* ⭐ Section — Solo Travellers */}
+            <section className="py-12 bg-white">
+              <div className=" space-y-8">
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-start">
+                  {/* LEFT IMAGE */}
+                  <div className="sm:col-span-5 rounded-xl overflow-hidden shadow-lg">
+                    <img
+                      src="/inbound.webp"
+                      className="w-full h-full object-cover"
+                      alt="Solo Traveller Girl"
+                    />
+                  </div>
+
+                  {/* RIGHT TEXT */}
+                  <div className="sm:col-span-7 space-y-5">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#06396B]">
+                      Why Insura is the Best Choice for Solo Travellers?
+                    </h2>
+
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                      Insura offers comprehensive coverage to protect solo
+                      travelers from unexpected setbacks, including medical
+                      emergencies and trip interruptions.
+                    </p>
+
+                    <ul className="space-y-3 text-sm md:text-base text-gray-800">
+                      <li>✔ Instant Medical Assistance</li>
+                      <li>✔ Full Trip Cancellation Refunds</li>
+                      <li>✔ Accident Coverage Anytime, Anywhere</li>
+                      <li>✔ Compensation for Flight Delays</li>
+                      <li>✔ Support for Passport Loss</li>
+                    </ul>
+
+                    <button className="bg-[#06396B] text-white px-8 py-2 rounded-md text-sm shadow hover:bg-[#042c4f] transition">
+                      Buy Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* ⭐ Section — Importance */}
+            <section className="py-12 bg-white">
+              <div className="px-0 lg:px-0 space-y-5">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
+                  Never underestimate the importance of Inbound Travel Insurance
+                </h2>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  When you travel to the United Arab Emirates, inbound travel
+                  insurance protects you against unplanned medical illnesses and
+                  accidents.
+                </p>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  The cost of emergency medical care and repatriation costs are
+                  covered as basic benefits. Please see your insurance policy
+                  plan for further information. As soon as you've made the
+                  initial deposit for your trip, you should buy travel
+                  insurance. The sooner you buy, the sooner your vacation is
+                  protected by coverage.
+                </p>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  Individual journeys up to 92 days each trip are covered by our
+                  yearly inbound travel insurance package. During the insurance
+                  period, an unlimited number of journeys may be taken, up to
+                  the maximum number of days paid per trip.
+                </p>
+
+                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                  You should have a stress-free, amazing trip to the United Arab
+                  Emirates. And that’s exactly what our inbound travel insurance
+                  is meant to provide.
+                </p>
+              </div>
+            </section>
+
+            {/* ⭐ Section — FAQ Title (left aligned) */}
+            <section className="py-8 bg-white">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#06396B] mb-4">
+                  Inbound Travel Insurance FAQ
+                </h2>
+                <TravelFAQ />
+              </div>
+            </section>
+          </div>
+
+          {/* RIGHT: SIDEBAR (independent, non-sticky) */}
+<aside className="col-span-12 lg:col-span-4 order-2 lg:order-2 space-y-6">
+            <div>
               <ServiceSidebar active="Travel Insurance" />
             </div>
 
@@ -150,143 +302,7 @@ export default function InboundTravelInsurancePage() {
                 <div className="text-sm font-semibold">+971 4 357 4547</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ⭐ Section — Feature Grid (Left Only) */}
-      <section className="pb-10 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="lg:w-7/12 space-y-6">
-  
-             <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-Why Inbound Travel Insurance?
-            </h2>
-
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-What if securing Insura’s Inbound Travel Insurance is the only thing between you and your ideal journey? Ready to discover how to safeguard every moment? Keep reading – your solutions are here!
-            </p> 
-  
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-Exploring the world alone is exhilarating, but without proper protection, trip cancellations, luggage delays, or sudden medical emergencies can turn your dream journey into a nightmare. Imagine being miles away from home, managing these problems all on your own. That’s where iNSURA’s powered by Pioneer  Inbound Travel Insurance steps in. 
-            </p>
-<p className="text-sm md:text-base font-semibold italic text-gray-600 leading-relaxed">
-  It’s more than just a policy; it’s your invisible shield, safeguarding your every move.
-</p>
-
-
-             <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-Why stress over what could go wrong when you can travel with the peace of mind that comes from knowing you’re covered? Insura ensures that when the unexpected happens, you’re not alone. Instead, you can focus on the thrill of discovery, free from worry. Ready to turn those travel hiccups into distant memories? Trust iNSURA powered by Pioneer to keep your journey safe and seamless, so you can chase experiences, not problems!            </p>
- 
-
-            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-              How Inbound Travel Insurance Saves Your Journey
-            </h2>
-
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              Wondering how iNSURA.ae powered by Pioneer Inbound Travel
-              Insurance can turn potential travel disasters into mere hiccups?
-              Let’s break it down:
-            </p>
-
-            {/* increased gap because cards are bigger */}
-            <div className="grid sm:grid-cols-2 gap-10 mt-6">
-              {INBOUND_FEATURES.map((feature, i) => (
-                <InboundFeatureCard key={i} {...feature} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ⭐ Section — Solo Travellers */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="lg:w-7/12 space-y-8">
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 items-start">
-              {/* LEFT IMAGE */}
-              <div className="sm:col-span-5 rounded-xl overflow-hidden shadow-lg">
-                <img
-                  src="/inbound.webp"
-                  className="w-full h-full object-cover"
-                  alt="Solo Traveller Girl"
-                />
-              </div>
-
-              {/* RIGHT TEXT */}
-              <div className="sm:col-span-7 space-y-5">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#06396B]">
-                  Why Insura is the Best Choice for Solo Travellers?
-                </h2>
-
-                <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                  Insura offers comprehensive coverage to protect solo travelers
-                  from unexpected setbacks, including medical emergencies and
-                  trip interruptions.
-                </p>
-
-                <ul className="space-y-3 text-sm md:text-base text-gray-800">
-                  <li>✔ Instant Medical Assistance</li>
-                  <li>✔ Full Trip Cancellation Refunds</li>
-                  <li>✔ Accident Coverage Anytime, Anywhere</li>
-                  <li>✔ Compensation for Flight Delays</li>
-                  <li>✔ Support for Passport Loss</li>
-                </ul>
-
-                <button className="bg-[#06396B] text-white px-8 py-2 rounded-md text-sm shadow hover:bg-[#042c4f] transition">
-                  Buy Now
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ⭐ Section — Importance */}
-      <section className="py-12 bg-white">
-        <div className="px-6 lg:px-12 lg:w-7/12 space-y-5">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-            Never underestimate the importance of Inbound Travel Insurance
-          </h2>
-
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            When you travel to the United Arab Emirates, inbound travel
-            insurance protects you against unplanned medical illnesses and
-            accidents.
-          </p>
-
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            The cost of emergency medical care and repatriation costs are
-            covered as basic benefits. Please see your insurance policy plan for
-            further information. As soon as you've made the initial deposit for
-            your trip, you should buy travel insurance. The sooner you buy, the
-            sooner your vacation is protected by coverage.
-          </p>
-
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            Individual journeys up to 92 days each trip are covered by our
-            yearly inbound travel insurance package. During the insurance
-            period, an unlimited number of journeys may be taken, up to the
-            maximum number of days paid per trip.
-          </p>
-
-          <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-            You should have a stress-free, amazing trip to the United Arab
-            Emirates. And that’s exactly what our inbound travel insurance is
-            meant to provide.
-          </p>
-        </div>
-      </section>
-
-      {/* ⭐ Section — FAQ Title (left aligned) */}
-      <section className="py-8 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="lg:w-7/12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-              Inbound Travel Insurance FAQ
-            </h2>
-            <TravelFAQ />
-          </div>
+          </aside>
         </div>
       </section>
     </main>
