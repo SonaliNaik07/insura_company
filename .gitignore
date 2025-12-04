@@ -1,1 +1,21 @@
+<<<<<<< HEAD
 node_modules
+=======
+<<<<<<< Updated upstream
+.next/
+node_modules/
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+node_modules
+.next/
+=======
+.next/
+node_modules/
+>>>>>>> cc38d77c1c280e65a9b0b459fef78191891a0ac4
+=======
+.next/
+node_modules/
+>>>>>>> cc38d77c1c280e65a9b0b459fef78191891a0ac4
+>>>>>>> Stashed changes
+>>>>>>> 9c4a8fea510a02279086f467c21079b1e371186a
