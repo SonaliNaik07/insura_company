@@ -10,8 +10,7 @@ const FAMILY_FEATURES = [
   {
     icon: "/home.svg",
     title: "Legal Compliance",
-    short:
-      "It ensures compliance with regulations, avoiding legal complications and penalties.",
+    short: "It ensures compliance with regulations, avoiding legal complications and penalties.",
     details:
       "It ensures compliance with regulations, avoiding legal complications and penalties, so your family trip can stay focused on enjoyment instead of paperwork.",
   },
@@ -19,9 +18,9 @@ const FAMILY_FEATURES = [
     icon: "/home.svg",
     title: "Trip Cancellation and Interruption",
     short:
-      "Protects your financial investment in the trip by reimbursing non‑refundable expenses.",
+      "Protects your financial investment in the trip by reimbursing non-refundable expenses.",
     details:
-      "Protects your financial investment in the trip by reimbursing non‑refundable expenses in case of trip cancellation or interruption due to covered reasons.",
+      "Protects your financial investment in the trip by reimbursing non-refundable expenses in case of trip cancellation or interruption due to covered reasons.",
   },
   {
     icon: "/home.svg",
@@ -57,12 +56,7 @@ type FamilyFeatureCardProps = {
   details: string;
 };
 
-function FamilyFeatureCard({
-  icon,
-  title,
-  short,
-  details,
-}: FamilyFeatureCardProps) {
+function FamilyFeatureCard({ icon, title, short, details }: FamilyFeatureCardProps) {
   return (
     <div className="group h-[260px] [perspective:1000px]">
       <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
@@ -75,13 +69,8 @@ function FamilyFeatureCard({
 
         {/* BACK */}
         <div className="absolute inset-0 bg-white flex flex-col items-center justify-center text-center px-8 py-6 shadow-md [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          {/* icon on back */}
           <img src={icon} className="w-6 h-6 mb-3" alt={title} />
-          <p className="text-gray-700 text-sm leading-relaxed mb-4">
-            {details}
-          </p>
-
-          {/* Buy Now with bookmark-style icon */}
+          <p className="text-gray-700 text-sm leading-relaxed mb-4">{details}</p>
           <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#06396B]">
             Buy Now
             <span className="inline-block w-3 h-4 bg-[#06396B]" />
@@ -97,47 +86,42 @@ function FamilyFeatureCard({
 export default function FamilyTravelInsurancePage() {
   return (
     <main className="bg-white text-gray-900">
-      {/* Floating action buttons */}
       <FloatingActions />
 
-{/* HERO BANNER */}
-<section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+      {/* HERO */}
+      <section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+        <div className="absolute inset-0">
+          <img
+            src="/images/family-hero.jpg"
+            alt="Family Hero"
+            className="w-full h-full object-cover object-right"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
+        </div>
 
-  {/* Background Image + Gradient */}
-  <div className="absolute inset-0">
-    <img
-      src="/images/family-hero.jpg"
-      alt="Family Hero"
-      className="w-full h-full object-cover object-right"
-    />
-    <div className="absolute inset-0 bg-gradient-to-r from-[#022647] via-[#022647]/90 to-transparent" />
-  </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
+          {/* Breadcrumb */}
+          <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
+            <Link href="/" className="hover:text-white">
+              insura.ae
+            </Link>
+            <span className="w-1.5 h-1.5 bg-white rounded-full" />
+            <span className="hover:text-white">Family Travel Insurance</span>
+          </div>
 
-  {/* Content */}
-  <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 sm:py-32">
+          {/* Heading + Description */}
+          <div className="max-w-2xl text-white">
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-5">
+              Family Travel Insurance
+            </h1>
 
-    {/* Breadcrumb */}
-    <div className="flex items-center gap-2 text-white/70 mb-5 text-sm">
-      <Link href="/" className="hover:text-white">insura.ae</Link>
-      <span className="w-1.5 h-1.5 bg-white rounded-full" />
-      <span className="hover:text-white">Family Travel Insurance</span>
-    </div>
-
-    {/* Heading + Description */}
-    <div className="max-w-2xl text-white">
-      <h1 className="text-4xl md:text-5xl font-extrabold mb-5 leading-tight">
-        Family Travel Insurance
-      </h1>
-
-      <p className="text-lg text-white/90 leading-relaxed">
-        Need any type of policies over the world you can contact us without any hesitation. 
-        Our expert support team will help you.
-      </p>
-    </div>
-
-  </div>
-</section>
-
+            <p className="text-lg text-white/90 leading-relaxed">
+              Need any type of policies over the world you can contact us without any hesitation.
+              Our expert support team will help you.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* IMAGE BELOW HERO */}
       <section className="bg-white py-12">
@@ -150,22 +134,123 @@ export default function FamilyTravelInsurancePage() {
         </div>
       </section>
 
-      {/* FORM + SIDEBAR */}
+      {/* LEFT CONTENT + RIGHT SIDEBAR */}
       <section className="bg-white py-12">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10">
-          {/* LEFT: FORM */}
-          <div className="lg:col-span-8">
-            <TravelLeadForm />
+          {/* LEFT CONTENT */}
+          <div className="col-span-12 lg:col-span-8 order-1 lg:order-1 space-y-16 pb-10">
+
+            {/* FORM */}
+            <section>
+              <TravelLeadForm />
+            </section>
+
+            {/* SECTION 1 */}
+            <section className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
+                Is Business Insurance Mandatory in Dubai?
+              </h2>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                Yes, in many places, including business insurance in Dubai &amp;
+                UAE, it is often a legal requirement. It ensures businesses are
+                financially equipped to handle unforeseen events and protects
+                business owners and employees.
+              </p>
+            </section>
+
+            {/* SECTION 2 */}
+            <section className="space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
+                What is Travel Insurance
+              </h2>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                Yes, in many places, including business insurance in Dubai &amp;
+                UAE, it is often a legal requirement. It ensures businesses are
+                financially equipped to handle unforeseen events and protects
+                business owners and employees.
+              </p>
+            </section>
+
+            {/* FLIP CARDS */}
+            <section className="space-y-6">
+              <h2 className="text-3xl font-bold text-[#06396B]">
+                Why is Business Insurance Important?
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-8">
+                {FAMILY_FEATURES.map((feature, i) => (
+                  <FamilyFeatureCard key={i} {...feature} />
+                ))}
+              </div>
+            </section>
+
+            {/* TEXT + IMAGE + LIST */}
+            <section className="space-y-10">
+              <h2 className="text-3xl font-bold text-[#06396B]">
+                Why is Business Insurance Important?
+              </h2>
+
+              <div className="grid lg:grid-cols-2 gap-10 items-center">
+                <div className="space-y-2">
+                  <h3 className="font-semibold">1. Cost-Effective Solutions</h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    We believe that comprehensive protection should be affordable.
+                    Explore the world with peace of mind, knowing that your travel
+                    insurance in Dubai will not break the bank.
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="font-semibold">2. Tailored for Global Ventures</h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    From the bustling streets of New York to the serene landscapes
+                    of New Zealand, our travel insurance UAE is designed to
+                    accompany you on your international escapades, offering coverage
+                    that spans the globe.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid lg:grid-cols-12 gap-10 items-center">
+                <div className="lg:col-span-5">
+                  <img
+                    src="/Travel_Insurance.webp"
+                    className="rounded-xl shadow-md"
+                    alt="Illustration"
+                  />
+                </div>
+
+                <div className="lg:col-span-7 space-y-3">
+                  <p className="text-gray-700 leading-relaxed">
+                    Our technicians believe in the value that give you high level of
+                    coaching techniques for your better life.
+                  </p>
+
+                  <ul className="space-y-2 font-medium text-gray-800">
+                    {FAMILY_BENEFITS.map((b, i) => (
+                      <li key={i}>✔ {b}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            {/* LEARN MORE */}
+            <section className="space-y-2 pb-8">
+              <p className="text-lg font-semibold text-[#06396B]">
+                Learn more about
+              </p>
+              <p className="text-2xl font-bold text-[#06396B]">
+                How to Save Big on Travel Insurance in the UAE.
+              </p>
+            </section>
           </div>
 
-          {/* RIGHT: SIDEBAR + IMAGE BELOW */}
-          <div className="lg:col-span-4 space-y-6">
-            {/* Sticky Sidebar */}
-            <div className="lg:top-28 h-fit">
+          {/* RIGHT SIDEBAR (Independent) */}
+          <aside className="col-span-12 lg:col-span-4 order-2 lg:order-2 space-y-6">
+            <div className="relative">
               <ServiceSidebar active="travel" />
             </div>
 
-            {/* Contact CTA Image BELOW Sidebar */}
             <div className="rounded-xl overflow-hidden shadow-lg relative">
               <img
                 src="/1.jpg"
@@ -182,124 +267,7 @@ export default function FamilyTravelInsurancePage() {
                 <div className="text-sm font-semibold">+971 4 357 4547</div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 1 */}
-      <section className="bg-gray-50 -mt-40 py-2">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="lg:w-8/12 space-y-5">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-              Is Business Insurance Mandatory in Dubai?
-            </h2>
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              Yes, in many places, including business insurance in Dubai &amp;
-              UAE, it is often a legal requirement. It ensures businesses are
-              financially equipped to handle unforeseen events and protects
-              business owners and employees.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2 */}
-      <section className="py-14 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="lg:w-8/12 space-y-5">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
-              What is Travel Insurance
-            </h2>
-            <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-              Yes, in many places, including business insurance in Dubai &amp;
-              UAE, it is often a legal requirement. It ensures businesses are
-              financially equipped to handle unforeseen events and protects
-              business owners and employees.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FLIP CARDS (Left aligned only) */}
-      <section className="py-14 bg-gray-50 -mt-18">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Restrict width to left column only */}
-          <div className="lg:w-8/12 space-y-10">
-            <h2 className="text-3xl font-bold text-[#06396B] mb-10">
-              Why is Business Insurance Important?
-            </h2>
-
-            <div className="grid sm:grid-cols-2 gap-8">
-              {FAMILY_FEATURES.map((feature, i) => (
-                <FamilyFeatureCard key={i} {...feature} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TEXT + IMAGE + LIST */}
-      <section className="py-14 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 space-y-10">
-          <h2 className="text-3xl font-bold text-[#06396B]">
-            Why is Business Insurance Important?
-          </h2>
-
-          <div className="grid lg:grid-cols-2 gap-10 lg:w-8/12">
-            <div className="space-y-2">
-              <h3 className="font-semibold">1. Cost-Effective Solutions</h3>
-              <p className="text-gray-700 leading-relaxed">
-                We believe that comprehensive protection should be affordable.
-                Explore the world with peace of mind, knowing that your travel
-                insurance in Dubai will not break the bank.
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="font-semibold">2. Tailored for Global Ventures</h3>
-              <p className="text-gray-700 leading-relaxed">
-                From the bustling streets of New York to the serene landscapes
-                of New Zealand, our travel insurance UAE is designed to
-                accompany you on your international escapades, offering coverage
-                that spans the globe.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid lg:grid-cols-12 gap-10 lg:w-8/12 items-center">
-            <div className="lg:col-span-5">
-              <img
-                src="/Travel_Insurance.webp"
-                className="rounded-xl shadow-md"
-                alt="Illustration"
-              />
-            </div>
-
-            <div className="lg:col-span-7 space-y-3">
-              <p className="text-gray-700 leading-relaxed">
-                Our technicians believe in the value that give you high level of
-                coaching techniques for your better life.
-              </p>
-
-              <ul className="space-y-2 font-medium text-gray-800">
-                {FAMILY_BENEFITS.map((b, i) => (
-                  <li key={i}>✔ {b}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LEARN MORE */}
-      <section className="py-14 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 space-y-2">
-          <p className="text-lg font-semibold text-[#06396B]">
-            Learn more about
-          </p>
-          <p className="text-2xl font-bold text-[#06396B]">
-            How to Save Big on Travel Insurance in the UAE.
-          </p>
+          </aside>
         </div>
       </section>
     </main>
