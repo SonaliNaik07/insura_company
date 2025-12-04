@@ -1,7 +1,9 @@
-import { PageHero } from "@/components/ui/page-hero"
-import { Sidebar } from "@/components/content/sidebar"
-import { FAQ } from "@/components/content/faq"
-import { Phone, Car, Wrench, Battery, Key, Fuel } from "lucide-react"
+"use client";
+
+import { PageHero } from "@/components/ui/page-hero";
+import { Sidebar } from "@/components/content/sidebar";
+import { Phone, Car, Wrench, Battery, Key, Fuel } from "lucide-react";
+import { useState } from "react";
 
 const services = [
   { icon: Wrench, title: "Towing Service", description: "24/7 towing to nearest garage or location of choice" },
@@ -10,105 +12,375 @@ const services = [
   { icon: Fuel, title: "Fuel Delivery", description: "Emergency fuel delivery when you run out" },
   { icon: Key, title: "Lockout Service", description: "Help when you're locked out of your vehicle" },
   { icon: Phone, title: "24/7 Helpline", description: "Round-the-clock assistance hotline" },
-]
+];
 
 const steps = [
   "Call our 24/7 roadside assistance hotline",
   "Provide your policy number and location",
   "Describe the issue you're experiencing",
   "Stay safe and wait for our team to arrive",
-]
+];
 
-const faqs = [
+const rsaFaqItems = [
   {
-    question: "How do I request roadside assistance?",
+    question: "What is Roadside Assistance?",
     answer:
-      "Call our 24/7 hotline, provide your policy number and location, and describe the issue. Our team will dispatch help immediately.",
+      "Roadside Assistance is a service provided by Insurance companies as part of your car insurance policy. It offers help in case your vehicle breaks down or encounters an issue while on the road, such as a flat tire, battery problems, or a minor accident.",
   },
   {
-    question: "Is roadside assistance included in my policy?",
+    question: "What services are included in Insura.ae Roadside Assistance?",
     answer:
-      "Roadside assistance is included in comprehensive motor insurance plans or can be added as an optional benefit to other plans.",
+      "Our Roadside Assistance includes towing, battery jump-starts, flat tire changes, fuel delivery, lockout services, and emergency repairs to get you back on the road quickly.",
   },
   {
-    question: "How long does it take for help to arrive?",
-    answer: "Response times vary by location, but we aim to reach you within 30-60 minutes in urban areas.",
+    question: "Does Roadside Assistance cover vehicle recovery after an accident?",
+    answer:
+      "Yes, our Roadside Assistance covers vehicle recovery and towing to the nearest garage if your car is involved in an accident and cannot be driven.",
   },
   {
-    question: "What areas are covered?",
-    answer: "Our roadside assistance covers all UAE Emirates with a network of service providers across the country.",
+    question:
+      "How quickly can I expect help to arrive after requesting Roadside Assistance?",
+    answer:
+      "Response times can vary based on location and traffic conditions, but Insura.ae aims to dispatch help within 30 to 60 minutes across most parts of the UAE.",
   },
-]
+  {
+    question:
+      "Is there a limit to the number of Roadside Assistance calls I can make?",
+    answer:
+      "Most plans include unlimited Roadside Assistance calls. However, it’s best to review your specific policy details or contact our customer service team for clarification.",
+  },
+];
 
 export default function RoadsideAssistancePage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0); // first FAQ open
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
+
   return (
     <main>
       <PageHero
-        breadcrumb="Claims"
+        breadcrumb="Roadside Assistance"
         title="Roadside Assistance"
         description="24/7 support for breakdowns, towing, and emergencies wherever you are in the UAE."
+          image="/road.png"
+        
       />
 
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <div className="lg:col-span-2 space-y-12">
-              {/* Emergency Contact */}
-              <div className="bg-primary text-white rounded-xl p-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
-                    <Phone className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold">Need Assistance Now?</h2>
-                    <p className="text-white/80">Call our 24/7 emergency hotline</p>
-                  </div>
-                </div>
-                <a href="tel:+97143574547" className="text-3xl font-bold text-accent hover:underline">
-                  +971 4 357 4547
-                </a>
+            {/* LEFT COLUMN: text + tables + video + FAQ */}
+          <div className="lg:col-span-2 space-y-12 text-justify">
+
+              {/* Top line */}
+              <p className="text-[11px] font-semibold tracking-[0.18em] uppercase mb-2 text-foreground">
+                Give us a few details and we’ll offer the best quotation.
+              </p>
+              <div className="h-px bg-border" />
+
+              {/* Get Instant Help */}
+              <div>
+                <h2 className="text-4xl font-extrabold text-foreground mb-6">
+                  Get Instant Help
+                </h2>
+
+                <p className="text-lg leading-relaxed text-muted-foreground max-w-3xl">
+                  We understand that experiencing car troubles can be stressful and
+                  frustrating, especially when you’re in a hurry or far away from
+                  home. But don’t worry, Insura.ae is here to help you get back on the
+                  road as quickly and safely as possible. Our team of dedicated
+                  professionals is available 24/7 to provide you with the roadside
+                  assistance you need. Whether you need a jump-start, a tire change, or
+                  a tow, we’ve got you covered. So take a deep breath, and know that
+                  help is on the way. We’re committed to delivering the highest level of
+                  service and customer care, and we won’t rest until you’re back behind
+                  the wheel with a smile on your face.
+                </p>
               </div>
 
-              {/* Services */}
+              {/* TABLE 1 */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">Our Roadside Services</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {services.map((service, index) => (
-                    <div key={index} className="bg-card rounded-lg p-6 border shadow-sm">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <service.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <h3 className="font-semibold text-card-foreground mb-2">{service.title}</h3>
-                      <p className="text-muted-foreground text-sm">{service.description}</p>
-                    </div>
-                  ))}
+                <h3 className="text-2xl font-bold text-[#022B69] mb-4">
+                  Insurance Company
+                </h3>
+
+                <div className="border border-gray-300 overflow-x-auto text-[15px] w-full">
+                  <table className="w-full border-collapse table-fixed">
+                    <thead>
+                      <tr className="bg-[#0c7b3d] text-white">
+                        <th className="py-3 px-4 text-left font-semibold border border-gray-300 w-[45%]">
+                          Insurance Company
+                        </th>
+                        <th className="py-3 px-4 text-left font-semibold border border-gray-300 w-[55%]">
+                          Emergency Road Side Assistance(AAA)
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          SUKOON INSURANCE COMPANY
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          800 6565 (Within the UAE) <br />
+                          +971 4 387 6649 (Outside the UAE)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          THE NEW INDIA ASSURANCE COMPANY
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          800247772
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          ARABIAN SCANDINAVIAN INSURANCE COMPANY (PLC) - TAKAFUL
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          8007326 – Dubai, 600 575751 – ABU DHABI
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          LIVA INSURANCE
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          600544060
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          RAK INSURANCE
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          IMC on Toll Free Number: 600575751
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          SALAMA INSURANCE
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          800725262
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          AL BUHAIRAH NATIONAL INSURANCE COMPANY
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          8008181
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          AL SAGR NATIONAL INSURANCE COMPANY
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          8007541
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="border border-gray-300 px-4 py-3">
+                          GIG INSURANCE
+                        </td>
+                        <td className="border border-gray-300 px-4 py-3">
+                          800292
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* TABLE 2 */}
+                <div className="mt-10">
+                  <h3 className="text-2xl font-bold text-[#022B69] mb-4">
+                    Insurance Company
+                  </h3>
+
+                  <div className="border border-gray-300 overflow-x-auto text-[15px] w-full">
+                    <table className="w-full border-collapse table-fixed">
+                      <thead>
+                        <tr className="bg-[#0c7b3d] text-white">
+                          <th className="py-3 px-4 text-left font-semibold border border-gray-300 w-[45%]">
+                            Insurance Company
+                          </th>
+                          <th className="py-3 px-4 text-left font-semibold border border-gray-300 w-[55%]">
+                            Emergency Road Side Assistance(AAA)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            ADAMJEE INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            8007326
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            NATIONAL GENERAL INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            8004900
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            ORIENT INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            600508181
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            ORIENTAL INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            600575751
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            NOOR TAKAFUL INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            8004101
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            QATAR INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            Toll Free Number 8004742 or +971 4 2224045 (Dubai) or
+                            +971 2 6769466 (Abu Dhabi)
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            TOKIO MARINE &amp; NICHIDO FIRE INSURANCE COMPANY
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            600 50 8181
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            RSA INSURANCE
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            800462372
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            AL WATBHBA INSURANCE
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            600575751
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            DUBAI NATIONAL INSURANCE
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            600575751
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            EMIRATES INSURANCE
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            Roadside Assistance 24/7 Emergency Hotline: 80073
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            METHAQ TAKAFUL INSURANCE
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            600565695
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="border border-gray-300 px-4 py-3">
+                            DUBAI INSURANCE
+                          </td>
+                          <td className="border border-gray-300 px-4 py-3">
+                            800382467
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
 
-              {/* How to Request */}
-              <div>
-                <h2 className="text-2xl font-bold text-foreground mb-6">How to Request Assistance</h2>
-                <div className="space-y-4">
-                  {steps.map((step, index) => (
-                    <div key={index} className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold">
-                        {index + 1}
+              {/* VIDEO SECTION */}
+              <div className="mt-12">
+                <video
+                  src="/new-Comp-1.mp4"
+                  controls
+                  className="w-full rounded-md shadow-lg"
+                />
+              </div>
+
+              {/* FAQ SECTION – same column, right after video */}
+              <div className="mt-16">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 text-[#022B69]">
+                  RSA FAQ&apos;s
+                </h2>
+
+                <div className="text-sm w-full">
+                  {rsaFaqItems.map((item, index) => {
+                    const isOpen = openIndex === index;
+                    return (
+                      <div key={item.question}>
+                        {/* Question row */}
+                        <button
+                          type="button"
+                          onClick={() => toggleFaq(index)}
+                          className={`w-full px-6 py-4 flex items-center gap-3 font-semibold text-lg bg-[#03204d] text-white ${
+                            index !== 0 ? "border-t border-white/20" : ""
+                          }`}
+                        >
+                          {/* + / − on the LEFT */}
+                          <span className="text-2xl leading-none">
+                            {isOpen ? "−" : "+"}
+                          </span>
+                          <span className="text-left">{item.question}</span>
+                        </button>
+
+                        {/* Answer */}
+                        {isOpen && (
+                          <div className="bg-white border border-[#022B69] px-6 py-4 text-gray-700 leading-relaxed">
+                            {item.answer}
+                          </div>
+                        )}
                       </div>
-                      <span className="text-foreground">{step}</span>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
+            {/* RIGHT COLUMN: sidebar */}
             <div>
               <Sidebar />
             </div>
           </div>
         </div>
       </section>
-
-      <FAQ items={faqs} />
     </main>
-  )
+  );
 }
