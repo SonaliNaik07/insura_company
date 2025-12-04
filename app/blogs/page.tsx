@@ -77,6 +77,26 @@ const blogPosts = [
     image: "/articles/a7.webp",
     slug: "how-to-find-the-best-travel-insurance-consultants-in-the-uae",
   },
+
+    {
+    id: 9,
+    title: "How to Find the Best Travel Insurance Consultants in the UAE",
+    excerpt:
+      "Even the best planned tours can backfire with unexpected uncertainties. Here’s how to choose trustworthy travel insurance consultants in the UAE.",
+    date: "September 29, 2025",
+    image: "/articles/a7.webp",
+    slug: "how-to-find-the-best-travel-insurance-consultants-in-the-uae",
+  },
+
+    {
+    id: 10,
+    title: "How to Find the Best Travel Insurance Consultants in the UAE",
+    excerpt:
+      "Even the best planned tours can backfire with unexpected uncertainties. Here’s how to choose trustworthy travel insurance consultants in the UAE.",
+    date: "September 29, 2025",
+    image: "/articles/a7.webp",
+    slug: "how-to-find-the-best-travel-insurance-consultants-in-the-uae",
+  },
 ]
 
 const recentPosts = blogPosts.slice(0, 5)
