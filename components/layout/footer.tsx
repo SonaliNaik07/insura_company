@@ -41,10 +41,10 @@ export function Footer() {
 
           {/* 2. Insurance */}
           <FooterColumn title="Insurance">
-            <FooterItem href="/insurance/health">Health Insurance</FooterItem>
-            <FooterItem href="/insurance/car">Car Insurance</FooterItem>
+            <FooterItem href="/insurance/health/health">Health Insurance</FooterItem>
+            <FooterItem href="/insurance/motor/car">Car Insurance</FooterItem>
             <FooterItem href="/insurance/business/business">Business Insurance</FooterItem>
-            <FooterItem href="/insurance/fleet">Fleet Insurance</FooterItem>
+            <FooterItem href="/insurance/motor/fleet">Fleet Insurance</FooterItem>
             <FooterItem href="/insurance/travel">Travel Insurance</FooterItem>
           </FooterColumn>
 

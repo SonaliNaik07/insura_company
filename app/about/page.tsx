@@ -1,4 +1,5 @@
 import { Search, Banknote, Ambulance, User, Clock, CheckCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
 export default function AboutPage() {
@@ -136,7 +137,7 @@ export default function AboutPage() {
   </h3>
 
   <a
-    href="/Insura-Company-profile-1.pdf"
+    href="https://insura.ae/wp-content/uploads/2024/08/Insura-Company-profile-1.pdf"
     download
     target="_blank"
     rel="noopener noreferrer"
@@ -180,16 +181,6 @@ export default function AboutPage() {
     className="w-full h-[520px] object-cover"
   />
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/60" />
-
-  {/* Vertical Name Tag */}
-  <div className="absolute top-6 right-0 bg-secondary px-3 py-4">
-    <span className="text-white font-semibold tracking-wide rotate-90 block origin-bottom-right">
-      Jessica Brown
-    </span>
-  </div>
-
   {/* Content */}
   <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
     <h3 className="text-2xl font-bold leading-tight mb-4">
@@ -229,71 +220,77 @@ export default function AboutPage() {
 </div>
 
 {/* Why Pick Insura */}
-<div className="bg-[oklch(0.32_0.08_248)] rounded-xl p-6 text-center">
-  <h3 className="text-xl font-bold text-white mb-6 leading-snug">
-    Why Pick Insura Your <br /> Insurance Provider?
-  </h3>
+<div className="bg-white rounded-xl p-6 shadow-md text-center">
 
-  <div className="grid grid-cols-2 gap-y-6 gap-x-4">
-    {/* Affordable Coverage */}
-    <div className="flex flex-col items-center">
-      <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-3">
-        <Banknote className="w-8 h-8 text-primary" />
-      </div>
-      <p className="text-sm text-white/90 font-medium">
-        Affordable <br /> Coverage
-      </p>
-    </div>
-
-    {/* Premium Medical */}
-    <div className="flex flex-col items-center">
-      <div className="w-14 h-14 bg-white rounded-lg flex items-center justify-center mb-3">
-        <Ambulance className="w-8 h-8 text-primary" />
-      </div>
-      <p className="text-base text-primary/90 font-medium">
-        Premium Medical <br /> Treatment Access
-      </p>
-    </div>
-
-    {/* 24/7 Support */}
-    <div className="flex flex-col items-center">
-      <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-3">
-<div className="relative w-8 h-8 text-primary">
-  <User className="w-8 h-8" />
-  <Clock className="w-3 h-3 absolute -bottom-1 -right-1 bg-white rounded-full p-[1px]" />
-</div>      </div>
-      <p className="text-base text-primary/90 font-medium">
-        24/7 <br /> Support
-      </p>
-    </div>
-
-    {/* Instant Claim */}
-    <div className="flex flex-col items-center">
-      <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-3">
-        <CheckCircle className="w-8 h-8 text-primary" />
-      </div>
-      <p className="text-base text-primary/90 font-medium">
-        Instant Claim <br /> Processing
-      </p>
-    </div>
+  {/* BLUE HEADER */}
+  <div className="bg-[oklch(0.32_0.08_248)] text-white rounded-lg px-4 py-4 mb-6">
+    <h3 className="text-xl font-bold leading-snug">
+      Reason's to choose <br /> iNSURA.ae powered by PIONEER?
+    </h3>
   </div>
 
-  {/* CTA */}
-  <Link
-    href="/insurance"
-    className="
-      mt-6 inline-block
-      bg-white
-      text-primary
-      px-6 py-3
-      rounded-lg
-      font-semibold
-      hover:bg-gray-100
-      transition
-    "
-  >
-    Buy Your Insurance Now!
-  </Link>
+  {/* ICON GRID */}
+  <div className="grid grid-cols-2 gap-y-10 gap-x-4">
+
+    {/* FIRST COLUMN - BUILDING */}
+    <div className="flex flex-col items-center">
+      <img
+        src="/icons/building.png"
+        alt="Building Icon"
+        className="w-16 h-16 object-contain mb-3"
+      />
+      <p className="text-sm text-primary font-medium leading-relaxed">
+        Collab with 100+ <br /> Insurance Companies
+      </p>
+    </div>
+
+    {/* SECOND COLUMN - USER CHECK */}
+    <div className="flex flex-col items-center">
+      <img
+        src="/icons/user-check.png"
+        alt="User Check Icon"
+        className="w-16 h-16 object-contain mb-3"
+      />
+      <p className="text-sm text-primary font-medium leading-relaxed">
+        Trusted by <br /> 1,00,000+ policyholders
+      </p>
+    </div>
+
+    {/* THIRD COLUMN - USER CLOCK */}
+    <div className="flex flex-col items-center">
+      <img
+        src="/icons/user-clock.jpg"
+        alt="24/7 Support Icon"
+        className="w-16 h-16 object-contain mb-3"
+      />
+      <p className="text-sm text-primary font-medium leading-relaxed">
+        24x7 Insurance <br /> Support
+      </p>
+    </div>
+
+    {/* FOURTH COLUMN - PEACE HAND */}
+    <div className="flex flex-col items-center">
+      <img
+        src="/icons/peaceIcon.jpg"
+        alt="Peace Hand Icon"
+        className="w-16 h-16 object-contain mb-3"
+      />
+      <p className="text-sm text-primary font-medium leading-relaxed">
+        Hassle Free <br /> Process
+      </p>
+    </div>
+
+  </div>
+
+  {/* CTA BUTTON */}
+  <Button
+  className="mt-8 bg-[oklch(0.32_0.08_248)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[oklch(0.32_0.08_228)] transition"
+>
+  Buy Your Insurance Now!
+</Button>
+
+
+
 </div>
           </div>
         </div>
