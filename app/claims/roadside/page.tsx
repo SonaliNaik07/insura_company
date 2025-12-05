@@ -64,7 +64,7 @@ export default function RoadsideAssistancePage() {
         breadcrumb="Roadside Assistance"
         title="Roadside Assistance"
         description="24/7 support for breakdowns, towing, and emergencies wherever you are in the UAE."
-          image="/road.png"
+          image="/business.png"
         
       />
 
