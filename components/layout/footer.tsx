@@ -19,17 +19,15 @@ export function Footer() {
           {/* 1. Logo + Text */}
           <div className="xl:col-span-2 space-y-4">
             <Link href="/" className="inline-flex items-center gap-2 mb-2">
-              <div className="flex items-center">
-                <svg viewBox="0 0 40 40" className="w-10 h-10 text-white">
-                  <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="20" cy="20" r="12" fill="none" stroke="currentColor" strokeWidth="2" />
-                  <circle cx="20" cy="20" r="6" fill="currentColor" />
-                </svg>
-                <span className="ml-2 text-2xl font-bold tracking-wide">
-                  iNSURA<span className="text-sm">.ae</span>
-                </span>
-              </div>
-            </Link>
+  <div className="flex items-center">
+    <img
+      src="/Insura_white_logo.webp"
+      alt="Insura Logo"
+      className="w-70 h-10 object-contain mb-10 "
+    />
+  </div>
+</Link>
+
 
             <p className="text-sm md:text-base text-[#d6e3ff] leading-relaxed max-w-md text-justify">
               Many brokers will help you with a quote online or over the phone,
@@ -41,10 +39,10 @@ export function Footer() {
 
           {/* 2. Insurance */}
           <FooterColumn title="Insurance">
-            <FooterItem href="/insurance/health">Health Insurance</FooterItem>
-            <FooterItem href="/insurance/car">Car Insurance</FooterItem>
+            <FooterItem href="/insurance/health/health">Health Insurance</FooterItem>
+            <FooterItem href="/insurance/motor/car">Car Insurance</FooterItem>
             <FooterItem href="/insurance/business/business">Business Insurance</FooterItem>
-            <FooterItem href="/insurance/fleet">Fleet Insurance</FooterItem>
+            <FooterItem href="/insurance/motor/fleet">Fleet Insurance</FooterItem>
             <FooterItem href="/insurance/travel">Travel Insurance</FooterItem>
           </FooterColumn>
 

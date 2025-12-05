@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import { Search, Banknote, Ambulance, User, Clock, CheckCircle } from "lucide-react"
 
 export function Sidebar() {
@@ -250,12 +251,13 @@ const PeaceIcon = () => (
   </div>
 
   {/* CTA BUTTON */}
-  <Link
-    href="/insurance"
-    className="mt-8 inline-block bg-[oklch(0.32_0.08_248)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[oklch(0.32_0.08_228)] transition"
-  >
-    Buy Your Insurance Now!
-  </Link>
+  <Button
+  className="mt-8 bg-[oklch(0.32_0.08_248)] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[oklch(0.32_0.08_228)] transition"
+>
+  Buy Your Insurance Now!
+</Button>
+
+
 
 </div>
 
