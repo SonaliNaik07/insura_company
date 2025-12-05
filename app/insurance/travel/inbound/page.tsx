@@ -5,41 +5,42 @@ import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
 import TravelFAQ from "@/components/global/TravelFAQ";
+import { Bookmark } from "lucide-react";
 
 // ---------- DATA ----------
 const INBOUND_FEATURES = [
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Medical Expenses & Hospitalization Abroad",
     details:
       "What if you fall ill or face a medical emergency far from home? With Insura’s coverage, unexpected hospital bills are handled, allowing you to focus on recovery, not expenses.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Trip Cancellation Protection",
     details:
       "Flights can get cancelled, but your trip doesn’t have to be a financial loss. Insura ensures that cancellations don’t ruin your adventure by covering unexpected costs.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Personal Accident Coverage",
     details:
       "Worrying about accidental injuries while travelling? Insura steps in to support you, covering medical bills and offering peace of mind.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Medical Transfer in Case of Illness or Accident",
     details:
       "If a medical evacuation is needed, Insura arranges a swift, safe transfer to the best care, so you’re never left stranded.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Delayed Departure (After 12 Hours)",
     details:
       "Missed flights or delayed departures don’t have to spoil your plans. Insura compensates for delays, making sure your journey continues smoothly.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Passport Loss Protection",
     details:
       "Lost your passport in a foreign country? Insura covers the costs and provides guidance, ensuring that a simple mishap doesn’t derail your adventure.",
@@ -66,11 +67,15 @@ function InboundFeatureCard({ icon, title, details }: InboundFeatureCardProps) {
 
         {/* Back Face */}
         <div className="absolute inset-0 bg-white rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <h3 className="text-[#06396B] font-semibold text-base">{title}</h3>
           <p className="text-gray-700 text-sm leading-relaxed">{details}</p>
-          <button className="bg-[#06396B] text-white px-4 py-1 rounded text-sm font-medium hover:bg-[#042c4f] transition">
-            Buy Now
-          </button>
+          <Link
+            href="#hero-section"
+            className="w-full sm:w-auto mx-auto border border-[#06396B] text-[#06396B] bg-white flex items-center justify-center gap-2 
+                      px-6 py-2 rounded-md text-sm font-medium 
+                      hover:bg-[#06396B] hover:text-white transition"
+          >
+            Buy Now <Bookmark className="w-4 h-4" fill="currentColor" />
+          </Link>
         </div>
       </div>
     </div>
@@ -85,7 +90,7 @@ export default function InboundTravelInsurancePage() {
       <FloatingActions />
 
       {/* HERO BANNER */}
-      <section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+      <section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
         {/* Background Image + Gradient */}
         <div className="absolute inset-0">
           <img
@@ -126,6 +131,12 @@ export default function InboundTravelInsurancePage() {
           MAIN GRID: LEFT (ALL CONTENT) + RIGHT (SIDEBAR)
          ================================================ */}
       <section className="py-16 bg-white">
+<div className="w-full bg-white py-10 md:py-14">
+    <h2 className="text-center text-[28px] md:text-[38px] font-extrabold text-[#042B4A] leading-tight">
+      Inbound Travel Insurance to Make Your Visit Safe & Protected
+    </h2>
+</div>
+
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-6 lg:gap-8">
           {/* LEFT: FORM + ALL CONTENT SECTIONS (INDEPENDENT) */}
         <div className="col-span-12 lg:col-span-8 space-y-16 pb-16 order-1 lg:order-1">
@@ -305,6 +316,11 @@ export default function InboundTravelInsurancePage() {
           </aside>
         </div>
       </section>
+            <style jsx global>{`
+  html {
+    scroll-behavior: smooth;
+  }
+`}</style>
     </main>
   );
 }

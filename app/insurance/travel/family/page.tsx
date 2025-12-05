@@ -3,40 +3,41 @@ import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
+import { Bookmark } from "lucide-react";
 
 // -------------------------------- Data --------------------------------
 
 const FAMILY_FEATURES = [
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Legal Compliance",
     short: "It ensures compliance with regulations, avoiding legal complications and penalties.",
     details:
-      "It ensures compliance with regulations, avoiding legal complications and penalties, so your family trip can stay focused on enjoyment instead of paperwork.",
+      "It ensures compliance with regulations, avoiding legal complications and penalties.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Trip Cancellation and Interruption",
     short:
-      "Protects your financial investment in the trip by reimbursing non-refundable expenses.",
+      "Protects your financial investment in the trip by reimbursing non-refundable expenses in case of trip cancellation or interruption due to covered reasons.",
     details:
       "Protects your financial investment in the trip by reimbursing non-refundable expenses in case of trip cancellation or interruption due to covered reasons.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Legal and Personal Liability Coverage",
     short:
-      "Covers legal and personal liability arising from accidents during your journey.",
+      "By mitigating financial risks, it enhances your business's ability to weather disruptions.",
     details:
-      "By mitigating financial and legal risks, it enhances your ability to handle unforeseen incidents while travelling with your family.",
+      "By mitigating financial risks, it enhances your business's ability to weather disruptions.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Lost or Stolen Belongings",
     short:
-      "Provides cover for loss or theft of baggage and personal belongings on your trip.",
+      "Displaying a commitment to business protection enhances trust among customers and partners, signalling proactive risk management.",
     details:
-      "Displaying a commitment to protecting your belongings enhances trust among your family and helps you manage losses from stolen or misplaced items.",
+      "Displaying a commitment to business protection enhances trust among customers and partners, signalling proactive risk management.",
   },
 ];
 
@@ -69,12 +70,17 @@ function FamilyFeatureCard({ icon, title, short, details }: FamilyFeatureCardPro
 
         {/* BACK */}
         <div className="absolute inset-0 bg-white flex flex-col items-center justify-center text-center px-8 py-6 shadow-md [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <img src={icon} className="w-6 h-6 mb-3" alt={title} />
           <p className="text-gray-700 text-sm leading-relaxed mb-4">{details}</p>
-          <button className="inline-flex items-center gap-1 text-sm font-semibold text-[#06396B]">
-            Buy Now
-            <span className="inline-block w-3 h-4 bg-[#06396B]" />
-          </button>
+          <Link
+            href="#hero-section"
+            className="w-full sm:w-auto mx-auto border border-[#06396B] text-[#06396B] bg-white flex items-center justify-center gap-2 
+                      px-6 py-2 rounded-md text-sm font-medium 
+                      hover:bg-[#06396B] hover:text-white transition"
+          >
+            Buy Now <Bookmark className="w-4 h-4" fill="currentColor" />
+          </Link>
+
+
         </div>
       </div>
     </div>
@@ -89,7 +95,7 @@ export default function FamilyTravelInsurancePage() {
       <FloatingActions />
 
       {/* HERO */}
-      <section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+<section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
         <div className="absolute inset-0">
           <img
             src="/images/family-hero.jpg"
@@ -236,12 +242,14 @@ export default function FamilyTravelInsurancePage() {
 
             {/* LEARN MORE */}
             <section className="space-y-2 pb-8">
-              <p className="text-lg font-semibold text-[#06396B]">
+              <p className="text-2xl font-semibold text-[#06396B]">
                 Learn more about
               </p>
-              <p className="text-2xl font-bold text-[#06396B]">
+            <Link href="#hero-section">
+              <p className="text-2xs md:text-2xs font-bold text-[#4B5563] cursor-pointer hover:underline">
                 How to Save Big on Travel Insurance in the UAE.
               </p>
+            </Link>
             </section>
           </div>
 
@@ -270,6 +278,11 @@ export default function FamilyTravelInsurancePage() {
           </aside>
         </div>
       </section>
+            <style jsx global>{`
+  html {
+    scroll-behavior: smooth;
+  }
+`}</style>
     </main>
   );
 }

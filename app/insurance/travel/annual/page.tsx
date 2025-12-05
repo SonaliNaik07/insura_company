@@ -3,29 +3,30 @@ import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
+import { Bookmark } from "lucide-react";
 
 // ---------- DATA ----------
 const MULTI_FEATURES = [
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Legal Compliance",
     details:
       "It ensures compliance with regulations, avoiding legal complications and penalties.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Trip Cancellation and Interruption",
     details:
       "Protects your financial investment in the trip by reimbursing non-refundable expenses in case of trip cancellation or interruption due to covered reasons.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Legal and Personal Liability Coverage",
     details:
       "By mitigating financial risks, it enhances your business's ability to weather disruptions.",
   },
   {
-    icon: "/home.svg",
+    icon: "/home.png",
     title: "Lost or Stolen Belongings",
     details:
       "Displaying a commitment to business protection enhances trust among customers and partners, signalling proactive risk management.",
@@ -68,11 +69,15 @@ function MultiFeatureCard({ icon, title, details }: MultiFeatureCardProps) {
 
         {/* Back Face */}
         <div className="absolute inset-0 bg-white rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <h3 className="text-[#06396B] font-semibold text-base">{title}</h3>
           <p className="text-gray-700 text-sm leading-relaxed">{details}</p>
-          <button className="bg-[#06396B] text-white px-4 py-1 rounded text-sm font-medium hover:bg-[#042c4f] transition">
-            Buy Now
-          </button>
+          <Link
+            href="#hero-section"
+            className="w-full sm:w-auto mx-auto border border-[#06396B] text-[#06396B] bg-white flex items-center justify-center gap-2 
+                      px-6 py-2 rounded-md text-sm font-medium 
+                      hover:bg-[#06396B] hover:text-white transition"
+          >
+            Buy Now <Bookmark className="w-4 h-4" fill="currentColor" />
+          </Link>
         </div>
       </div>
     </div>
@@ -87,7 +92,7 @@ export default function AnnualMultiTripInsurancePage() {
       <FloatingActions />
 
       {/* HERO BANNER */}
-      <section className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+<section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
         {/* Background Image + Gradient */}
         <div className="absolute inset-0">
           <img
@@ -136,7 +141,7 @@ export default function AnnualMultiTripInsurancePage() {
 
       {/* MAIN GRID: LEFT (ALL CONTENT) + RIGHT (SIDEBAR) */}
       <section className="bg-white py-12">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-8 lg:gap-10">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10">
           {/* LEFT: FORM + ALL CONTENT (independent) */}
           <div className="col-span-12 lg:col-span-8 order-1 lg:order-1 space-y-16">
             {/* FORM */}
@@ -246,7 +251,7 @@ export default function AnnualMultiTripInsurancePage() {
                 <p className="text-lg font-semibold text-[#06396B]">
                   Learn more about
                 </p>
-                <p className="text-2xl font-bold text-[#06396B]">
+                <p className="text-2xs font-bold text-[#4B5563]">
                   How to Save Big on Travel Insurance in the UAE.
                 </p>
               </div>
@@ -278,6 +283,11 @@ export default function AnnualMultiTripInsurancePage() {
           </aside>
         </div>
       </section>
+            <style jsx global>{`
+  html {
+    scroll-behavior: smooth;
+  }
+`}</style>
     </main>
   );
 }

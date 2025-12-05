@@ -49,12 +49,15 @@ export function QuoteSection() {
             </p>
 
             {/* CTA BUTTON */}
-            <Link
-              href="/quote"
+            <a
+              href="https://api.whatsapp.com/send?phone=971585229332&text=Hello!%20Thank%20you%20for%20reaching%20out%20to%20insura.%20We%27re%20here%20to%20help%20you%20with%20all%20your%20insurance%20needs.%20How%20can%20we%20assist%20you%20today%3F"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-primary text-white px-8 py-3 rounded-lg font-semibold shadow-md hover:bg-primary/90 transition-all"
             >
               Get Quote →
-            </Link>
+            </a>
+
           </div>
 
         </div>
