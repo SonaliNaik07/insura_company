@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
-import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
 import TravelFAQ from "@/components/global/TravelFAQ";
 import { Bookmark } from "lucide-react";
+import { useState } from "react";
 
 // ---------- DATA ----------
 const INBOUND_FEATURES = [
@@ -54,24 +54,36 @@ type InboundFeatureCardProps = {
   details: string;
 };
 
-function InboundFeatureCard({ icon, title, details }: InboundFeatureCardProps) {
+
+export function InboundFeatureCard({ icon, title, details }: InboundFeatureCardProps) {
+  const [flipped, setFlipped] = useState(false)
+
   return (
-    <div className="group [perspective:1000px]">
-      {/* only change: h-64 -> h-80 (kept as you had) */}
-      <div className="relative w-full h-80 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-        {/* Front Face */}
+    <div 
+      className="group [perspective:1000px] cursor-pointer"
+      onClick={() => setFlipped(!flipped)} // 👉 Mobile tap flip
+    >
+      <div
+        className={`relative w-full h-80 transition-transform duration-700 [transform-style:preserve-3d]
+        ${flipped 
+          ? "[transform:rotateY(180deg)]" 
+          : "group-hover:[transform:rotateY(180deg)]" // 👉 Desktop hover flip
+        }`}
+      >
+        {/* FRONT FACE */}
         <div className="absolute inset-0 bg-[#06396B] rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [backface-visibility:hidden]">
           <img src={icon} alt={title} className="w-10 h-10" />
           <h3 className="text-white font-semibold text-base">{title}</h3>
         </div>
 
-        {/* Back Face */}
+        {/* BACK FACE */}
         <div className="absolute inset-0 bg-white rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
           <p className="text-gray-700 text-sm leading-relaxed">{details}</p>
+          
           <Link
             href="#hero-section"
-            className="w-full sm:w-auto mx-auto border border-[#06396B] text-[#06396B] bg-white flex items-center justify-center gap-2 
-                      px-6 py-2 rounded-md text-sm font-medium 
+            className="w-full sm:w-auto mx-auto border border-[#06396B] text-[#06396B] bg-white 
+                      flex items-center justify-center gap-2 px-6 py-2 rounded-md text-sm font-medium 
                       hover:bg-[#06396B] hover:text-white transition"
           >
             Buy Now <Bookmark className="w-4 h-4" fill="currentColor" />
@@ -79,7 +91,7 @@ function InboundFeatureCard({ icon, title, details }: InboundFeatureCardProps) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 // ---------- MAIN PAGE ----------
@@ -87,7 +99,6 @@ export default function InboundTravelInsurancePage() {
   return (
     <main className="bg-white text-gray-900">
       {/* Floating action buttons */}
-      <FloatingActions />
 
       {/* HERO BANNER */}
       <section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">

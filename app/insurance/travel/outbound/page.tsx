@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
-import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
 import TravelFAQ from "@/components/global/TravelFAQ";
 import { Bookmark } from "lucide-react";
@@ -36,15 +35,25 @@ const OUTBOUND_FEATURES = [
 
 // ---------- CARD UI ----------
 type OutboundFeatureCardProps = {
-  icon: string;
-  title: string;
-  details: string;
-};
+  icon: string
+  title: string
+  details: string
+}
 
-function OutboundFeatureCard({ icon, title, details }: OutboundFeatureCardProps) {
+import { useState } from "react";
+
+export function OutboundFeatureCard({ icon, title, details }: OutboundFeatureCardProps) {
+  const [flipped, setFlipped] = useState(false)
+
   return (
-    <div className="group [perspective:1000px]">
-      <div className="relative w-full h-64 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+    <div
+      className="group [perspective:1000px] cursor-pointer"
+      onClick={() => setFlipped(!flipped)}
+    >
+      <div
+        className={`relative w-full h-64 transition-transform duration-700 [transform-style:preserve-3d]
+        ${flipped ? "[transform:rotateY(180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}
+      >
         {/* Front Face */}
         <div className="absolute inset-0 bg-[#06396B] rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [backface-visibility:hidden]">
           <img src={icon} alt={title} className="w-10 h-10" />
@@ -65,7 +74,7 @@ function OutboundFeatureCard({ icon, title, details }: OutboundFeatureCardProps)
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 // ---------- MAIN PAGE ----------
@@ -73,14 +82,13 @@ export default function OutboundTravelInsurancePage() {
   return (
     <main className="bg-white text-gray-900">
       {/* Floating action buttons */}
-      <FloatingActions />
 
       {/* HERO BANNER */}
       <section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
         {/* Background Image + Gradient */}
         <div className="absolute inset-0">
           <img
-            src="/images/outbound-hero.jpg"
+            src="/bg-Image3.jpg"
             alt="Traveler with mask and bag"
             className="w-full h-full object-cover object-right"
           />
@@ -189,7 +197,7 @@ export default function OutboundTravelInsurancePage() {
                 <div className="grid lg:grid-cols-12 gap-10 items-center">
                   <div className="lg:col-span-5 rounded-xl overflow-hidden shadow-lg">
                     <img
-                      src="/images/outbound-family.jpg"
+                      src="/man-with-mask.webp"
                       className="w-full h-full object-cover"
                       alt="Family travelling together"
                     />

@@ -414,7 +414,7 @@ export default function TravelInsurancePage() {
       {/* Buy Button */}
 <a
   href="#travel-form"
-  className="inline-flex items-center bg-[#06396B] text-amber-300 px-6 py-3 rounded-md font-semibold shadow-md hover:bg-[#022647] transition-all"
+  className="inline-flex items-center bg-[#06396B] text-amber-300 px-6 py-3  font-semibold shadow-md hover:bg-[#022647] transition-all"
 >
   Buy Now
 </a>
@@ -423,59 +423,6 @@ export default function TravelInsurancePage() {
     </div>
   </div>
 </section>
-
-
-            {/* Benefits of Outbound Insurance – */}
-          <section className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-                Benefits of Outbound Insurance –
-              </h2>
-
-              <ul className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Entire Travel Safety :-
-                  </p>
-                  <p>
-                    Outbound insurance provides coverage for numerous travel
-                    risks like trip cancellations, delays or interruptions,
-                    ensuring that unforeseen events won’t financially strain
-                    travellers.
-                  </p>
-                </li>
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Coverage for Medical Emergencies :-
-                  </p>
-                  <p>
-                    It protects tourists from exorbitant medical expenses
-                    outside of the United Arab Emirates by offering critical
-                    medical coverage for situations overseas, including hospital
-                    stays, treatments and emergency evacuations.
-                  </p>
-                </li>
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Protection Against Baggage Loss and Theft :-
-                  </p>
-                  <p>
-                    This insurance provides comfort if priceless objects are
-                    missing while travelling by guarding against the loss or
-                    theft of luggage and personal belongings.
-                  </p>
-                </li>
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Legal Support International :-
-                  </p>
-                  <p>
-                    It offers support with litigation, compensation claims and
-                    legal actions conducted abroad in cases when tourists may
-                    encounter legal difficulties.
-                  </p>
-                </li>
-              </ul>
-            </section>
 
             {/* Start Your Journey Today */}
           <section className="space-y-6">
@@ -526,44 +473,57 @@ export default function TravelInsurancePage() {
             </div>
 
             {/* NOT STICKY — Reasons Section */}
-            <div className="space-y-6">
-              <div className="bg-[#06396B] text-white px-6 py-4 rounded-lg">
-                <h3 className="text-lg font-semibold">
-                  Reason&apos;s to choose iNSURA.ae powered by PIONEER?
-                </h3>
-              </div>
+{/* Reasons to choose iNSURA.ae */}
+<div className="space-y-6">
+  {/* Header */}
+  <div className="bg-[#06396B] text-white px-6 py-4 rounded-lg">
+    <h3 className="text-center text-base font-semibold">
+      Reason&apos;s to choose iNSURA.ae powered by PIONEER?
+    </h3>
+  </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 text-center text-gray-800">
-                <div className="flex flex-col items-center gap-3">
-                  <Building className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    Collab with 100+ <br />
-                    Insurance Companies
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <UserCheck className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    Trusted by 1,00,000+ <br />
-                    policyholders
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <Clock className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    24x7 Insurance <br />
-                    Support
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <Hand className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    Hassle Free <br />
-                    Process
-                  </p>
-                </div>
-              </div>
-            </div>
+  {/* Icons Grid */}
+  <div className="grid grid-cols-2 gap-8 text-center">
+    <div className="flex flex-col items-center gap-3">
+      <Building className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        Collab with 100+ <br /> Insurance Companies
+      </p>
+    </div>
+
+    <div className="flex flex-col items-center gap-3">
+      <UserCheck className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        Trusted by 1,00,000+ <br /> policyholders
+      </p>
+    </div>
+
+    <div className="flex flex-col items-center gap-3">
+      <Clock className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        24x7 Insurance <br /> Support
+      </p>
+    </div>
+
+    <div className="flex flex-col items-center gap-3">
+      <Hand className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        Hassle Free <br /> Process
+      </p>
+    </div>
+  </div>
+
+  {/* BUY NOW button */}
+  <div className="pt-2 flex justify-center">
+    <Link
+      href="#hero-section"
+      className="bg-[#06396B] text-amber-300 px-6 py-2 rounded-md font-semibold text-sm hover:bg-[#052d54] transition"
+    >
+      Buy Now
+    </Link>
+  </div>
+</div>
+
           </aside>
         </div>
       </section>

@@ -4,8 +4,6 @@ import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
 
-// ---------------------------- MAIN PAGE --------------------------------
-
 export default function HouseInsurancePage() {
   return (
     <main className="bg-white text-gray-900">
@@ -17,7 +15,7 @@ export default function HouseInsurancePage() {
         {/* Background Image + Gradient */}
         <div className="absolute inset-0">
           <img
-            src="/images/house-hero.jpg"
+            src="/bg-Image3.jpg"
             alt="House Insurance"
             className="w-full h-full object-cover object-right"
           />
@@ -51,18 +49,18 @@ export default function HouseInsurancePage() {
 
       {/* MAIN GRID: LEFT (ALL CONTENT) + RIGHT (SIDEBAR) */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10">
+        {/* full-width image just under hero */}
+        <div className="w-full">
+          <img
+            src="/group.webp"
+            alt="Agent discussing Car Insurance - iNSURA.ae"
+            className="w-full max-h-[460px] object-cover"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-10 mt-10">
           {/* LEFT COLUMN – ALL CONTENT */}
           <div className="col-span-12 lg:col-span-8 order-1 lg:order-1 space-y-16 pb-12">
-            {/* TOP IMAGE (Agent / Car) */}
-            <section>
-              <img
-                src="/images/house-car-insurance.jpg"
-                alt="Agent discussing Car Insurance - iNSURA.ae"
-                className="w-full rounded-xl shadow-md"
-              />
-            </section>
-
             {/* DESCRIPTION SECTION */}
             <section className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-[#06396B]">
@@ -137,7 +135,7 @@ export default function HouseInsurancePage() {
               <div className="grid lg:grid-cols-12 gap-8 items-center">
                 <div className="lg:col-span-5">
                   <img
-                    src="/images/agent-car-discussion.jpg"
+                    src="/services-details-house.webp"
                     alt="Agent discussing Car Insurance - iNSURA.ae"
                     className="w-full rounded-xl shadow-md"
                   />
@@ -187,9 +185,12 @@ export default function HouseInsurancePage() {
                 <p className="text-base md:text-lg font-semibold text-[#06396B]">
                   Still Any Queries?
                 </p>
-                <button className="inline-flex items-center justify-center px-6 py-2 rounded-md bg-[#06396B] text-white text-sm font-semibold shadow hover:bg-[#042c4f] transition">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-6 py-2 rounded-md bg-[#06396B] text-white text-sm font-semibold shadow hover:bg-[#042c4f] transition"
+                >
                   Get in Touch
-                </button>
+                </Link>
               </div>
             </section>
           </div>

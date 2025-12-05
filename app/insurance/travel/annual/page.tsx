@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import ServiceSidebar from "@/components/global/ServiceSidebar";
-import FloatingActions from "@/components/global/FloatingActions";
 import TravelLeadForm from "@/components/global/TravelLeadForm";
 import { Bookmark } from "lucide-react";
 
@@ -89,14 +88,13 @@ export default function AnnualMultiTripInsurancePage() {
   return (
     <main className="bg-white text-gray-900">
       {/* Floating action buttons */}
-      <FloatingActions />
 
       {/* HERO BANNER */}
-<section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
+      <section id="hero-section" className="relative overflow-hidden min-h-[60vh] lg:min-h-[75vh]">
         {/* Background Image + Gradient */}
         <div className="absolute inset-0">
           <img
-            src="/images/multi-trip-hero.jpg"
+            src="/bg-image3.jpg"
             alt="Traveler with suitcase"
             className="w-full h-full object-cover object-right"
           />
