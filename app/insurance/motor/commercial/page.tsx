@@ -1,10 +1,10 @@
-import { LeadForm } from "@/components/forms/lead-form"
+"use client"
 import { Sidebar } from "@/components/content/sidebar"
 import { Button } from "@/components/ui/button"
 import { WhyChooseInsura } from "@/components/content/why-choose-insura"
 import { Check, Shield, Home, FileText, AlertTriangle } from "lucide-react"
 import { FAQ } from "@/components/content/faq"
-import { Truck } from "lucide-react"
+import { Bookmark } from "lucide-react"
 
 const coverageTypes = [
   { title: "Accident Coverage", description: "Covers repair or replacement costs for damage to your commercial vehicle resulting from accidents. This includes damages regardless of who is at fault." },
@@ -26,12 +26,46 @@ const faqs = [
   },
   {
     question: "What does iNSURA.ae powered by PIONEER Commercial Vehicle Insurance cover?",
-    answer:
-      "The coverage includes: Accident Protection, Theft and Vandalism, Fire and Natural Disasters, Third-Party Liability, Goods in Transit, Roadside Assistance, Rental Vehicle Coverage, and Driver Coverage.",
+    answer: `
+  <p><strong>The coverage includes:</strong></p>
+
+  <ul class="list-disc pl-6 space-y-2 mt-3">
+    <li><strong>Accident Protection:</strong> Repairs and compensation for damages and injuries.</li>
+
+    <li><strong>Theft and Vandalism:</strong> Replacement or repair if stolen or damaged.</li>
+
+    <li><strong>Fire and Natural Disasters:</strong> Protection against fire and natural hazards.</li>
+
+    <li><strong>Third–Party Liability:</strong> Coverage for damages or injuries caused to others.</li>
+
+    <li><strong>Goods in Transit:</strong> Protection for cargo during transportation.</li>
+
+    <li><strong>Roadside Assistance:</strong> Emergency services like towing and fuel delivery.</li>
+
+    <li><strong>Rental Vehicle Coverage:</strong> Cost of renting a replacement vehicle.</li>
+
+    <li><strong>Driver Coverage:</strong> Personal accident and liability coverage for drivers.</li>
+  </ul>
+`,
   },
+
   {
     question:"What factors affect the cost of Commercial Vehicle Insurance?",
-    answer:"The cost of Commercial Vehicle Insurance is influenced by factors such as: Type of Vehicle, Usage, Driver History, Coverage Options and Fleet Size.",
+answer: `
+  <p><strong>The cost of Commercial Vehicle Insurance is influenced by factors such as:</strong></p>
+
+  <ul class="list-disc pl-6 space-y-2 mt-3">
+    <li><strong>Type of Vehicle:</strong> The make, model, and value of the vehicle.</li>
+
+    <li><strong>Usage:</strong> How the vehicle is used in business operations.</li>
+
+    <li><strong>Driving History:</strong> The driving records of the vehicle operators.</li>
+
+    <li><strong>Coverage Options:</strong> The extent of coverage and any additional features.</li>
+
+    <li><strong>Fleet Size:</strong> For businesses with multiple vehicles, fleet size and management can affect pricing.</li>
+  </ul>
+`,
   },
   {
     question:"What is the process for renewing my Commercial Vehicle Insurance policy?",
@@ -46,7 +80,7 @@ export default function CommercialInsurancePage() {
       <section className="relative overflow-hidden bg-primary min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/motor-hero.jpg"
             alt="Bike Insurance"
             className="w-full h-full object-center"
           />
@@ -141,9 +175,25 @@ export default function CommercialInsurancePage() {
                 {type.description}
               </p>
 
-                        <Button className="bg-primary px-6 py-2">
-                          Buy Now
-                        </Button>
+                        <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+  <Bookmark className="w-4 h-4" />
+</a>
+
+
                       </div>
                     </div>
                   </div>

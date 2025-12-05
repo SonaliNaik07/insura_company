@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import { WhyChooseInsura } from "@/components/content/why-choose-insura"
 import { FAQ } from "@/components/content/faq"
-import { IdCard, CreditCard, Leaf, Lock } from "lucide-react"
+import { IdCard, CreditCard, Leaf, Lock, Bookmark } from "lucide-react"
 
 const coverageTypes = [
   {
@@ -34,24 +34,28 @@ const coverageTypes = [
 
 const faqs = [
   {
-    question: "What is covered under individual medical insurance?",
+    question: "What does individual health insurance in the UAE typically cover?",
     answer:
-      "Individual medical insurance covers hospitalization, outpatient care, maternity (optional), dental, vision, and emergency treatments depending on your plan.",
+      "Individual health insurance plans in the UAE generally cover a range of medical expenses including hospitalization, outpatient treatments, surgeries, consultations with specialists, diagnostic tests, and prescription medications. Some plans may also cover dental and optical care, maternity benefits, and wellness programs, depending on the specific policy and provider.",
   },
   {
-    question: "Is there a waiting period for pre-existing conditions?",
+    question: "Are there different types of health insurance plans available in the UAE?",
     answer:
-      "Yes, most plans have a waiting period of 6-24 months for pre-existing conditions. The exact period depends on the insurer and plan.",
+      "Yes, health insurance plans in the UAE vary in coverage and cost. Common types include basic plans that cover essential medical needs, comprehensive plans that offer extensive coverage including maternity and chronic conditions, and high-end plans that may include access to a wider network of hospitals and additional benefits such as international coverage.",
   },
   {
-    question: "Can I add family members to my plan?",
+    question: "How can I choose the right health insurance plan for my needs?",
     answer:
-      "Individual plans cover only the policyholder. For family coverage, consider our Family Health Insurance plans.",
+      "When choosing a health insurance plan in the UAE, consider factors such as your medical needs, budget, preferred hospitals and clinics, coverage for pre-existing conditions, maternity benefits if applicable, and whether you require international coverage. It’s advisable to compare different plans from reputable insurers and consider the network of hospitals and clinics included in the plan.",
   },
   {
-    question: "How do I make a claim?",
+    question: "Do health insurance plans in the UAE cover pre-existing conditions?",
     answer:
-      "For network hospitals, simply show your insurance card for cashless treatment. For reimbursement claims, submit your bills and medical reports through our online portal.",
+      "Yes, many health insurance plans in the UAE do cover pre-existing conditions, although there may be waiting periods before coverage becomes effective. It’s important to check the specific terms and conditions of the policy as coverage for pre-existing conditions can vary between insurers and plans.",
+  },
+  {
+    question: "What are the benefits of having health insurance in the UAE?",
+    answer: "Health insurance in the UAE provides several benefits including access to quality healthcare services without worrying about high medical costs. It ensures timely medical attention, coverage for emergency treatments, and access to specialists and hospitals of your choice. Health insurance also offers peace of mind, knowing that you and your family are financially protected against unexpected medical expenses. Additionally, having health insurance is mandatory for residents in the UAE under the Dubai Health Insurance Law and the mandatory health insurance scheme in Abu Dhabi, ensuring compliance with local regulations.",
   },
 ]
 
@@ -73,7 +77,7 @@ export default function IndividualMedicalPage() {
       <section className="relative overflow-hidden bg-primary min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/family2.jpg"
             alt="Bike Insurance"
             className="w-full h-full object-center"
           />
@@ -301,9 +305,24 @@ export default function IndividualMedicalPage() {
                             {type.description}
                           </p>
 
-                          <Button className="bg-primary px-6 py-2">
-                            Buy Now
-                          </Button>
+                          <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+  <Bookmark className="w-4 h-4" />
+</a>
+
                         </div>
                       </div>
                     </div>

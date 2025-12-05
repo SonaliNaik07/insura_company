@@ -15,15 +15,22 @@ interface FAQProps {
 export function FAQ({ title = "Frequently Asked Questions", items }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
+  // Step 1: Clean invalid FAQs BEFORE rendering anything
+  const cleanedItems = items.filter(
+    (faq) => faq && faq.question?.trim() && faq.answer?.trim()
+  )
+
   return (
     <section className="py-2 bg-background">
-
       <div className="space-y-1 max-w-4xl mx-auto px-4">
-        {items.map((faq, index) => {
+
+        {/* Step 2: Map through ONLY cleaned items */}
+        {cleanedItems.map((faq, index) => {
           const isOpen = openIndex === index
 
           return (
-            <div key={faq.question}>
+            <div key={index}>
+              
               {/* Question */}
               <button
                 type="button"
@@ -41,9 +48,10 @@ export function FAQ({ title = "Frequently Asked Questions", items }: FAQProps) {
               {/* Answer */}
               {isOpen && (
                 <div className="bg-white text-muted-foreground px-6 py-4 border border-t-0 border-[#003566]">
-                  <div className="text-xl md:text-xl leading-relaxed">
-                    {faq.answer}
-                  </div>
+                  <div
+                    className="text-xl md:text-xl leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: faq.answer }}
+                  ></div>
                 </div>
               )}
             </div>

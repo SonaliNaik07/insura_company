@@ -1,11 +1,8 @@
 "use client"
 
-import { PageHero } from "@/components/ui/page-hero"
-import { LeadForm } from "@/components/forms/lead-form"
 import { Sidebar } from "@/components/content/sidebar"
 import { WhyChooseInsura } from "@/components/content/why-choose-insura"
 import { FAQ } from "@/components/content/faq"
-import { Check, Users } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -14,6 +11,7 @@ import {
   LayoutGrid,
   User,
   Tag,
+  Bookmark
 } from "lucide-react"
 
 
@@ -42,17 +40,40 @@ const coverageTypes = [
 
 const faqs = [
   {
-    question: "Is group medical insurance mandatory in UAE?",
-    answer: "Yes, employers in Dubai and Abu Dhabi are required by law to provide health insurance to their employees.",
+    question: "What is Group Health Insurance?",
+    answer: "Group Health Insurance is a type of health coverage provided to a group of individuals, usually employees of a company, under a single policy. It offers comprehensive health benefits to all members of the group, providing coverage for medical expenses, treatments, and other health-related services.",
   },
   {
-    question: "What's the minimum group size?",
-    answer: "Group medical insurance is typically available for companies with 2 or more employees.",
-  },
+  question: "What does Group Health Insurance by Insura.ae cover?",
+  answer: `
+    iNSURA.ae Powered by PIONEER Group Health Insurance typically covers:
+
+    <ul class="list-disc pl-6 space-y-2 mt-3">
+      <li><strong>Inpatient Care:</strong> Hospitalization, surgeries, and treatments requiring an overnight stay.</li>
+      <li><strong>Outpatient Care:</strong> Doctor visits, specialist consultations, diagnostic tests, and treatments not requiring hospitalization.</li>
+      <li><strong>Emergency Services:</strong> Coverage for emergency medical treatment and ambulance services.</li>
+      <li><strong>Prescription Medications:</strong> Costs for prescribed medications and drugs.</li>
+      <li><strong>Maternity Benefits:</strong> Coverage for prenatal and postnatal care, childbirth, and related expenses.</li>
+      <li><strong>Preventive Services:</strong> Screenings, vaccinations, and wellness check-ups.</li>
+      <li><strong>Mental Health:</strong> Counseling and treatment for mental health conditions.</li>
+      <li><strong>Pre-existing Conditions:</strong> Coverage for certain pre-existing conditions, subject to policy terms.</li>
+    </ul>
+  `,
+},
+
+
   {
-    question: "Can employees add dependents?",
+    question: "Does the Group Health Insurance policy cover international medical expenses?",
     answer:
-      "Yes, employees can add family members including spouse and children to the group plan, usually at an additional premium.",
+      "Coverage for international medical expenses may vary depending on the policy. Some Group Health Insurance plans include international coverage for emergency medical treatment, while others may offer it as an optional add-on. Check with Insura.ae for details on international coverage options.",
+  },
+  {
+    question: "Are dependents covered under the Group Health Insurance plan?",
+    answer: "Coverage for dependents, such as spouses and children, is often included but may depend on the specific policy. Employers or organizations will provide information on dependent coverage options as part of the Group Health Insurance plan.",
+  },
+  {
+    question: "What happens if an employee leaves the company?",
+    answer: "When an employee leaves the company, their Group Health Insurance coverage typically ends. The specifics will be outlined in the policy terms. Employees may need to explore alternative health insurance options or discuss continuation coverage with Insura.ae if available.",
   },
 ]
 
@@ -74,7 +95,7 @@ export default function GroupMedicalPage() {
       <section className="relative overflow-hidden bg-primary min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/family2.jpg"
             alt="Bike Insurance"
             className="w-full h-full object-center"
           />
@@ -271,9 +292,24 @@ export default function GroupMedicalPage() {
                                           {type.description}
                                         </p>
               
-                                        <Button className="bg-primary px-6 py-2">
-                                          Buy Now
-                                        </Button>
+                                        <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+  <Bookmark className="w-4 h-4" />
+</a>
+
                                       </div>
                                     </div>
                                   </div>

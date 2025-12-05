@@ -13,7 +13,7 @@ export default function AboutPage() {
       alt="About Hero"
       className="w-full h-full object-cover opacity-50"
     />
-    <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary/90 to-transparent" />
+    <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary/70 to-transparent" />
   </div>
 
   {/* Content */}
@@ -70,7 +70,7 @@ export default function AboutPage() {
                 {/* Image Section */}
 <div className="mt-10 mb-40">
   <img
-    src="/family3.jpg"
+    src="/family3.webp"
     alt="Protect What You Love with Insura.ae"
     className="w-full object-cover"
   />
@@ -175,7 +175,7 @@ export default function AboutPage() {
 <div className="relative rounded-lg overflow-hidden shadow-md">
   {/* Background Image */}
   <img
-    src="/oldlady.jpg"
+    src="/grand1.avif"
     alt="Contact Support"
     className="w-full h-[520px] object-cover"
   />

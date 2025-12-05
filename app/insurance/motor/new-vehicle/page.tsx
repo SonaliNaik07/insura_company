@@ -1,8 +1,10 @@
+"use client"
+
 import { Sidebar } from "@/components/content/sidebar"
 import { WhyChooseInsura } from "@/components/content/why-choose-insura"
 import { Button } from "@/components/ui/button"
 import { FAQ } from "@/components/content/faq"
-import { Check, Shield, Home, FileText, AlertTriangle } from "lucide-react"
+import { Home, Bookmark } from "lucide-react"
 
 
 const coverageTypes = [
@@ -53,7 +55,7 @@ export default function NewVehicleInsurancePage() {
       <section className="relative overflow-hidden bg-primary min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/motor-hero.jpg"
             alt="Bike Insurance"
             className="w-full h-full object-center"
           />
@@ -145,9 +147,24 @@ export default function NewVehicleInsurancePage() {
                 {type.description}
               </p>
 
-                        <Button className="bg-primary px-6 py-2">
-                          Buy Now
-                        </Button>
+                        <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+  <Bookmark className="w-4 h-4" />
+</a>
+
                       </div>
                     </div>
                   </div>

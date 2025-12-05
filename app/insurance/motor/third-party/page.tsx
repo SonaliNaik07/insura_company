@@ -54,7 +54,7 @@ export default function ThirdPartyInsurancePage() {
       <section className="relative overflow-hidden bg-primary min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/motor-hero.jpg"
             alt="Bike Insurance"
             className="w-full h-full object-center"
           />

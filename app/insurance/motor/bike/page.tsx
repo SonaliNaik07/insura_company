@@ -6,7 +6,7 @@ import { FAQ } from "@/components/content/faq"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Bike } from "lucide-react"
+import { Bike, Bookmark } from "lucide-react"
 import { useState } from "react"
 
 
@@ -161,15 +161,15 @@ className="mt-2 h-11 md:h-14 rounded-xl bg-blue-50 border-none"
                   <input
                     type="file"
                     className="
-                       w-full
-    text-sm
-    cursor-pointer
-    file:w-full
-    file:py-3
-    file:px-4
-    file:border-0
-    file:bg-gray-300
-    file:text-black
+                      text-sm
+                      cursor-pointer
+                      file:mr-4
+                      file:py-2
+                      file:px-4
+                      file:border-0
+                      file:bg-gray-300
+                      file:text-black
+                      hover:file:bg-gray-400
                     "
                   />
               </div>
@@ -266,9 +266,24 @@ className="mt-2 h-11 md:h-14 rounded-xl bg-blue-50 border-none"
                 {type.description}
               </p>
 
-                        <Button className="bg-primary px-6 py-2">
-                          Buy Now
-                        </Button>
+                        <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+  <Bookmark className="w-4 h-4" />
+</a>
+
                       </div>
                     </div>
                   </div>
