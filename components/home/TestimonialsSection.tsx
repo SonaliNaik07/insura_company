@@ -38,31 +38,69 @@ export default function TestimonialsAndPartners() {
             </h2>
 
             {/* Review Card */}
-            <div className="bg-[#F6F8FB] border border-[#E5E9F2] rounded-xl p-6 md:p-7 shadow-sm">
-              <p className="text-sm leading-relaxed text-[#3A4750] mb-4">
-                {testimonials[0].review}
-              </p>
+           {/* Review Card */}
+<div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+  
+  {/* Top */}
+  <div className="flex justify-between items-start">
+    <div>
+      <p className="font-semibold text-sm text-gray-800">Excellent rating</p>
+      <p className="text-xs text-gray-500 -mt-1">Based on 117 reviews</p>
+      <Image
+        src="/google.svg" // ← Add google logo here (png or svg)
+        width={70}
+        height={20}
+        alt="Google"
+        className="mt-1"
+      />
+    </div>
 
-              <div className="flex justify-between items-center mt-4">
-                <div className="flex items-center gap-3">
-                  <Image src={testimonials[0].avatar} width={36} height={36} className="rounded-full" alt="customer" />
-                  <div className="text-xs">
-                    <p className="font-semibold text-[#0A2342]">{testimonials[0].name}</p>
-                    <p className="text-gray-500 text-[11px]">{testimonials[0].date}</p>
-                  </div>
-                </div>
+    {/* ⭐⭐⭐⭐⭐ */}
+    <div className="flex">
+      {Array(5)
+        .fill(0)
+        .map((_, i) => (
+          <span key={i} className="text-[#FFC107] text-xl leading-none">★</span>
+        ))}
+      <span className="text-gray-400 text-xl -ml-1"></span>
+    </div>
+  </div>
 
-                <div className="flex gap-2">
-                  <button className="hidden lg:flex w-7 h-7 border border-gray-300 rounded-full items-center justify-center">
-                    <ChevronLeft size={14} className="text-[#0A2342]" />
-                  </button>
-                  <button className="hidden lg:flex w-7 h-7 border border-gray-300 rounded-full items-center justify-center">
-                    <ChevronRight size={14} className="text-[#0A2342]" />
-                  </button>
-                </div>
-              </div>
+  {/* Review Text */}
+  <p className="text-sm text-gray-700 mt-3 leading-relaxed">
+    The response was very good and it was nice to work with Shabha do our first
+    transaction. It will not be the last. Good job Shabha
+  </p>
 
-            </div>
+  {/* Profile + Arrows */}
+  <div className="flex justify-between items-center mt-5">
+    <div className="flex items-center gap-3">
+      <Image
+        src="/avatar.png"
+        width={40}
+        height={40}
+        className="rounded-full"
+        alt="customer avatar"
+      />
+      <div className="text-xs">
+        <p className="font-bold text-gray-900">adil katrak</p>
+        <p className="text-gray-500 text-[11px]">2024-08-09</p>
+      </div>
+    </div>
+
+    {/* Buttons */}
+    <div className="flex gap-3">
+      <button className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100">
+        <ChevronLeft size={14} className="text-gray-700" />
+      </button>
+      <button className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-300 hover:bg-gray-100">
+        <ChevronRight size={14} className="text-gray-700" />
+      </button>
+    </div>
+  </div>
+
+</div>
+
           </div>
 
           {/* RIGHT IMAGE BLOCK */}
