@@ -32,8 +32,8 @@ const quoteTabs: QuoteTabConfig[] = [
     icon: Home,
     title: "Car Insurance Quote:",
     description:
-      "Drive with confidence knowing iNSURA.ae Powered by PIONEER INSURANCE has you covered with top-tier car insurance, ensuring you’re protected on every journey. Say goodbye to time-consuming insurance processes! With iNSURA in the UAE, you can secure instant best car insurance in UAE in just 30 minutes.",
-    href: "/car-insurance",
+      "Drive with confidence knowing iNSURA.ae Powered by PIONEER INSURANCE has you covered with top-tier car insurance, ensuring you’re protected on every journey. Say goodbye to time-consuming insurance processes! With iNSURA in the UAE, you can secure instant<strong> best car insurance in uae  in just 30 minutes.</strong>",
+    href: "/insurance/motor/car",
   },
   {
     id: "health",
@@ -41,8 +41,8 @@ const quoteTabs: QuoteTabConfig[] = [
     icon: Activity,
     title: "Health insurance Quote:",
     description:
-      "Stay healthy and worry-free with iNSURA.ae’s Powered by PIONEER INSURANCE health insurance—offering you the best coverage for all your medical needs. Health insurance in UAE & Dubai ensures access to quality medical care, including hospitalization, medications, and preventive services.",
-    href: "/health-insurance",
+      "Stay healthy and worry-free with iNSURA.ae’s Powered by PIONEER INSURANCE health insurance—offering you the best coverage for all your medical needs.Health insurance in UAE & the Dubai ensures access to quality medical care, including hospitalization, medications, and preventive services.",
+    href: "/insurance/health/health",
   },
   {
     id: "travel",
@@ -50,8 +50,8 @@ const quoteTabs: QuoteTabConfig[] = [
     icon: Plane,
     title: "Travel insurance Quote:",
     description:
-      "Explore the world with confidence thanks to iNSURA.ae’s Powered by PIONEER INSURANCE travel insurance, covering you from unexpected mishaps on your adventures. Secure your travels with Insura’s reliable travel insurance plans.",
-    href: "/travel-insurance",
+      "Explore the world with confidence thanks to iNSURA.ae’s Powered by PIONEER INSURANCE travel insurance, covering you from unexpected mishaps on your adventures.Secure your travels with Insura’s reliable travel insurance plans. Contact us today for a free consultation and let our experts help you find the right coverage for your next adventure. ",
+    href: "/insurance/travel/travel",
   },
   {
     id: "business",
@@ -59,8 +59,8 @@ const quoteTabs: QuoteTabConfig[] = [
     icon: Building2,
     title: "Business insurance Quote:",
     description:
-      "Protect your enterprise with iNSURA.ae’s Powered by PIONEER INSURANCE business insurance—providing robust coverage to keep your business thriving.",
-    href: "/business-insurance",
+      "Protect your enterprise with iNSURA.ae’s Powered by PIONEER INSURANCE business insurance—providing robust coverage to keep your business thriving.Business Insurance UAE serves as a protective shield for your business, offering coverage against unexpected risks such as property damage and liability claims.",
+    href: "/insurance/business/business",
   },
   {
     id: "marine",
@@ -69,8 +69,8 @@ const quoteTabs: QuoteTabConfig[] = [
     bigTitleOverride: "View more insurance Quote:",
     title: "View more insurance Quote:",
     description:
-      "Insurance provides protection against potential financial losses and gives peace of mind.",
-    href: "/marine-insurance",
+      "Insurance is a financial arrangement that provide us individuals and our organizations with protection against potential financial losses or risks. It operates on the principle of risk pooling, where policyholders pay premiums to an insurance company in exchange for coverage.Life is unpredictable and insurance can offer peace of mind.",
+    href: "/insurance/business/marine",
     bulletsLeft: [
       "Superior service options",
       "Endless lifetime help",

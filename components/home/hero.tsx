@@ -43,7 +43,7 @@ const SLIDES: SlideData[] = [
     title: "Future from Insura Personalized Quotes!",
     description:
       "With iNSURA.ae Powered by PIONEER, safeguarding your health has never been simpler—get instant customized quote.",
-    linkHref: "/quote/health",
+    linkHref: "/insurance/health/health",
     image: "/bg-Image3.jpg",
     cardAlignment: "left",
     bgColorClass: "bg-sky-500",
@@ -53,7 +53,7 @@ const SLIDES: SlideData[] = [
     title: "Let's plan your Travel insurance",
     description:
       "Your Health Insurance matter Secure Your Health & Future Get Peace of Mind Today!",
-    linkHref: "/quote/travel",
+    linkHref: "/insurance/travel/travel",
     image: "/1.jpg",
     cardAlignment: "right",
     bgColorClass: "bg-sky-500",
@@ -63,7 +63,7 @@ const SLIDES: SlideData[] = [
     title: "Let's plan your Business insurance",
     description:
       "Your Business Insurance matter Secure Your Business & Future Get Peace of Mind Today!",
-    linkHref: "/quote/business",
+    linkHref: "/insurance/business/business",
     image: "/business-people-walking-upstairs.jpg",
     cardAlignment: "left",
     bgColorClass: "bg-sky-500",
@@ -73,7 +73,7 @@ const SLIDES: SlideData[] = [
     title: "Get Instant insurance",
     description:
       "iNSURA.ae Powered by PIONEER offers unbeatable savings—secure top-rated insurance from Insura.ae",
-    linkHref: "/quote/car",
+    linkHref: "/insurance/motor/car",
     image: "/BG.jpg",
     cardAlignment: "left",
     bgColorClass: "bg-sky-500",

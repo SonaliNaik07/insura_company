@@ -13,7 +13,9 @@ import {
   UserCheck,
   Clock,
   Hand,
+  Bookmark,
 } from "lucide-react";
+
 
 import ServiceSidebar from "@/components/global/ServiceSidebar";
 import FloatingActions from "@/components/global/FloatingActions";
@@ -26,32 +28,32 @@ import TravelFAQ from "@/components/global/TravelFAQ";
 
 const travelProducts = [
   {
-    image: "/home.svg",
+    image: "/home.png",
     title: "Medical Emergencies",
     description:
       "Cover unexpected medical expenses including hospital admission, surgeries, and emergency evacuations while traveling.",
-    href: "/insurance/travel/medical-emergency",
+    href: "#hero-section",
   },
   {
-    image: "/home.svg",
+    image: "/home.png",
     title: "Trip Cancellation",
     description:
       "Protect prepaid bookings with reimbursement if your trip gets canceled or interrupted for valid circumstances.",
-    href: "/insurance/travel/trip-cancellation",
+    href: "#hero-section",
   },
   {
-    image: "/home.svg",
+    image: "/home.png",
     title: "Lost or Delayed Baggage",
     description:
       "Get compensated for essentials if your belongings get lost, delayed, or damaged during your trip.",
-    href: "/insurance/travel/lost-baggage",
+    href: "#hero-section",
   },
   {
-    image: "/home.svg",
+    image: "/home.png",
     title: "Travel Interruption",
     description:
       "Avoid financial burden if you must cut your trip short due to illness, emergency, or disasters.",
-    href: "/insurance/travel/interruption",
+    href: "#hero-section",
   },
 ];
 
@@ -68,11 +70,26 @@ function TravelProductCard({
   description,
   href,
 }: TravelProductCardProps) {
+  const [isFlipped, setIsFlipped] = React.useState(false);
+
+  const handleFlip = () => {
+    // Toggle only for mobile/tablet screens
+    if (window.innerWidth <= 1024) {
+      setIsFlipped((prev) => !prev);
+    }
+  };
+
   return (
-    <div className="group [perspective:1000px]">
-      <div className="relative w-full h-64 sm:h-72 transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+    <div
+      className="group relative cursor-pointer [perspective:1000px]"
+      onClick={handleFlip}
+    >
+      <div
+        className={`relative w-full h-64 sm:h-72 transition-transform duration-700 [transform-style:preserve-3d]
+        ${isFlipped ? "[transform:rotateY(180deg)]" : "group-hover:[transform:rotateY(180deg)]"}`}
+      >
         {/* Front */}
-        <div className="absolute inset-0 bg-[#06396B] rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-4 [backface-visibility:hidden]">
+        <div className="absolute inset-0 bg-[#06396B] rounded-xl shadow-md px-6 py-8 flex flex-col items-center justify-center text-center gap-3 [backface-visibility:hidden]">
           <Image
             src={image}
             alt={title}
@@ -80,25 +97,29 @@ function TravelProductCard({
             height={60}
             className="w-14 h-14 object-contain"
           />
-          <h3 className="text-white font-semibold text-base">{title}</h3>
+          <h3 className="text-white font-semibold text-sm md:text-base leading-tight">
+            {title}
+          </h3>
         </div>
 
         {/* Back */}
-        <div className="absolute inset-0 bg-white rounded-xl shadow-md px-6 py-8 flex flex-col justify-between text-center gap-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-          <p className="text-gray-700 text-sm leading-relaxed">
+        <div className="absolute inset-0 bg-white rounded-xl shadow-md px-6 py-6 flex flex-col justify-center text-center gap-4 [transform:rotateY(180deg)] [backface-visibility:hidden]">
+          <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed">
             {description}
           </p>
           <Link
             href={href}
-            className="inline-flex items-center gap-2 text-[#06396B] font-semibold text-sm hover:gap-3 transition-all"
+            className="mx-auto inline-flex items-center justify-center gap-2 border border-[#06396B] text-[#06396B] font-semibold text-sm md:text-base px-4 py-2 rounded-md hover:bg-[#06396B] hover:text-white transition-all"
           >
-            Buy Now <ExternalLink className="w-4 h-4" />
+            Buy Now <Bookmark className="w-4 h-4" fill="currentColor" />
           </Link>
         </div>
+
       </div>
     </div>
   );
 }
+
 
 // ---------------------------------------------------------------------
 // WHY iNSURA ACCORDION
@@ -115,11 +136,11 @@ const whyItems = [
   },
   {
     title: "Budget-Friendly Plans",
-    body: "Affordable coverage options that protect without breaking your travel budget.",
+    body: "Find affordable coverage that doesn’t skimp on essential protection, fitting your travel budget.",
   },
   {
     title: "Effortless Application and Claims",
-    body: "Smooth application & quick claim settlement — less stress, more adventure.",
+    body: "Experience a smooth application process and quick claims resolution, making travel insurance stress-free.",
   },
 ];
 
@@ -246,6 +267,8 @@ export default function TravelInsurancePage() {
                 Travel Insurance Coverage Benefits
               </h2>
 
+              
+
               <div className="grid sm:grid-cols-2 gap-8 md:gap-10 mt-4">
                 {travelProducts.map((item) => (
                   <TravelProductCard key={item.title} {...item} />
@@ -353,88 +376,53 @@ export default function TravelInsurancePage() {
               </div>
             </section>
 
-            {/* ⭐ Why Choose iNSURA.ae Section */}
-            <section className="py-10 bg-white">
-              <div className=" space-y-8">
-                <div className="grid lg:grid-cols-12 gap-8 md:gap-10 items-start">
-                  {/* LEFT IMAGE */}
-                  <div className="lg:col-span-5 rounded-xl overflow-hidden shadow-lg">
-                    <img
-                      src="/images/outbound-family.jpg"
-                      alt="Family traveler"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+{/* ⭐ Why Choose iNSURA.ae – IMAGE + ACCORDION + BUY BUTTON  */}
+<section className="py-10">
+  <div className="grid lg:grid-cols-12 gap-8 items-start">
+    
+    {/* LEFT IMAGE */}
+    <div className="lg:col-span-5 rounded-xl overflow-hidden shadow-lg">
+      <img
+        src="/travel-girl.webp"
+        alt="Traveler waving"
+        className="w-full object-cover"
+      />
+    </div>
 
-                  {/* RIGHT DETAILS (accordion-style) */}
-                  <div className="lg:col-span-7 space-y-6">
-                    {/* Blue Header Box */}
-                    <div className="bg-[#E9F4FF] border border-gray-200 shadow-md rounded-lg px-6 py-4">
-                      <h3 className="text-2xl font-extrabold text-[#06396B]">
-                        Why Choose iNSURA.ae?
-                      </h3>
-                      <span className="text-xs font-semibold text-[#06396B] uppercase tracking-wide">
-                        Powered by Pioneer
-                      </span>
-                    </div>
+    {/* RIGHT CONTENT */}
+    <div className="lg:col-span-7 space-y-6">
 
-                    <WhyInsuraAccordion />
-                  </div>
-                </div>
-              </div>
-            </section>
+      {/* Blue Header Box */}
+      <div className="bg-[#E9F4FF] shadow-lg border border-gray-200 px-6 py-4 rounded-lg">
+        <h3 className="text-2xl font-extrabold text-[#06396B]">
+          Why Choose iNSURA.ae?
+        </h3>
+        <span className="block text-xs font-semibold text-[#06396B] uppercase tracking-wide">
+          Powered by Pioneer
+        </span>
+      </div>
 
-            {/* Benefits of Outbound Insurance – */}
-          <section className="space-y-6">
-              <h2 className="text-2xl md:text-4xl font-bold text-[#06396B]">
-                Benefits of Outbound Insurance –
-              </h2>
+      {/* Accordion */}
+      <WhyInsuraAccordion />
 
-              <ul className="space-y-6 text-sm md:text-base text-gray-700 leading-relaxed">
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Entire Travel Safety :-
-                  </p>
-                  <p>
-                    Outbound insurance provides coverage for numerous travel
-                    risks like trip cancellations, delays or interruptions,
-                    ensuring that unforeseen events won’t financially strain
-                    travellers.
-                  </p>
-                </li>
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Coverage for Medical Emergencies :-
-                  </p>
-                  <p>
-                    It protects tourists from exorbitant medical expenses
-                    outside of the United Arab Emirates by offering critical
-                    medical coverage for situations overseas, including hospital
-                    stays, treatments and emergency evacuations.
-                  </p>
-                </li>
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Protection Against Baggage Loss and Theft :-
-                  </p>
-                  <p>
-                    This insurance provides comfort if priceless objects are
-                    missing while travelling by guarding against the loss or
-                    theft of luggage and personal belongings.
-                  </p>
-                </li>
-                <li>
-                  <p className="font-semibold text-[#06396B]">
-                    • Legal Support International :-
-                  </p>
-                  <p>
-                    It offers support with litigation, compensation claims and
-                    legal actions conducted abroad in cases when tourists may
-                    encounter legal difficulties.
-                  </p>
-                </li>
-              </ul>
-            </section>
+      {/* Paragraph under accordion */}
+      <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+        At Insura, we’re committed to making your memories your treasure for
+        life at the most affordable price.
+      </p>
+
+      {/* Buy Button */}
+<a
+  href="#travel-form"
+  className="inline-flex items-center bg-[#06396B] text-amber-300 px-6 py-3  font-semibold shadow-md hover:bg-[#022647] transition-all"
+>
+  Buy Now
+</a>
+
+
+    </div>
+  </div>
+</section>
 
             {/* Start Your Journey Today */}
           <section className="space-y-6">
@@ -485,47 +473,67 @@ export default function TravelInsurancePage() {
             </div>
 
             {/* NOT STICKY — Reasons Section */}
-            <div className="space-y-6">
-              <div className="bg-[#06396B] text-white px-6 py-4 rounded-lg">
-                <h3 className="text-lg font-semibold">
-                  Reason&apos;s to choose iNSURA.ae powered by PIONEER?
-                </h3>
-              </div>
+{/* Reasons to choose iNSURA.ae */}
+<div className="space-y-6">
+  {/* Header */}
+  <div className="bg-[#06396B] text-white px-6 py-4 rounded-lg">
+    <h3 className="text-center text-base font-semibold">
+      Reason&apos;s to choose iNSURA.ae powered by PIONEER?
+    </h3>
+  </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 text-center text-gray-800">
-                <div className="flex flex-col items-center gap-3">
-                  <Building className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    Collab with 100+ <br />
-                    Insurance Companies
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <UserCheck className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    Trusted by 1,00,000+ <br />
-                    policyholders
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <Clock className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    24x7 Insurance <br />
-                    Support
-                  </p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <Hand className="w-10 h-10 md:w-12 md:h-12 text-[#06396B]" />
-                  <p className="text-xs font-medium">
-                    Hassle Free <br />
-                    Process
-                  </p>
-                </div>
-              </div>
-            </div>
+  {/* Icons Grid */}
+  <div className="grid grid-cols-2 gap-8 text-center">
+    <div className="flex flex-col items-center gap-3">
+      <Building className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        Collab with 100+ <br /> Insurance Companies
+      </p>
+    </div>
+
+    <div className="flex flex-col items-center gap-3">
+      <UserCheck className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        Trusted by 1,00,000+ <br /> policyholders
+      </p>
+    </div>
+
+    <div className="flex flex-col items-center gap-3">
+      <Clock className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        24x7 Insurance <br /> Support
+      </p>
+    </div>
+
+    <div className="flex flex-col items-center gap-3">
+      <Hand className="w-10 h-10 text-[#06396B]" />
+      <p className="text-[13px] font-medium leading-tight text-[#06396B]">
+        Hassle Free <br /> Process
+      </p>
+    </div>
+  </div>
+
+  {/* BUY NOW button */}
+  <div className="pt-2 flex justify-center">
+    <Link
+      href="#hero-section"
+      className="bg-[#06396B] text-amber-300 px-6 py-2 rounded-md font-semibold text-sm hover:bg-[#052d54] transition"
+    >
+      Buy Now
+    </Link>
+  </div>
+</div>
+
           </aside>
         </div>
       </section>
+
+      <style jsx global>{`
+  html {
+    scroll-behavior: smooth;
+  }
+`}</style>
+
     </main>
   );
 }

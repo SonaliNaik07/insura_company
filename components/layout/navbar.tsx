@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { ChevronDown, Plus, Minus, Menu, X } from "lucide-react"
 import { Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react"
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const insuranceCategories = {
   motor: {
@@ -394,66 +395,86 @@ export function Navbar() {
 
       {/* ✅ Slide-in PANEL for 9-dot button */}
       {/* Overlay */}
-      <div
-        onClick={() => setAppsPanelOpen(false)}
-        className={`fixed inset-0 z-[55] bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
-          appsPanelOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+<div
+  onClick={() => setAppsPanelOpen(false)}
+  className={`fixed inset-0 z-[55] bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+    appsPanelOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+  }`}
+/>
+
+<div
+  className={`fixed top-0 right-0 z-[60] h-full w-full sm:w-[380px] max-w-full bg-white shadow-2xl transform transition-transform duration-300 ${
+    appsPanelOpen ? "translate-x-0" : "translate-x-full"
+  }`}
+>
+  {/* Close button */}
+  <button
+    onClick={() => setAppsPanelOpen(false)}
+    className="absolute top-4 right-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-100"
+    aria-label="Close panel"
+  >
+    <X className="h-4 w-4" />
+  </button>
+
+  {/* Content */}
+  <div className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-10">
+    {/* Logo */}
+    <div className="mb-6 flex justify-center">
+      <img
+        src="/Insura_white_logo.png"
+        alt="INSURA.ae"
+        className="h-16"
       />
+    </div>
 
-      {/* Panel */}
-      <div
-        className={`fixed top-0 right-0 z-[60] h-full w-full sm:w-[380px] max-w-full bg-white shadow-2xl transform transition-transform duration-300 ${
-          appsPanelOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <button
-          onClick={() => setAppsPanelOpen(false)}
-          className="absolute top-4 right-4 p-1 rounded-md bg-[#06396B] text-white hover:bg-[#042341]"
-          aria-label="Close panel"
-        >
-          <X className="w-4 h-4" />
-        </button>
+    {/* Text */}
+    <p className="mb-8 text-[13px] leading-relaxed text-slate-700">
+      insura has got your back with the best coverage at competitive rates. Our
+      team of agents makes policy comparison easy and hassle‑free on our
+      user‑friendly platform. Say goodbye to complex jargon and paperwork. With
+      our seamless, user‑friendly platform, you&apos;ll be able to easily compare
+      policies and make the best decision for you and your family.
+    </p>
 
-        {/* Panel content – match your reference layout here */}
-        <div className="h-full overflow-y-auto p-6 space-y-6">
-          <div className="flex justify-center">
-            <img src="/Insura_white_logo.png" alt="INSURA.ae" className="h-20" />
-          </div>
-
-          <p className="text-sm text-gray-700 leading-relaxed">
-            insura has got your back with the best coverage at competitive rates.
-            Our team of agents makes policy comparison easy and hassle-free on our
-            user-friendly platform. Say goodbye to complex jargon and paperwork.
-            With our seamless, user-friendly platform, you&apos;ll be able to easily
-            compare policies and make the best decision for you and your family.
-          </p>
-
-          <div className="space-y-4 text-sm text-gray-800">
-            <div className="flex items-start gap-2">
-              <span className="mt-1">📍</span>
-              <p>
-                Office #419, 4th Floor, Street #10, Al Nasr Plaza Office Tower,
-                Oud Metha – Dubai – United Arab Emirates
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span>📞</span>
-              <Link href="tel:+97143574547" className="hover:text-[#06396B] font-medium">
-                04-357-4547
-              </Link>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span>✉️</span>
-              <Link href="mailto:support@insura.ae" className="hover:text-[#06396B] font-medium">
-                support@insura.ae
-              </Link>
-            </div>
-          </div>
-        </div>
+    {/* Contact block */}
+    <div className="mt-auto space-y-4 text-[13px] text-slate-800">
+      <div className="flex items-start gap-3">
+        <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-[#06396B]">
+          <MapPin className="h-3.5 w-3.5" />
+        </span>
+        <p className="leading-snug">
+          Office #419, 4th Floor, Street #10, Al Nasr Plaza Office Tower, Oud
+          Metha – Dubai – United Arab Emirates
+        </p>
       </div>
+
+      <div className="flex items-center gap-3">
+        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-[#06396B]">
+          <Phone className="h-3.5 w-3.5" />
+        </span>
+        <Link
+          href="tel:+97143574547"
+          className="text-[13px] font-medium text-slate-900 hover:text-[#06396B]"
+        >
+          04-357-4547
+        </Link>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-100 text-[#06396B]">
+          <Mail className="h-3.5 w-3.5" />
+        </span>
+        <Link
+          href="mailto:support@insura.ae"
+          className="text-[13px] font-medium text-slate-900 hover:text-[#06396B]"
+        >
+          support@insura.ae
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
+
     </header>
   )
 }

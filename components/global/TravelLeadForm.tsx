@@ -26,10 +26,6 @@ const TravelLeadForm = () => {
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-8">
-      <h2 className="text-2xl font-bold text-[#042F5C] mb-6">
-        Travel Insurance in UAE makes your travel worry-free!
-      </h2>
-
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
