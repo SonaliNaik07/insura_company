@@ -50,7 +50,7 @@ export function Footer() {
 
           {/* 3. Quick Links */}
           <FooterColumn title="Quick Links">
-            <FooterItem href="/roadside-assistance">Roadside Assistance</FooterItem>
+            <FooterItem href="/claims/roadside">Roadside Assistance</FooterItem>
             <FooterItem href="/contact">Contact Us</FooterItem>
             <FooterItem href="/faq">FAQ</FooterItem>
           </FooterColumn>
