@@ -205,14 +205,14 @@ export default function FleetInsurancePage() {
                   We offer the best motor fleet insurance Dubai and UAE, with plans crafted to fit the unique requirements of your business. Experience tailored coverage and proactive risk management to keep your fleet rolling smoothly.
                 </p>
 
-                <div className="mb-10">
-        <button
-          className="bg-[#003566] hover:bg-[#02182d] text-yellow-400 font-semibold text-sm
-                     px-2 py-2 transition-colors"
-        >
-          Get a Quote
-        </button>
-      </div>
+                <a
+  href="/insurance/motor/fleet"
+  className="bg-[#003566] hover:bg-[#02182d] text-yellow-400 font-semibold text-sm px-2 py-2 transition-colors inline-block mb-4"
+>
+  Get a Quote
+</a>
+
+
 
       {/* Closing paragraph */}
       <p className="text-muted-foreground leading-relaxed">

@@ -452,16 +452,16 @@ export default function GroupMedicalPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-0">
                   <div className="overflow-hidden">
                     <img
-                      src="/family3.jpg"   // ✅ replace with your image path
+                      src="/family2.webp"   // ✅ replace with your image path
                       alt="Family Health Insurance Coverage"
-                      className="w-full h-[670px] md:h-[350px] w-[2500px]"
+                      className="w-full h-[670px] md:h-[350px] w-[2500px] mb-10"
                     />
                   </div>
                 </div>
               </section>
 
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">What is Not Covered Under Health Insurance?</h2>
+                <h2 className="text-2xl font-bold text-primary text-foreground mb-4">What is Not Covered Under Health Insurance?</h2>
                 <ul className="space-y-1 pl-5 list-disc ml-6 mb-10">
                     <li className="mb-8">
                       <span className="font-bold text-black">Surgical and Non-Surgical Treatment for Obesity: </span>Weight loss treatments are not typically covered.
