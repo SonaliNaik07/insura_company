@@ -39,17 +39,25 @@ const coverageTypes = [
 
 const faqs = [
   {
-    question: "Is group medical insurance mandatory in UAE?",
-    answer: "Yes, employers in Dubai and Abu Dhabi are required by law to provide health insurance to their employees.",
+    question: "What types of health insurance plans does iNSURA.ae Powered by PIONEER offer?",
+    answer: "iNSURA.ae powered by PIONEER provides a range of health insurance plans, including individual coverage, family plans, and specialized plans to meet diverse healthcare needs. Our plans are designed to offer comprehensive protection and flexibility.",
   },
   {
-    question: "What's the minimum group size?",
-    answer: "Group medical insurance is typically available for companies with 2 or more employees.",
+    question: "How can I get a quote for health insurance from iNSURA.ae powered by Pioneer?",
+    answer: "Obtaining a health insurance quote is easy. Simply visit our website and fill out the online quote form. Provide relevant information about your health needs, and we’ll generate a personalized quote tailored to your requirements.",
   },
   {
-    question: "Can employees add dependents?",
+    question: "How do I file a claim for health insurance with Insura.ae?",
     answer:
-      "Yes, employees can add family members including spouse and children to the group plan, usually at an additional premium.",
+      "In the event of a medical expense, you can easily file a claim through our online portal or by contacting our dedicated claims team. We aim to process claims efficiently, ensuring you receive timely assistance.",
+  },
+  {
+    question: "How do I renew my health insurance policy with Insura.ae?",
+    answer: "Policy renewal is made easy with iNSURA.ae powered by PIONEER. You can renew your health insurance in UAE online through our user-friendly platform. We’ll also send you timely reminders to ensure continuous coverage.",
+  },
+  {
+    question: "What if I have more questions or need assistance?",
+    answer: "If you have additional questions or need assistance, our customer service team is here to help. Contact us through our website, via email, or by phone. Visit our “Contact Us” page for detailed information on how to reach us.",
   },
 ]
 
@@ -71,7 +79,7 @@ export default function GroupMedicalPage() {
       <section className="relative overflow-hidden bg-primary min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/family2.jpg"
             alt="Bike Insurance"
             className="w-full h-full object-center"
           />

@@ -97,7 +97,7 @@ export function Sidebar() {
 <div className="relative rounded-lg overflow-hidden shadow-md">
   {/* Background Image */}
   <img
-    src="/oldlady.jpg"
+    src="/grand1.avif"
     alt="Contact Support"
     className="w-full h-[520px] object-cover"
   />

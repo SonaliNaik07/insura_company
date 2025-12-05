@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { Bookmark } from "lucide-react"
 
 export function WhyChooseInsura() {
   return (
@@ -73,9 +74,22 @@ export function WhyChooseInsura() {
 
             {/* BUTTON */}
             <div className="mt-6">
-              <Button className="bg-primary hover:bg-primary/90 px-8 py-3 text-yellow-300 font-bold">
-                Buy Now
-              </Button>
+              <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+</a>
             </div>
 
           </div>

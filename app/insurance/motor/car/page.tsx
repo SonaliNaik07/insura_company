@@ -3,7 +3,7 @@
 import { Sidebar } from "@/components/content/sidebar"
 import { FAQ } from "@/components/content/faq"
 import { WhyChooseInsura } from "@/components/content/why-choose-insura"
-import { Check, Car, FileText, AlertTriangle } from "lucide-react"
+import { Car, Bookmark } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -46,6 +46,23 @@ const faqs = [
   },
 ]
 
+const carBrands = [
+  "BMW",
+  "Toyota",
+  "Ford",
+  "Nissan",
+  "Honda",
+  "Mercedes-Benz",
+  "Audi",
+  "Kia",
+  "Hyundai",
+  "Chevrolet",
+];
+
+const years = Array.from({ length: 30 }, (_, i) => 2025 - i);
+
+
+
 export default function CarInsurancePage() {
   const [formData, setFormData] = useState({
     company: "",
@@ -72,7 +89,7 @@ const handleFlip = (index: number) => {
       <section className="relative overflow-hidden bg-primary min-h-[45vh] sm:min-h-[40vh]">
         <div className="absolute inset-0">
           <img
-            src="/car3.jpg"
+            src="/motor-hero.jpg"
             alt="Car Insurance"
             className="w-full h-full object-cover object-center"
           />
@@ -116,136 +133,115 @@ const handleFlip = (index: number) => {
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Name */}
-                <div>
-                  <Label className="font-medium">
-                    Name <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    placeholder="Enter full name..."
-                    className="
-                      mt-2
-                      h-12 sm:h-14
-                      rounded-xl
-                      bg-blue-50
-                      border-none
-                      placeholder:text-muted-foreground
-                      focus-visible:ring-2
-                      focus-visible:ring-primary
-                    "
-                  />
-                </div>
 
-                {/* Email */}
-                <div>
-                  <Label className="font-medium">
-                    Email Address <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    placeholder="Enter email id..."
-                    type="email"
-                    className="
-                      mt-2
-                      h-12 sm:h-14
-                      rounded-xl
-                      bg-blue-50
-                      border-none
-                      placeholder:text-muted-foreground
-                      focus-visible:ring-2
-                      focus-visible:ring-primary
-                    "
-                  />
-                </div>
+  {/* Name */}
+  <div>
+    <Label className="font-medium">
+      Name <span className="text-red-500">*</span>
+    </Label>
+    <Input
+      placeholder="Enter full name..."
+      className="
+        mt-2 h-12 sm:h-14 rounded-xl bg-blue-50 border-none
+        placeholder:text-muted-foreground
+        focus-visible:ring-2 focus-visible:ring-primary
+      "
+    />
+  </div>
 
-                {/* Mobile Number */}
-                <div>
-                  <Label className="font-medium">
-                    Mobile Number <span className="text-red-500">*</span>
-                  </Label>
-                  <Input
-                    placeholder="+971 Enter mobile number..."
-                    className="
-                      mt-2
-                      h-12 sm:h-14
-                      rounded-xl
-                      bg-blue-50
-                      border-none
-                      placeholder:text-muted-foreground
-                      focus-visible:ring-2
-                      focus-visible:ring-primary
-                    "
-                  />
-                </div>
+  {/* Email */}
+  <div>
+    <Label className="font-medium">
+      Email Address <span className="text-red-500">*</span>
+    </Label>
+    <Input
+      placeholder="Enter email id..."
+      type="email"
+      className="
+        mt-2 h-12 sm:h-14 rounded-xl bg-blue-50 border-none
+        placeholder:text-muted-foreground
+        focus-visible:ring-2 focus-visible:ring-primary
+      "
+    />
+  </div>
 
-                {/* Car Brand */}
-                <div>
-                  <Label className="font-medium">
-                    What is your car's brand?
-                  </Label>
-                  <Input
-                    placeholder="BMW"
-                    className="
-                      mt-2
-                      h-12 sm:h-14
-                      rounded-xl
-                      bg-blue-50
-                      border-none
-                      focus-visible:ring-2
-                      focus-visible:ring-primary
-                    "
-                  />
-                </div>
+  {/* Mobile Number */}
+  <div>
+    <Label className="font-medium">
+      Mobile Number <span className="text-red-500">*</span>
+    </Label>
+    <Input
+      placeholder="+971 Enter mobile number..."
+      className="
+        mt-2 h-12 sm:h-14 rounded-xl bg-blue-50 border-none
+        placeholder:text-muted-foreground
+        focus-visible:ring-2 focus-visible:ring-primary
+      "
+    />
+  </div>
 
-                {/* Car Model */}
-                <div>
-                  <Label className="font-medium">
-                    Select BMW Model
-                  </Label>
-                  <Input
-                    placeholder="3 Series"
-                    className="
-                      mt-2
-                     h-12 sm:h-14 
-                      rounded-xl
-                      bg-blue-50
-                      border-none
-                      focus-visible:ring-2
-                      focus-visible:ring-primary
-                    "
-                  />
-                </div>
+  {/* Car Brand */}
+  <div>
+    <Label className="font-medium">What is your car's brand?</Label>
+    <select
+      className="
+        mt-2 h-12 sm:h-14 rounded-xl bg-blue-50 border-none w-full
+        text-gray-700 px-4
+        focus-visible:ring-2 focus-visible:ring-primary
+      "
+    >
+      <option value="">Select Brand</option>
+      {carBrands.map((brand) => (
+        <option key={brand} value={brand}>
+          {brand}
+        </option>
+      ))}
+    </select>
+  </div>
 
-                {/* Registration Year */}
-                <div>
-                  <Label className="font-medium">
-                    In which year your Car got registered
-                  </Label>
-                  <Input
-                    placeholder="2025"
-                    className="
-                      mt-2
-                      h-12 sm:h-14
-                      rounded-xl
-                      bg-blue-50
-                      border-none
-                      focus-visible:ring-2
-                      focus-visible:ring-primary
-                    "
-                  />
-                </div>
+  {/* Car Model */}
+  <div>
+    <Label className="font-medium">Select Model</Label>
+    <Input
+      placeholder="e.g., 3 Series"
+      className="
+        mt-2 h-12 sm:h-14 rounded-xl bg-blue-50 border-none
+        focus-visible:ring-2 focus-visible:ring-primary
+      "
+    />
+  </div>
 
-                {/* Submit */}
-                <div className="pt-2">
-                  <Button
-                    type="submit"
-                    className="
-                      bg-secondary hover:bg-secondary/90 w-full sm:w-auto px-6 py-4
-                    "
-                  >
-                    Send Application
-                  </Button>
-                </div>
-              </form>
+  {/* Registration Year */}
+  <div>
+    <Label className="font-medium">In which year was your car registered?</Label>
+
+    <select
+      className="
+        mt-2 h-12 sm:h-14 rounded-xl bg-blue-50 border-none w-full
+        text-gray-700 px-4
+        focus-visible:ring-2 focus-visible:ring-primary
+      "
+    >
+      <option value="">Select Year</option>
+      {years.map((year) => (
+        <option key={year} value={year}>
+          {year}
+        </option>
+      ))}
+    </select>
+  </div>
+
+  {/* Submit */}
+  <div className="pt-2">
+    <Button
+      type="submit"
+      className="bg-secondary hover:bg-secondary/90 w-full sm:w-auto px-6 py-4"
+    >
+      Send Application
+    </Button>
+  </div>
+</form>
+
 
 
 
@@ -321,9 +317,24 @@ const handleFlip = (index: number) => {
   {type.description}
 </p>
 
-          <Button className="bg-primary px-6 py-2">
-            Buy Now
-          </Button>
+          <a
+  href="#"
+  onClick={(e) => {
+    e.preventDefault()
+    window.location.href = window.location.pathname
+  }}
+  className="
+    flex items-center justify-center gap-1
+    text-primary font-semibold text-lg
+    px-3 py-1 rounded-md
+    transition-all duration-200
+    hover:bg-primary hover:text-white
+  "
+>
+  Buy Now
+  <Bookmark className="w-4 h-4" />
+</a>
+
         </div>
       </div>
     </div>
